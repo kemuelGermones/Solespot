@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Modal,
   ModalContent,
@@ -16,7 +18,7 @@ export default function Cart() {
 
   return (
     <>
-      <button onClick={onOpen}>
+      <button type="button" onClick={onOpen}>
         <BsCart4 size="1.5em" />
       </button>
       <Modal radius="none" isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -44,7 +46,7 @@ export default function Cart() {
                       <div className="text-gray-500 text-sm">Size: 7.5</div>
                       <div className="flex justify-between">
                         <div>₱9,195.00</div>
-                        <button className="outline-none">
+                        <button className="outline-none" type="button">
                           <BsTrash />
                         </button>
                       </div>
@@ -60,6 +62,7 @@ export default function Cart() {
                 <Button
                   className="bg-black text-white"
                   radius="none"
+                  type="button"
                   onPress={onClose}
                 >
                   CHECKOUT
