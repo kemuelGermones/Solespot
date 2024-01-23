@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function ProductsSection() {
   return (
-    <div className="lg:container mx-auto p-4 flex flex-col gap-4">
+    <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
       <div className="font-bold text-4xl">NEW ARRIVALS</div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Link className="flex flex-col gap-2" href="#">
