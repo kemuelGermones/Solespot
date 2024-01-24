@@ -22,7 +22,7 @@ export default function Header() {
       <NavbarContent>
         <NavbarMenuToggle className="md:hidden" />
         <NavbarItem>
-          <Link className="font-bold text-lg" href="#">
+          <Link className="font-bold text-lg" href="/">
             SOLESPOT
           </Link>
         </NavbarItem>
@@ -54,7 +54,7 @@ export default function Header() {
           <Cart />
         </NavbarItem>
         <NavbarItem>
-          <Link href="#">
+          <Link href="/signin">
             <BsPerson size="1.5em" />
           </Link>
         </NavbarItem>
