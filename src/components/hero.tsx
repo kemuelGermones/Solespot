@@ -6,13 +6,29 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import Image from "next/image";
 
 const images = [
-  { id: 1, name: "Jordan", filename: "/jordan.webp" },
-  { id: 2, name: "Nike", filename: "/nike.webp" },
-  { id: 3, name: "Adidas", filename: "/adidas.webp" },
-  { id: 4, name: "Under Armour", filename: "/under-armour.webp" },
+  {
+    id: 1,
+    name: "Jordan",
+    filename: "/jordan.webp",
+  },
+  {
+    id: 2,
+    name: "Nike",
+    filename: "/nike.webp",
+  },
+  {
+    id: 3,
+    name: "Adidas",
+    filename: "/adidas.webp",
+  },
+  {
+    id: 4,
+    name: "Under Armour",
+    filename: "/under-armour.webp",
+  },
 ];
 
-export default function Carousel() {
+export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {

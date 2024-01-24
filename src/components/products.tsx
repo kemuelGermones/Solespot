@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function ProductsSection() {
+export default function Products() {
   return (
     <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
       <div className="font-bold text-4xl">NEW ARRIVALS</div>

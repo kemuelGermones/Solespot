@@ -19,7 +19,7 @@ const images = [
   },
 ];
 
-export default function CategoriesSection() {
+export default function Categories() {
   return (
     <div className="h-[calc(100vh-4rem)] grid md:grid-cols-3">
       {images.map((image) => (

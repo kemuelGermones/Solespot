@@ -53,9 +53,9 @@ export default function Cart() {
                     </div>
                   </div>
                 </ScrollShadow>
-                <div className="flex justify-between">
-                  <div className="font-bold">SUBTOTAL</div>
-                  <div className="font-bold">₱9,195.00</div>
+                <div className="flex justify-between font-bold">
+                  <div>SUBTOTAL</div>
+                  <div>₱9,195.00</div>
                 </div>
               </ModalBody>
               <ModalFooter>

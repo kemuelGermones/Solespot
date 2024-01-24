@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Arimo } from "next/font/google";
 import "./globals.css";
 import Providers from "@/app/providers";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const arimo = Arimo({ subsets: ["latin"] });
 
@@ -18,7 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={arimo.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header />
+          <div className="min-h-[calc(100vh-20.5rem-4rem)]">{children}</div>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

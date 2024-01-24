@@ -1,18 +1,14 @@
-import Header from "@/components/header";
-import Carousel from "@/components/carousel";
-import ProductsSection from "@/components/products-section";
-import CategoriesSection from "@/components/categories-section";
-import Footer from "@/components/footer";
+import Hero from "@/components/hero";
+import Products from "@/components/products";
+import Categories from "@/components/categories";
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <Carousel />
-      <ProductsSection />
-      <CategoriesSection />
-      <ProductsSection />
-      <Footer />
+      <Hero />
+      <Products />
+      <Categories />
+      <Products />
     </>
   );
 }
