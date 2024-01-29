@@ -79,7 +79,7 @@ export default function ProductList() {
         </Dropdown>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -87,7 +87,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -95,7 +95,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -103,7 +103,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -111,7 +111,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -119,7 +119,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -127,7 +127,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -135,7 +135,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -143,7 +143,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -151,7 +151,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -159,7 +159,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -167,7 +167,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -175,7 +175,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -183,7 +183,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -191,7 +191,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
@@ -199,7 +199,7 @@ export default function ProductList() {
           </div>
           <div>₱9,195.00</div>
         </Link>
-        <Link className="flex flex-col gap-2" href="#">
+        <Link className="flex flex-col gap-2" href="/products/1">
           <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
           <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
           <div className="font-bold">
