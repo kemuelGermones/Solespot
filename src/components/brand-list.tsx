@@ -8,27 +8,32 @@ import Image from "next/image";
 const images = [
   {
     id: 1,
+    name: "All",
+    filename: "/all.webp",
+  },
+  {
+    id: 2,
     name: "Jordan",
     filename: "/jordan.webp",
   },
   {
-    id: 2,
+    id: 3,
     name: "Nike",
     filename: "/nike.webp",
   },
   {
-    id: 3,
+    id: 4,
     name: "Adidas",
     filename: "/adidas.webp",
   },
   {
-    id: 4,
+    id: 5,
     name: "Under Armour",
     filename: "/under-armour.webp",
   },
 ];
 
-export default function Hero() {
+export default function BrandList() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -59,14 +64,15 @@ export default function Hero() {
           <div className="grow-0 shrink-0 basis-full relative" key={image.id}>
             <Image
               className="object-cover"
+              fill={true}
+              draggable={false}
               src={image.filename}
               alt={image.name}
-              fill={true}
             />
             <Button
-              type="button"
-              className="bg-black text-white absolute top-4 left-4"
+              className="bg-foreground text-white font-bold absolute top-4 left-4"
               radius="full"
+              type="button"
             >
               SHOP {image.name.toUpperCase()}
             </Button>
@@ -74,16 +80,16 @@ export default function Hero() {
         ))}
       </div>
       <button
+        className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1 shadow hover:bg-white"
         type="button"
         onClick={handlePreviousSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1 text-gray-800 shadow hover:bg-white"
       >
         <BsChevronLeft />
       </button>
       <button
+        className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1 shadow hover:bg-white"
         type="button"
         onClick={handleNextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1 text-gray-800 shadow hover:bg-white"
       >
         <BsChevronRight />
       </button>

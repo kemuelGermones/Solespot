@@ -41,8 +41,8 @@ export default function ProductDetails() {
 
   return (
     <div className="py-8 px-4 max-w-5xl mx-auto grid md:grid-cols-[1.5fr_1fr] gap-4">
-      <div className="flex flex-col gap-4">
-        <div className="overflow-hidden">
+      <div className="grid grid-cols-5 gap-4">
+        <div className="overflow-hidden col-span-5">
           <div
             className="flex transition-transform duration-500 ease-out"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -59,29 +59,27 @@ export default function ProductDetails() {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-5 gap-2">
-          {images.map((image, index) => (
-            <Image
-              className={`cursor-pointer transition-all ${
-                currentSlide === index ? "bg-gray-200" : ""
-              }`}
-              width={500}
-              height={500}
-              draggable={false}
-              src={image.filename}
-              alt={image.name}
-              key={image.id}
-              onClick={handleChangeSlide.bind(null, index)}
-            />
-          ))}
-        </div>
+        {images.map((image, index) => (
+          <Image
+            className={`cursor-pointer transition-all ${
+              currentSlide === index ? "bg-default-100" : ""
+            }`}
+            width={500}
+            height={500}
+            draggable={false}
+            src={image.filename}
+            alt={image.name}
+            key={image.id}
+            onClick={handleChangeSlide.bind(null, index)}
+          />
+        ))}
       </div>
       <div className="flex flex-col gap-4">
-        <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
+        <div className="text-foreground-500 text-sm">UNDER ARMOUR</div>
         <div className="font-bold text-2xl">
           Under Armour Curry 11 "Champion Mindset"
         </div>
-        <div className="text-gray-500 text-sm">MEN'S</div>
+        <div className="text-foreground-500 text-sm">MEN'S</div>
         <div>₱9,195.00</div>
         <div>
           Stephen Curry makes you believe you can do anything. And the Curry 11
@@ -89,8 +87,8 @@ export default function ProductDetails() {
           allow everyone to do their thing.
         </div>
         <form className="flex flex-col gap-4">
-          <div className="font-bold">CHOOSE A SIZE:</div>
           <div className="grid grid-cols-4 gap-2">
+            <div className="font-bold col-span-4">CHOOSE A SIZE</div>
             <div>
               <input
                 className="hidden peer"
@@ -100,7 +98,7 @@ export default function ProductDetails() {
                 value="7.5"
               />
               <label
-                className="block text-center text-sm font-bold p-4 border border-black cursor-pointer peer-checked:text-white peer-checked:bg-black"
+                className="min-w-min min-h-10 flex items-center justify-center text-sm font-bold px-4 border border-foreground cursor-pointer peer-checked:text-white peer-checked:bg-foreground"
                 htmlFor="7.5"
               >
                 7.5
@@ -115,7 +113,7 @@ export default function ProductDetails() {
                 value="8"
               />
               <label
-                className="block text-center text-sm font-bold p-4 border border-black cursor-pointer peer-checked:text-white peer-checked:bg-black"
+                className="min-w-min min-h-10 flex items-center justify-center text-sm font-bold px-4 border border-foreground cursor-pointer peer-checked:text-white peer-checked:bg-foreground"
                 htmlFor="8"
               >
                 8
@@ -123,7 +121,7 @@ export default function ProductDetails() {
             </div>
           </div>
           <Button
-            className="bg-black text-white font-bold"
+            className="bg-foreground text-white font-bold"
             radius="none"
             type="button"
           >
@@ -135,7 +133,7 @@ export default function ProductDetails() {
             title: "text-base font-bold",
           }}
         >
-          <AccordionItem title="Product Description">
+          <AccordionItem title="PRODUCT DESCRIPTION">
             UA Warp upper technology provides enhanced comfort & control
             throughout dynamic basketball movements Lightweight, comfortable UA
             IntelliKnit is breathable & gives you stretch & support where you
@@ -148,7 +146,7 @@ export default function ProductDetails() {
             better court feel so you can cut & stop/start faster than ever
             before
           </AccordionItem>
-          <AccordionItem title="Shipping & Returns">
+          <AccordionItem title="SHIPPING & RETURNS">
             TITAN22.COM currently offers nationwide shipping in the Philippines.
             Orders amounting to PHP7,000 or more qualify for free shipping.
             Metro Manila Orders: 5-7 business days Provincial Orders: 7-20

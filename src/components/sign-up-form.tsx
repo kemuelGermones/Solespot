@@ -7,33 +7,37 @@ export default function SignUpForm() {
       <div className="font-bold text-4xl">SIGN UP</div>
       <Input
         radius="none"
-        type="text"
         label="First Name"
-        placeholder="Enter your first name"
         labelPlacement="outside"
-      />
-      <Input
-        radius="none"
         type="text"
+        placeholder="Enter your first name"
+      />
+      <Input
+        radius="none"
         label="Last Name"
+        labelPlacement="outside"
+        type="text"
         placeholder="Enter your last name"
-        labelPlacement="outside"
       />
       <Input
         radius="none"
-        type="email"
         label="Email"
-        placeholder="Enter your email"
         labelPlacement="outside"
+        type="email"
+        placeholder="Enter your email"
       />
       <Input
         radius="none"
-        type="password"
         label="Password"
-        placeholder="Enter your password"
         labelPlacement="outside"
+        type="password"
+        placeholder="Enter your password"
       />
-      <Button className="bg-black text-white" radius="none" type="button">
+      <Button
+        className="bg-foreground text-white font-bold"
+        radius="none"
+        type="button"
+      >
         SIGN UP
       </Button>
       <div>

@@ -7,19 +7,23 @@ export default function SignInForm() {
       <div className="font-bold text-4xl">SIGN IN</div>
       <Input
         radius="none"
-        type="email"
         label="Email"
-        placeholder="Enter your email"
         labelPlacement="outside"
+        type="email"
+        placeholder="Enter your email"
       />
       <Input
         radius="none"
-        type="password"
         label="Password"
-        placeholder="Enter your password"
         labelPlacement="outside"
+        type="password"
+        placeholder="Enter your password"
       />
-      <Button className="bg-black text-white" radius="none" type="button">
+      <Button
+        className="bg-foreground text-white font-bold"
+        radius="none"
+        type="button"
+      >
         SIGN IN
       </Button>
       <div>

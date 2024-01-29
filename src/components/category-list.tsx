@@ -19,19 +19,20 @@ const images = [
   },
 ];
 
-export default function Categories() {
+export default function CategoryList() {
   return (
     <div className="h-[calc(100vh-4rem)] grid md:grid-cols-3">
       {images.map((image) => (
         <div className="relative" key={image.id}>
           <Image
             className="object-cover"
+            fill={true}
+            draggable={false}
             src={image.filename}
             alt={image.name}
-            fill={true}
           />
           <Button
-            className="bg-black text-white absolute top-4 left-4"
+            className="bg-foreground text-white font-bold absolute top-4 left-4"
             radius="full"
             type="button"
           >

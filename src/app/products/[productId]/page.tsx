@@ -1,11 +1,11 @@
 import ProductDetails from "@/components/product-details";
-import Products from "@/components/products";
+import TopProductList from "@/components/top-product-list";
 
 export default function Product() {
   return (
     <>
       <ProductDetails />
-      <Products />
+      <TopProductList />
     </>
   );
 }

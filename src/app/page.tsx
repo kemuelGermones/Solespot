@@ -1,14 +1,14 @@
-import Hero from "@/components/hero";
-import Products from "@/components/products";
-import Categories from "@/components/categories";
+import BrandList from "@/components/brand-list";
+import TopProductList from "@/components/top-product-list";
+import CategoryList from "@/components/category-list";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Products />
-      <Categories />
-      <Products />
+      <BrandList />
+      <TopProductList />
+      <CategoryList />
+      <TopProductList />
     </>
   );
 }

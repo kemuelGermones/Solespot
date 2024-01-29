@@ -15,13 +15,14 @@ import Image from "next/image";
 
 export default function ProductList() {
   return (
-    <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
-      <div className="flex gap-4 justify-end">
+    <div className="lg:container mx-auto py-8 px-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="flex gap-4 justify-end col-span-4">
         <Dropdown radius="none">
           <DropdownTrigger>
             <Button
-              className="bg-black text-white"
+              className="bg-foreground text-white font-bold"
               radius="none"
+              type="button"
               startContent={<BsFilter />}
             >
               FILTER
@@ -32,7 +33,7 @@ export default function ProductList() {
               base: [
                 "rounded-none",
                 "data-[hover=true]:text-white",
-                "data-[hover=true]:bg-black",
+                "data-[hover=true]:bg-foreground",
               ],
             }}
           >
@@ -52,8 +53,9 @@ export default function ProductList() {
         <Dropdown radius="none">
           <DropdownTrigger>
             <Button
-              className="bg-black text-white"
+              className="bg-foreground text-white font-bold"
               radius="none"
+              type="button"
               startContent={<BsArrowDownUp />}
             >
               SORT
@@ -64,7 +66,7 @@ export default function ProductList() {
               base: [
                 "rounded-none",
                 "data-[hover=true]:text-white",
-                "data-[hover=true]:bg-black",
+                "data-[hover=true]:bg-foreground",
               ],
             }}
           >
@@ -78,144 +80,183 @@ export default function ProductList() {
           </DropdownMenu>
         </Dropdown>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-        <Link className="flex flex-col gap-2" href="/products/1">
-          <Image src="/shoe.webp" alt="shoe" width={500} height={500} />
-          <div className="text-gray-500 text-sm">UNDER ARMOUR</div>
-          <div className="font-bold">
-            Under Armour Curry 11 "Champion Mindset"
-          </div>
-          <div>₱9,195.00</div>
-        </Link>
-      </div>
+      <Link className="flex flex-col gap-2" href="/products/1">
+        <Image
+          width={500}
+          height={500}
+          draggable={false}
+          src="/shoe.webp"
+          alt="shoe"
+        />
+        <div className="text-foreground-500 text-sm">UNDER ARMOUR</div>
+        <div className="font-bold">
+          Under Armour Curry 11 "Champion Mindset"
+        </div>
+        <div>₱9,195.00</div>
+      </Link>
+      <Link className="flex flex-col gap-2" href="/products/1">
+        <Image
+          width={500}
+          height={500}
+          draggable={false}
+          src="/shoe.webp"
+          alt="shoe"
+        />
+        <div className="text-foreground-500 text-sm">UNDER ARMOUR</div>
+        <div className="font-bold">
+          Under Armour Curry 11 "Champion Mindset"
+        </div>
+        <div>₱9,195.00</div>
+      </Link>
+      <Link className="flex flex-col gap-2" href="/products/1">
+        <Image
+          width={500}
+          height={500}
+          draggable={false}
+          src="/shoe.webp"
+          alt="shoe"
+        />
+        <div className="text-foreground-500 text-sm">UNDER ARMOUR</div>
+        <div className="font-bold">
+          Under Armour Curry 11 "Champion Mindset"
+        </div>
+        <div>₱9,195.00</div>
+      </Link>
+      <Link className="flex flex-col gap-2" href="/products/1">
+        <Image
+          width={500}
+          height={500}
+          draggable={false}
+          src="/shoe.webp"
+          alt="shoe"
+        />
+        <div className="text-foreground-500 text-sm">UNDER ARMOUR</div>
+        <div className="font-bold">
+          Under Armour Curry 11 "Champion Mindset"
+        </div>
+        <div>₱9,195.00</div>
+      </Link>
+      <Link className="flex flex-col gap-2" href="/products/1">
+        <Image
+          width={500}
+          height={500}
+          draggable={false}
+          src="/shoe.webp"
+          alt="shoe"
+        />
+        <div className="text-foreground-500 text-sm">UNDER ARMOUR</div>
+        <div className="font-bold">
+          Under Armour Curry 11 "Champion Mindset"
+        </div>
+        <div>₱9,195.00</div>
+      </Link>
+      <Link className="flex flex-col gap-2" href="/products/1">
+        <Image
+          width={500}
+          height={500}
+          draggable={false}
+          src="/shoe.webp"
+          alt="shoe"
+        />
+        <div className="text-foreground-500 text-sm">UNDER ARMOUR</div>
+        <div className="font-bold">
+          Under Armour Curry 11 "Champion Mindset"
+        </div>
+        <div>₱9,195.00</div>
+      </Link>
+      <Link className="flex flex-col gap-2" href="/products/1">
+        <Image
+          width={500}
+          height={500}
+          draggable={false}
+          src="/shoe.webp"
+          alt="shoe"
+        />
+        <div className="text-foreground-500 text-sm">UNDER ARMOUR</div>
+        <div className="font-bold">
+          Under Armour Curry 11 "Champion Mindset"
+        </div>
+        <div>₱9,195.00</div>
+      </Link>
+      <Link className="flex flex-col gap-2" href="/products/1">
+        <Image
+          width={500}
+          height={500}
+          draggable={false}
+          src="/shoe.webp"
+          alt="shoe"
+        />
+        <div className="text-foreground-500 text-sm">UNDER ARMOUR</div>
+        <div className="font-bold">
+          Under Armour Curry 11 "Champion Mindset"
+        </div>
+        <div>₱9,195.00</div>
+      </Link>
+      <Link className="flex flex-col gap-2" href="/products/1">
+        <Image
+          width={500}
+          height={500}
+          draggable={false}
+          src="/shoe.webp"
+          alt="shoe"
+        />
+        <div className="text-foreground-500 text-sm">UNDER ARMOUR</div>
+        <div className="font-bold">
+          Under Armour Curry 11 "Champion Mindset"
+        </div>
+        <div>₱9,195.00</div>
+      </Link>
+      <Link className="flex flex-col gap-2" href="/products/1">
+        <Image
+          width={500}
+          height={500}
+          draggable={false}
+          src="/shoe.webp"
+          alt="shoe"
+        />
+        <div className="text-foreground-500 text-sm">UNDER ARMOUR</div>
+        <div className="font-bold">
+          Under Armour Curry 11 "Champion Mindset"
+        </div>
+        <div>₱9,195.00</div>
+      </Link>
+      <Link className="flex flex-col gap-2" href="/products/1">
+        <Image
+          width={500}
+          height={500}
+          draggable={false}
+          src="/shoe.webp"
+          alt="shoe"
+        />
+        <div className="text-foreground-500 text-sm">UNDER ARMOUR</div>
+        <div className="font-bold">
+          Under Armour Curry 11 "Champion Mindset"
+        </div>
+        <div>₱9,195.00</div>
+      </Link>
+      <Link className="flex flex-col gap-2" href="/products/1">
+        <Image
+          width={500}
+          height={500}
+          draggable={false}
+          src="/shoe.webp"
+          alt="shoe"
+        />
+        <div className="text-foreground-500 text-sm">UNDER ARMOUR</div>
+        <div className="font-bold">
+          Under Armour Curry 11 "Champion Mindset"
+        </div>
+        <div>₱9,195.00</div>
+      </Link>
       <Pagination
-        className="pt-16 px-0"
+        className="pt-12 px-0 col-span-4"
         radius="none"
         total={10}
         initialPage={1}
         classNames={{
           wrapper: "mx-auto",
-          cursor: "bg-black text-white",
+          item: "font-bold",
+          cursor: "bg-foreground text-white font-bold",
         }}
       />
     </div>

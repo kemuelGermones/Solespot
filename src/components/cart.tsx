@@ -32,18 +32,21 @@ export default function Cart() {
                   size={0}
                   hideScrollBar
                 >
-                  <div className="flex gap-2">
+                  <div className="grid grid-cols-[1fr_3fr] gap-2">
                     <Image
+                      width={500}
+                      height={500}
+                      draggable={false}
                       src="/shoe.webp"
                       alt="shoe"
-                      width={100}
-                      height={100}
                     />
                     <div className="flex flex-col gap-2">
                       <div className="font-bold">
                         Under Armour Curry 11 "Champion Mindset"
                       </div>
-                      <div className="text-gray-500 text-sm">Size: 7.5</div>
+                      <div className="text-foreground-500 text-sm">
+                        SIZE: 7.5
+                      </div>
                       <div className="flex justify-between">
                         <div>₱9,195.00</div>
                         <button className="outline-none" type="button">
@@ -60,7 +63,7 @@ export default function Cart() {
               </ModalBody>
               <ModalFooter>
                 <Button
-                  className="bg-black text-white"
+                  className="bg-foreground text-white font-bold"
                   radius="none"
                   type="button"
                   onPress={onClose}
