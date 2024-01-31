@@ -41,7 +41,7 @@ export default function ProductDetails() {
 
   return (
     <div className="py-8 px-4 max-w-5xl mx-auto grid md:grid-cols-[1.5fr_1fr] gap-4">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-2">
         <div className="overflow-hidden">
           <div
             className="flex transition-transform duration-500 ease-out"
@@ -59,7 +59,7 @@ export default function ProductDetails() {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-5 gap-2">
           {images.map((image, index) => (
             <Image
               className={`cursor-pointer transition-all ${
@@ -81,7 +81,7 @@ export default function ProductDetails() {
         <div className="font-bold text-2xl">
           Under Armour Curry 11 "Champion Mindset"
         </div>
-        <div className="text-foreground-500 text-sm">MEN'S</div>
+        <div className="text-foreground-500 text-sm">MEN</div>
         <div>₱9,195.00</div>
         <div>
           Stephen Curry makes you believe you can do anything. And the Curry 11
@@ -90,7 +90,7 @@ export default function ProductDetails() {
         </div>
         <form className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <div className="font-bold">CHOOSE A SIZE</div>
+            <div className="font-bold">CHOOSE A SIZE:</div>
             <div className="grid grid-cols-4 gap-2">
               <div>
                 <input

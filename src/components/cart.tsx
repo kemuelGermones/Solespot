@@ -26,26 +26,28 @@ export default function Cart() {
           {(onClose) => (
             <>
               <ModalHeader>CART</ModalHeader>
-              <ModalBody>
+              <ModalBody className="gap-4">
                 <ScrollShadow
-                  className="max-h-80 flex flex-col gap-3"
+                  className="max-h-80 flex flex-col gap-4"
                   size={0}
                   hideScrollBar
                 >
-                  <div className="grid grid-cols-[1fr_3fr] gap-2">
-                    <Image
-                      width={500}
-                      height={500}
-                      draggable={false}
-                      src="/shoe.webp"
-                      alt="shoe"
-                    />
+                  <div className="grid grid-cols-[1fr_2fr] gap-2">
+                    <div>
+                      <Image
+                        width={500}
+                        height={500}
+                        draggable={false}
+                        src="/shoe.webp"
+                        alt="shoe"
+                      />
+                    </div>
                     <div className="flex flex-col gap-2">
                       <div className="font-bold">
                         Under Armour Curry 11 "Champion Mindset"
                       </div>
                       <div className="text-foreground-500 text-sm">
-                        SIZE: 7.5
+                        SIZE: 7.5 / MEN
                       </div>
                       <div className="flex justify-between">
                         <div>₱9,195.00</div>
@@ -57,7 +59,7 @@ export default function Cart() {
                   </div>
                 </ScrollShadow>
                 <div className="flex justify-between font-bold">
-                  <div>SUBTOTAL</div>
+                  <div>SUBTOTAL:</div>
                   <div>₱9,195.00</div>
                 </div>
               </ModalBody>

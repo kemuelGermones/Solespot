@@ -18,6 +18,7 @@ export default function TopProductList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
+          <div className="text-foreground-500 text-sm">MEN</div>
           <div>₱9,195.00</div>
         </Link>
         <Link className="flex flex-col gap-2" href="/products/1">
@@ -32,6 +33,7 @@ export default function TopProductList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
+          <div className="text-foreground-500 text-sm">MEN</div>
           <div>₱9,195.00</div>
         </Link>
         <Link className="flex flex-col gap-2" href="/products/1">
@@ -46,6 +48,7 @@ export default function TopProductList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
+          <div className="text-foreground-500 text-sm">MEN</div>
           <div>₱9,195.00</div>
         </Link>
         <Link className="flex flex-col gap-2" href="/products/1">
@@ -60,6 +63,7 @@ export default function TopProductList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
+          <div className="text-foreground-500 text-sm">MEN</div>
           <div>₱9,195.00</div>
         </Link>
         <Link className="flex flex-col gap-2" href="/products/1">
@@ -74,6 +78,7 @@ export default function TopProductList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
+          <div className="text-foreground-500 text-sm">MEN</div>
           <div>₱9,195.00</div>
         </Link>
         <Link className="flex flex-col gap-2" href="/products/1">
@@ -88,6 +93,7 @@ export default function TopProductList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
+          <div className="text-foreground-500 text-sm">MEN</div>
           <div>₱9,195.00</div>
         </Link>
         <Link className="flex flex-col gap-2" href="/products/1">
@@ -102,6 +108,7 @@ export default function TopProductList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
+          <div className="text-foreground-500 text-sm">MEN</div>
           <div>₱9,195.00</div>
         </Link>
         <Link className="flex flex-col gap-2" href="/products/1">
@@ -116,6 +123,7 @@ export default function TopProductList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
+          <div className="text-foreground-500 text-sm">MEN</div>
           <div>₱9,195.00</div>
         </Link>
       </div>

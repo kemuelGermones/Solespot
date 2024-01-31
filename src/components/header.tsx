@@ -28,17 +28,17 @@ export default function Header() {
         </NavbarItem>
         <NavbarItem className="hidden md:block">
           <Link className="hover:underline" href="/products">
-            MEN'S
+            SHOP ALL
           </Link>
         </NavbarItem>
         <NavbarItem className="hidden md:block">
           <Link className="hover:underline" href="/products">
-            WOMEN'S
+            MEN
           </Link>
         </NavbarItem>
         <NavbarItem className="hidden md:block">
           <Link className="hover:underline" href="/products">
-            KID'S
+            WOMEN
           </Link>
         </NavbarItem>
         <NavbarItem className="grow">
@@ -65,7 +65,7 @@ export default function Header() {
             className="inline-block w-full hover:underline"
             href="/products"
           >
-            MEN'S
+            SHOP ALL
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
@@ -73,7 +73,7 @@ export default function Header() {
             className="inline-block w-full hover:underline"
             href="/products"
           >
-            WOMEN'S
+            MEN
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
@@ -81,7 +81,7 @@ export default function Header() {
             className="inline-block w-full hover:underline"
             href="/products"
           >
-            KID'S
+            WOMEN
           </Link>
         </NavbarMenuItem>
       </NavbarMenu>

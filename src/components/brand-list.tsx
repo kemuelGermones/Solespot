@@ -8,26 +8,21 @@ import Image from "next/image";
 const images = [
   {
     id: 1,
-    name: "All",
-    filename: "/all.webp",
-  },
-  {
-    id: 2,
     name: "Jordan",
     filename: "/jordan.webp",
   },
   {
-    id: 3,
+    id: 2,
     name: "Nike",
     filename: "/nike.webp",
   },
   {
-    id: 4,
+    id: 3,
     name: "Adidas",
     filename: "/adidas.webp",
   },
   {
-    id: 5,
+    id: 4,
     name: "Under Armour",
     filename: "/under-armour.webp",
   },

@@ -9,7 +9,7 @@ import {
 export default function Footer() {
   return (
     <div className="bg-foreground px-4 py-8 text-white flex flex-col gap-16 items-center">
-      <div className="flex flex-col gap-4 items-center max-w-xl">
+      <div className="flex flex-col gap-4 items-center max-w-lg">
         <div className="font-bold text-lg">SOLESPOT</div>
         <div className="text-center">
           A web application store specializing in offering a diverse selection

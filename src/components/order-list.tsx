@@ -19,7 +19,7 @@ export default function OrderList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
-          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN'S</div>
+          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN</div>
           <div>₱9,195.00</div>
           <div className="text-success font-bold">DELIVERED</div>
         </Link>
@@ -35,10 +35,10 @@ export default function OrderList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
-          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN'S</div>
+          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN</div>
           <div>₱9,195.00</div>
           <div className="text-success font-bold">DELIVERED</div>
-        </Link>
+        </Link>{" "}
         <Link className="flex flex-col gap-2" href="/products/1">
           <Image
             width={500}
@@ -51,10 +51,10 @@ export default function OrderList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
-          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN'S</div>
+          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN</div>
           <div>₱9,195.00</div>
           <div className="text-success font-bold">DELIVERED</div>
-        </Link>
+        </Link>{" "}
         <Link className="flex flex-col gap-2" href="/products/1">
           <Image
             width={500}
@@ -67,10 +67,10 @@ export default function OrderList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
-          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN'S</div>
+          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN</div>
           <div>₱9,195.00</div>
           <div className="text-success font-bold">DELIVERED</div>
-        </Link>
+        </Link>{" "}
         <Link className="flex flex-col gap-2" href="/products/1">
           <Image
             width={500}
@@ -83,10 +83,10 @@ export default function OrderList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
-          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN'S</div>
+          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN</div>
           <div>₱9,195.00</div>
           <div className="text-success font-bold">DELIVERED</div>
-        </Link>
+        </Link>{" "}
         <Link className="flex flex-col gap-2" href="/products/1">
           <Image
             width={500}
@@ -99,10 +99,10 @@ export default function OrderList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
-          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN'S</div>
+          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN</div>
           <div>₱9,195.00</div>
           <div className="text-success font-bold">DELIVERED</div>
-        </Link>
+        </Link>{" "}
         <Link className="flex flex-col gap-2" href="/products/1">
           <Image
             width={500}
@@ -115,10 +115,10 @@ export default function OrderList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
-          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN'S</div>
+          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN</div>
           <div>₱9,195.00</div>
           <div className="text-success font-bold">DELIVERED</div>
-        </Link>
+        </Link>{" "}
         <Link className="flex flex-col gap-2" href="/products/1">
           <Image
             width={500}
@@ -131,10 +131,10 @@ export default function OrderList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
-          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN'S</div>
+          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN</div>
           <div>₱9,195.00</div>
           <div className="text-success font-bold">DELIVERED</div>
-        </Link>
+        </Link>{" "}
         <Link className="flex flex-col gap-2" href="/products/1">
           <Image
             width={500}
@@ -147,10 +147,10 @@ export default function OrderList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
-          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN'S</div>
+          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN</div>
           <div>₱9,195.00</div>
           <div className="text-success font-bold">DELIVERED</div>
-        </Link>
+        </Link>{" "}
         <Link className="flex flex-col gap-2" href="/products/1">
           <Image
             width={500}
@@ -163,10 +163,10 @@ export default function OrderList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
-          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN'S</div>
+          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN</div>
           <div>₱9,195.00</div>
           <div className="text-success font-bold">DELIVERED</div>
-        </Link>
+        </Link>{" "}
         <Link className="flex flex-col gap-2" href="/products/1">
           <Image
             width={500}
@@ -179,10 +179,10 @@ export default function OrderList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
-          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN'S</div>
+          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN</div>
           <div>₱9,195.00</div>
           <div className="text-success font-bold">DELIVERED</div>
-        </Link>
+        </Link>{" "}
         <Link className="flex flex-col gap-2" href="/products/1">
           <Image
             width={500}
@@ -195,7 +195,7 @@ export default function OrderList() {
           <div className="font-bold">
             Under Armour Curry 11 "Champion Mindset"
           </div>
-          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN'S</div>
+          <div className="text-foreground-500 text-sm">SIZE: 7.5 / MEN</div>
           <div>₱9,195.00</div>
           <div className="text-success font-bold">DELIVERED</div>
         </Link>
