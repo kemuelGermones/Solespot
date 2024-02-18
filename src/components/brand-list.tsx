@@ -26,6 +26,11 @@ const images = [
     name: "Under Armour",
     filename: "/under-armour.webp",
   },
+  {
+    id: 5,
+    name: "Puma",
+    filename: "/puma.webp",
+  },
 ];
 
 export default function BrandList() {

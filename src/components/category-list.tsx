@@ -9,13 +9,13 @@ const images = [
   },
   {
     id: 2,
-    name: "Running",
-    filename: "/running.webp",
+    name: "Lifestyle",
+    filename: "/lifestyle.webp",
   },
   {
     id: 3,
-    name: "Lifestyle",
-    filename: "/lifestyle.webp",
+    name: "Apparel",
+    filename: "/apparel.webp",
   },
 ];
 
