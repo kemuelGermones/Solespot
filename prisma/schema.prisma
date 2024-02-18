@@ -30,7 +30,7 @@ model Product {
   brand       String
   category    String
   gender      String
-  size        Decimal     @db.Decimal(3, 1)
+  size        String
   description String
   about       String
   createdAt   DateTime    @default(now())

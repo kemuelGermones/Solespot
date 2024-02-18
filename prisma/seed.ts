@@ -1,9 +1,16 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Prisma } from "@prisma/client";
 import products from "./products.json";
 
 const prisma = new PrismaClient();
 
 async function main() {
+  const tables = Object.values(Prisma.ModelName);
+  for (let table of tables) {
+    await prisma.$queryRawUnsafe(
+      `TRUNCATE "${table}" RESTART IDENTITY CASCADE;`
+    );
+  }
+
   for (let product of products) {
     await prisma.product.create({
       data: {
@@ -26,6 +33,9 @@ async function main() {
               },
             };
           }),
+        },
+        orders: {
+          create: product.orders,
         },
       },
     });
