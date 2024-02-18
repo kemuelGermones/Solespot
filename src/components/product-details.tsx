@@ -62,8 +62,10 @@ export default function ProductDetails() {
         <div className="grid grid-cols-5 gap-2">
           {images.map((image, index) => (
             <Image
-              className={`cursor-pointer transition-all ${
-                currentSlide === index ? "bg-default-100" : ""
+              className={`cursor-pointer border-2 transition-all ${
+                currentSlide === index
+                  ? "border-foreground"
+                  : "border-transparent"
               }`}
               width={500}
               height={500}
