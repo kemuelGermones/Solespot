@@ -54,7 +54,7 @@ export default function Header() {
           <Cart />
         </NavbarItem>
         <NavbarItem>
-          <Link href="/signin">
+          <Link href="/sign-in">
             <BsPerson size="1.5em" />
           </Link>
         </NavbarItem>
