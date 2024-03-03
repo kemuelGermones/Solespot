@@ -32,12 +32,18 @@ export default function Header() {
           </Link>
         </NavbarItem>
         <NavbarItem className="hidden md:block">
-          <Link className="hover:underline" href="/products">
+          <Link
+            className="hover:underline"
+            href="products?page=1&sort=createdAt%3Adesc&gender=in%3Amen"
+          >
             MEN
           </Link>
         </NavbarItem>
         <NavbarItem className="hidden md:block">
-          <Link className="hover:underline" href="/products">
+          <Link
+            className="hover:underline"
+            href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Awomen"
+          >
             WOMEN
           </Link>
         </NavbarItem>
@@ -59,7 +65,7 @@ export default function Header() {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu>
+      <NavbarMenu onChange={() => console.log("CHanged")}>
         <NavbarMenuItem>
           <Link
             className="inline-block w-full hover:underline"
@@ -71,7 +77,7 @@ export default function Header() {
         <NavbarMenuItem>
           <Link
             className="inline-block w-full hover:underline"
-            href="/products"
+            href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Amen"
           >
             MEN
           </Link>
@@ -79,7 +85,7 @@ export default function Header() {
         <NavbarMenuItem>
           <Link
             className="inline-block w-full hover:underline"
-            href="/products"
+            href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Awomen"
           >
             WOMEN
           </Link>

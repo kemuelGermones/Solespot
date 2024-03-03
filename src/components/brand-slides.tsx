@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import { Button } from "@nextui-org/react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import Image from "next/image";
+import Link from "next/link";
 
-const images = [
+const BRANDS = [
   {
     id: 1,
     name: "Jordan",
@@ -33,7 +34,7 @@ const images = [
   },
 ];
 
-export default function BrandList() {
+export default function BrandSlides() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -47,11 +48,11 @@ export default function BrandList() {
   }, [currentSlide]);
 
   const handlePreviousSlide = () => {
-    setCurrentSlide((state) => (state === 0 ? images.length - 1 : state - 1));
+    setCurrentSlide((state) => (state === 0 ? BRANDS.length - 1 : state - 1));
   };
 
   const handleNextSlide = () => {
-    setCurrentSlide((state) => (state === images.length - 1 ? 0 : state + 1));
+    setCurrentSlide((state) => (state === BRANDS.length - 1 ? 0 : state + 1));
   };
 
   return (
@@ -60,22 +61,26 @@ export default function BrandList() {
         className="h-[calc(100vh-4rem)] flex transition-transform duration-500 ease-out"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
-        {images.map((image) => (
-          <div className="grow-0 shrink-0 basis-full relative" key={image.id}>
+        {BRANDS.map((brand) => (
+          <div className="grow-0 shrink-0 basis-full relative" key={brand.id}>
             <Image
               className="object-cover"
               fill={true}
               draggable={false}
-              src={image.filename}
-              alt={image.name}
+              src={brand.filename}
+              alt={brand.name}
             />
-            <Button
-              className="bg-foreground text-white font-bold absolute top-4 left-4"
-              radius="full"
-              type="button"
+            <Link
+              href={`/products?page=1&sort=createdAt%3Adesc&brand=in%3A${brand.name.toLowerCase()}`}
             >
-              SHOP {image.name.toUpperCase()}
-            </Button>
+              <Button
+                className="bg-foreground text-white font-bold absolute top-4 left-4"
+                radius="full"
+                type="button"
+              >
+                SHOP {brand.name.toUpperCase()}
+              </Button>
+            </Link>
           </div>
         ))}
       </div>
@@ -94,13 +99,13 @@ export default function BrandList() {
         <BsChevronRight />
       </button>
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2">
-        {images.map((image, index) => (
+        {BRANDS.map((brand, index) => (
           <div
             className={`
               h-3 w-3 rounded-full bg-white transition-all
               ${currentSlide === index ? "p-2" : "bg-opacity-50"}
             `}
-            key={image.id}
+            key={brand.id}
           />
         ))}
       </div>
