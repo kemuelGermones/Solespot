@@ -1,18 +1,39 @@
-import BrandList from "@/components/brand-list";
-import TopProductList from "@/components/top-product-list";
-import CategoryList from "@/components/category-list";
-import getTopNewProducts from "@/queries/get-top-new-products";
-import getTopNewApparels from "@/queries/get-top-new-apparels";
-import getTopNewShoes from "@/queries/get-top-new-shoes";
+import BrandSlides from "@/components/brand-slides";
+import ProductList from "@/components/product-list";
+import CategoryCards from "@/components/category-cards";
+import getProducts from "@/queries/get-products";
 
 export default function Home() {
   return (
     <>
-      <BrandList />
-      <TopProductList title="New Arrivals" query={getTopNewProducts} />
-      <CategoryList />
-      <TopProductList title="Apparel New Arrivals" query={getTopNewApparels} />
-      <TopProductList title="Shoe New Arrivals" query={getTopNewShoes} />
+      <BrandSlides />
+      <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
+        <div className="font-bold text-4xl">NEW ARRIVALS</div>
+        <ProductList
+          query={getProducts.bind(null, { take: 8, createdAt: "desc" })}
+        />
+      </div>
+      <CategoryCards />
+      <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
+        <div className="font-bold text-4xl">APPAREL NEW ARRIVALS</div>
+        <ProductList
+          query={getProducts.bind(null, {
+            take: 4,
+            createdAt: "desc",
+            category: ["apparel"],
+          })}
+        />
+      </div>
+      <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
+        <div className="font-bold text-4xl">SHOE NEW ARRIVALS</div>
+        <ProductList
+          query={getProducts.bind(null, {
+            take: 8,
+            createdAt: "desc",
+            category: ["basketball", "lifestyle"],
+          })}
+        />
+      </div>
     </>
   );
 }
