@@ -41,7 +41,7 @@ export default function SignUpForm() {
         SIGN UP
       </Button>
       <div>
-        <Link className="text-sm hover:underline" href="/signin">
+        <Link className="text-sm hover:underline" href="/sign-in">
           Sign In
         </Link>
       </div>
