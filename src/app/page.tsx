@@ -1,25 +1,30 @@
-import BrandSlides from "@/components/brand-slides";
-import ProductList from "@/components/product-list";
-import CategoryCards from "@/components/category-cards";
+import ProductBrandCarousel from "@/components/products/product-brand-carousel";
+import ProductList from "@/components//products/product-list";
+import ProductCategoryCards from "@/components/products/product-category-cards";
 import getProducts from "@/queries/get-products";
 
 export default function Home() {
   return (
     <>
-      <BrandSlides />
+      <ProductBrandCarousel />
       <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
         <div className="font-bold text-4xl">NEW ARRIVALS</div>
         <ProductList
-          query={getProducts.bind(null, { take: 8, createdAt: "desc" })}
+          query={getProducts.bind(null, {
+            take: 8,
+            createdAt: "desc",
+            distinct: ["name", "gender"],
+          })}
         />
       </div>
-      <CategoryCards />
+      <ProductCategoryCards />
       <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
         <div className="font-bold text-4xl">APPAREL NEW ARRIVALS</div>
         <ProductList
           query={getProducts.bind(null, {
             take: 4,
             createdAt: "desc",
+            distinct: ["name", "gender"],
             category: ["apparel"],
           })}
         />
@@ -30,6 +35,7 @@ export default function Home() {
           query={getProducts.bind(null, {
             take: 8,
             createdAt: "desc",
+            distinct: ["name", "gender"],
             category: ["basketball", "lifestyle"],
           })}
         />

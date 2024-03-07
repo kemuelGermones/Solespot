@@ -12,7 +12,7 @@ import {
 } from "@nextui-org/react";
 import { BsPerson, BsSearch } from "react-icons/bs";
 import Link from "next/link";
-import Cart from "@/components/cart";
+import Cart from "@/components/user-interfaces/cart";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,7 +65,7 @@ export default function Header() {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu onChange={() => console.log("CHanged")}>
+      <NavbarMenu>
         <NavbarMenuItem>
           <Link
             className="inline-block w-full hover:underline"

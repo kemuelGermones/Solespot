@@ -11,13 +11,19 @@ export default async function ProductList({ query }: ProductListProps) {
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      {products.map((product, index) => (
-        <Link className="flex flex-col gap-2" href="/products/1" key={index}>
+      {products.map((product) => (
+        <Link
+          className="flex flex-col gap-2"
+          href={`/products/${product.name.replaceAll(" ", "_")}/${
+            product.gender
+          }`}
+          key={product.id}
+        >
           <Image
             width={500}
             height={500}
             draggable={false}
-            src={product.image}
+            src={product.images[0].image.url}
             alt={product.name}
           />
           <div className="text-foreground-500 text-sm">

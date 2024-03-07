@@ -20,7 +20,7 @@ const CATEGORIES = [
   },
 ];
 
-export default function CategoryCards() {
+export default function ProductCategoryCards() {
   return (
     <div className="h-[calc(100vh-4rem)] grid md:grid-cols-3">
       {CATEGORIES.map((category) => (

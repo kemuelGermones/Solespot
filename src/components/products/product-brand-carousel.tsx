@@ -34,7 +34,7 @@ const BRANDS = [
   },
 ];
 
-export default function BrandSlides() {
+export default function ProductBrandCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {

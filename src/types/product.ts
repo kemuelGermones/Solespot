@@ -1,8 +1,5 @@
-import type { Prisma } from "@prisma/client";
+import type { Product as Commodity, Image } from "@prisma/client";
 
-type Product = Prisma.PickEnumerable<
-  Prisma.ProductGroupByOutputType,
-  "name" | "price" | "brand" | "gender" | "createdAt"
-> & { image: string };
+type Product = Commodity & { images: { image: Image }[] };
 
 export default Product;

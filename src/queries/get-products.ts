@@ -1,11 +1,23 @@
 import db from "@/db";
-import type Product from "@/types/product";
 
 interface GetProductsParameters {
   take?: number;
   skip?: number;
+  distinct?: (
+    | "id"
+    | "name"
+    | "price"
+    | "brand"
+    | "category"
+    | "gender"
+    | "size"
+    | "about"
+    | "description"
+    | "createdAt"
+  )[];
   createdAt?: "desc" | "asc";
   price?: "desc" | "asc";
+  name?: string;
   brand?: string[];
   category?: string[];
   gender?: string[];
@@ -14,48 +26,41 @@ interface GetProductsParameters {
 export default async function getProducts({
   take,
   skip,
+  distinct,
   createdAt,
   price,
+  name,
   brand,
   category,
   gender,
 }: GetProductsParameters) {
-  const products = await db.product.groupBy({
+  const products = await db.product.findMany({
     take,
     skip,
+    distinct,
     orderBy: {
       createdAt,
       price,
     },
     where: {
-      brand: {
-        in: brand,
-      },
-      category: {
-        in: category,
-      },
-      gender: {
-        in: gender,
-      },
+      AND: [
+        { name },
+        { brand: { in: brand } },
+        { category: { in: category } },
+        { gender: { in: gender } },
+      ],
     },
-    by: ["name", "price", "brand", "gender", "createdAt"],
-  });
-
-  const response: Product[] = [];
-  for (let product of products) {
-    const image = (await db.thumbnail.findFirst({
-      where: {
-        sequence: 0,
-        image: {
-          name: product.name,
+    include: {
+      images: {
+        orderBy: {
+          sequence: "asc",
+        },
+        select: {
+          image: true,
         },
       },
-      select: {
-        image: true,
-      },
-    }))!.image;
-    response.push({ ...product, image: image.url });
-  }
+    },
+  });
 
-  return response;
+  return products;
 }

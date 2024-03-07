@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Arimo } from "next/font/google";
 import "./globals.css";
 import Providers from "@/app/providers";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import Header from "@/components/user-interfaces/header";
+import Footer from "@/components/user-interfaces/footer";
 
 const arimo = Arimo({ subsets: ["latin"] });
 

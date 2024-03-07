@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
-import ProductSortSelection from "@/components/product-sort-selection";
-import ProductBrandSelection from "@/components/product-brand-selection";
-import ProductCategorySelection from "@/components/product-category-selection";
-import ProductGenderSelection from "@/components/product-gender-selection";
-import ProductList from "@/components/product-list";
-import Pager from "@/components/pager";
+import ProductSortSelect from "@/components/products/product-sort-select";
+import ProductBrandSelect from "@/components/products/product-brand-select";
+import ProductCategorySelect from "@/components/products/product-category-select";
+import ProductGenderSelect from "@/components/products/product-gender-select";
+import ProductList from "@/components/products/product-list";
+import Pagination from "@/components/user-interfaces/pagination";
 import getProductsPages from "@/queries/get-products-pages";
 import getProducts from "@/queries/get-products";
 
@@ -57,6 +57,7 @@ export default async function Products({ searchParams }: ProductsProps) {
   }
 
   const total = await getProductsPages({
+    distinct: ["name", "gender"],
     brand: brand?.replace("in:", "").split(","),
     category: category?.replace("in:", "").split(","),
     gender: gender?.replace("in:", "").split(","),
@@ -69,15 +70,15 @@ export default async function Products({ searchParams }: ProductsProps) {
   return (
     <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
       <div className="max-w-4xl grid grid-cols-2 gap-2 md:grid-cols-4">
-        <ProductSortSelection sort={sort} />
-        <ProductBrandSelection
-          brand={brand?.replace("in:", "").split(",") || []}
+        <ProductSortSelect sort={sort} />
+        <ProductBrandSelect
+          brands={brand?.replace("in:", "").split(",") || []}
         />
-        <ProductCategorySelection
-          category={category?.replace("in:", "").split(",") || []}
+        <ProductCategorySelect
+          categories={category?.replace("in:", "").split(",") || []}
         />
-        <ProductGenderSelection
-          gender={gender?.replace("in:", "").split(",") || []}
+        <ProductGenderSelect
+          genders={gender?.replace("in:", "").split(",") || []}
         />
       </div>
       <ProductList
@@ -85,13 +86,14 @@ export default async function Products({ searchParams }: ProductsProps) {
           createdAt,
           price,
           take: 12,
+          distinct: ["name", "gender"],
           skip: (+page - 1) * 12,
           brand: brand?.replace("in:", "").split(","),
           category: category?.replace("in:", "").split(","),
           gender: gender?.replace("in:", "").split(","),
         })}
       />
-      {total > 1 ? <Pager page={+page} total={total} /> : null}
+      {total > 1 ? <Pagination page={+page} total={total} /> : null}
     </div>
   );
 }

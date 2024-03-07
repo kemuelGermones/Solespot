@@ -1,6 +1,6 @@
 "use client";
 
-import { Pagination } from "@nextui-org/react";
+import { Pagination as Pager } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface PagerProps {
@@ -8,7 +8,7 @@ interface PagerProps {
   total: number;
 }
 
-export default function Pager({ page, total }: PagerProps) {
+export default function Pagination({ page, total }: PagerProps) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -20,7 +20,7 @@ export default function Pager({ page, total }: PagerProps) {
   };
 
   return (
-    <Pagination
+    <Pager
       className="pt-12 px-0"
       radius="none"
       classNames={{

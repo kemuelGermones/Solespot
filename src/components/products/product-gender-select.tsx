@@ -4,41 +4,26 @@ import { Select, SelectItem } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { Selection } from "@nextui-org/react";
 
-interface ProductBrandSelectionProps {
-  brand: string[];
+interface ProductGenderSelectProps {
+  genders: string[];
 }
 
-const BRANDS = [
+const GENDERS = [
   {
     id: 1,
-    name: "Jordan",
-    value: "jordan",
+    name: "Men",
+    value: "men",
   },
   {
     id: 2,
-    name: "Nike",
-    value: "nike",
-  },
-  {
-    id: 3,
-    name: "Adidas",
-    value: "adidas",
-  },
-  {
-    id: 4,
-    name: "Under Armour",
-    value: "under armour",
-  },
-  {
-    id: 5,
-    name: "Puma",
-    value: "puma",
+    name: "Women",
+    value: "women",
   },
 ];
 
-export default function ProductBrandSelection({
-  brand,
-}: ProductBrandSelectionProps) {
+export default function ProductGenderSelect({
+  genders,
+}: ProductGenderSelectProps) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -47,9 +32,9 @@ export default function ProductBrandSelection({
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
     if ((values as Set<string>).size > 0) {
-      params.set("brand", `in:${Array.from(values).join(",")}`);
+      params.set("gender", `in:${Array.from(values).join(",")}`);
     } else {
-      params.delete("brand");
+      params.delete("gender");
     }
     router.push(`${pathname}?${params.toString()}`);
   };
@@ -59,8 +44,8 @@ export default function ProductBrandSelection({
       size="sm"
       radius="none"
       selectionMode="multiple"
-      label="BRAND"
-      placeholder="SELECT A BRAND"
+      label="GENDER"
+      placeholder="SELECT A GENDER"
       popoverProps={{
         radius: "none",
       }}
@@ -69,12 +54,12 @@ export default function ProductBrandSelection({
           base: ["rounded-none"],
         },
       }}
-      selectedKeys={new Set(brand)}
+      selectedKeys={new Set(genders)}
       onSelectionChange={handleNextPage}
     >
-      {BRANDS.map((brand) => (
-        <SelectItem value={brand.value} key={brand.value}>
-          {brand.name.toUpperCase()}
+      {GENDERS.map((gender) => (
+        <SelectItem value={gender.value} key={gender.value}>
+          {gender.name.toUpperCase()}
         </SelectItem>
       ))}
     </Select>
