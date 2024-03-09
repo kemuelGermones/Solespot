@@ -22,7 +22,7 @@ export default function Header() {
       <NavbarContent>
         <NavbarMenuToggle className="md:hidden" />
         <NavbarItem>
-          <Link className="font-bold text-lg" href="/">
+          <Link className="text-lg font-bold" href="/">
             SOLESPOT
           </Link>
         </NavbarItem>

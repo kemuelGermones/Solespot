@@ -18,8 +18,8 @@ export default function Error({ error, reset }: ErrorProps) {
   };
 
   return (
-    <div className="px-4 py-8 mx-auto max-w-lg flex flex-col items-center gap-4">
-      <div className="text-4xl font-bold text-center">
+    <div className="mx-auto flex max-w-lg flex-col items-center gap-4 px-4 py-8">
+      <div className="text-center text-4xl font-bold">
         OOPS! SOMETHING WENT WRONG
       </div>
       <div className="text-center">
@@ -27,7 +27,7 @@ export default function Error({ error, reset }: ErrorProps) {
         again later.
       </div>
       <Button
-        className="bg-foreground text-white font-bold"
+        className="bg-foreground font-bold text-white"
         radius="none"
         type="button"
         onClick={handleReset}

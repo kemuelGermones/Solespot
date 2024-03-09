@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function SignInForm() {
   return (
-    <form className="px-4 py-8 max-w-lg mx-auto flex flex-col gap-4">
-      <div className="font-bold text-4xl">SIGN IN</div>
+    <form className="mx-auto flex max-w-lg flex-col gap-4 px-4 py-8">
+      <div className="text-4xl font-bold">SIGN IN</div>
       <Input
         radius="none"
         label="Email"
@@ -20,7 +20,7 @@ export default function SignInForm() {
         placeholder="Enter your password"
       />
       <Button
-        className="bg-foreground text-white font-bold"
+        className="bg-foreground font-bold text-white"
         radius="none"
         type="button"
       >

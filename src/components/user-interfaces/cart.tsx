@@ -28,7 +28,7 @@ export default function Cart() {
               <ModalHeader>CART</ModalHeader>
               <ModalBody className="gap-4">
                 <ScrollShadow
-                  className="max-h-80 flex flex-col gap-4"
+                  className="flex max-h-80 flex-col gap-4"
                   size={0}
                   hideScrollBar
                 >
@@ -47,7 +47,7 @@ export default function Cart() {
                       <div className="font-bold">
                         Under Armour Curry 11 "Champion Mindset"
                       </div>
-                      <div className="text-foreground-500 text-sm">
+                      <div className="text-sm text-foreground-500">
                         SIZE: 7.5 / MEN
                       </div>
                       <div className="flex justify-between">
@@ -66,7 +66,7 @@ export default function Cart() {
               </ModalBody>
               <ModalFooter>
                 <Button
-                  className="bg-foreground text-white font-bold"
+                  className="bg-foreground font-bold text-white"
                   radius="none"
                   type="button"
                   onPress={onClose}

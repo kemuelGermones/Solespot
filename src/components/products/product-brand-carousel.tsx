@@ -58,11 +58,11 @@ export default function ProductBrandCarousel() {
   return (
     <div className="relative overflow-hidden">
       <div
-        className="h-[calc(100vh-4rem)] flex transition-transform duration-500 ease-out"
+        className="flex h-[calc(100vh-4rem)] transition-transform duration-500 ease-out"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
         {BRANDS.map((brand) => (
-          <div className="grow-0 shrink-0 basis-full relative" key={brand.id}>
+          <div className="relative shrink-0 grow-0 basis-full" key={brand.id}>
             <Image
               className="object-cover"
               quality={100}
@@ -75,7 +75,7 @@ export default function ProductBrandCarousel() {
               href={`/products?page=1&sort=createdAt%3Adesc&brand=in%3A${brand.name.toLowerCase()}`}
             >
               <Button
-                className="bg-foreground text-white font-bold absolute top-4 left-4"
+                className="absolute left-4 top-4 bg-foreground font-bold text-white"
                 radius="full"
                 type="button"
               >

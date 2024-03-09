@@ -21,7 +21,7 @@ export default function Pagination({ page, total }: PagerProps) {
 
   return (
     <Pager
-      className="pt-12 px-0"
+      className="px-0 pt-12"
       radius="none"
       classNames={{
         wrapper: "mx-auto",

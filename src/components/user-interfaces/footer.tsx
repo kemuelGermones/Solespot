@@ -8,9 +8,9 @@ import {
 
 export default function Footer() {
   return (
-    <div className="bg-foreground px-4 py-8 text-white flex flex-col gap-16 items-center">
-      <div className="flex flex-col gap-4 items-center max-w-lg">
-        <div className="font-bold text-lg">SOLESPOT</div>
+    <div className="flex flex-col items-center gap-16 bg-foreground px-4 py-8 text-white">
+      <div className="flex max-w-lg flex-col items-center gap-4">
+        <div className="text-lg font-bold">SOLESPOT</div>
         <div className="text-center">
           A web application store specializing in offering a diverse selection
           of the latest sneakers from renowned brands. The platform provides a
@@ -32,7 +32,7 @@ export default function Footer() {
           </Link>
         </div>
       </div>
-      <div className="text-sm text-center">
+      <div className="text-center text-sm">
         Solespot Inc © 2024. All rights reserved.
       </div>
     </div>

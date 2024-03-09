@@ -31,9 +31,7 @@ const ORDERS = [
   },
 ];
 
-export default function ProductSortSelect({
-  sort,
-}: ProductSortSelectProps) {
+export default function ProductSortSelect({ sort }: ProductSortSelectProps) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();

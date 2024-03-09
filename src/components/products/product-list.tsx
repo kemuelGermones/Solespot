@@ -10,7 +10,7 @@ export default async function ProductList({ query }: ProductListProps) {
   const products = await query();
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
       {products.map((product) => (
         <Link
           className="flex flex-col gap-2"
@@ -27,11 +27,11 @@ export default async function ProductList({ query }: ProductListProps) {
             src={product.images[0].image.url}
             alt={product.name}
           />
-          <div className="text-foreground-500 text-sm">
+          <div className="text-sm text-foreground-500">
             {product.brand.toUpperCase()}
           </div>
           <div className="font-bold">{product.name}</div>
-          <div className="text-foreground-500 text-sm">
+          <div className="text-sm text-foreground-500">
             {product.gender.toUpperCase()}
           </div>
           <div>{`₱${product.price}`}</div>

@@ -26,14 +26,14 @@ export default async function Product({ params }: ProductProps) {
 
   return (
     <>
-      <div className="py-8 px-4 max-w-5xl mx-auto grid md:grid-cols-[1.5fr_1fr] gap-4">
+      <div className="mx-auto grid max-w-5xl gap-4 px-4 py-8 md:grid-cols-[1.5fr_1fr]">
         <ProductImageCarousel images={products[0].images} />
         <div className="flex flex-col gap-4">
-          <div className="text-foreground-500 text-sm">
+          <div className="text-sm text-foreground-500">
             {products[0].brand.toUpperCase()}
           </div>
-          <div className="font-bold text-2xl">{products[0].name}</div>
-          <div className="text-foreground-500 text-sm">
+          <div className="text-2xl font-bold">{products[0].name}</div>
+          <div className="text-sm text-foreground-500">
             {products[0].gender.toUpperCase()}
           </div>
           <div>{`₱${products[0].price}`}</div>
@@ -42,8 +42,8 @@ export default async function Product({ params }: ProductProps) {
           <ProductDescriptionAccordion description={products[0].description} />
         </div>
       </div>
-      <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
-        <div className="font-bold text-4xl">RECOMMENDED</div>
+      <div className="mx-auto flex flex-col gap-4 px-4 py-8 lg:container">
+        <div className="text-4xl font-bold">RECOMMENDED</div>
         <ProductList
           query={getProducts.bind(null, {
             take: 4,

@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <>
       <ProductBrandCarousel />
-      <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
-        <div className="font-bold text-4xl">NEW ARRIVALS</div>
+      <div className="mx-auto flex flex-col gap-4 px-4 py-8 lg:container">
+        <div className="text-4xl font-bold">NEW ARRIVALS</div>
         <ProductList
           query={getProducts.bind(null, {
             take: 8,
@@ -18,8 +18,8 @@ export default function Home() {
         />
       </div>
       <ProductCategoryCards />
-      <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
-        <div className="font-bold text-4xl">APPAREL NEW ARRIVALS</div>
+      <div className="mx-auto flex flex-col gap-4 px-4 py-8 lg:container">
+        <div className="text-4xl font-bold">APPAREL NEW ARRIVALS</div>
         <ProductList
           query={getProducts.bind(null, {
             take: 4,
@@ -29,8 +29,8 @@ export default function Home() {
           })}
         />
       </div>
-      <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
-        <div className="font-bold text-4xl">SHOE NEW ARRIVALS</div>
+      <div className="mx-auto flex flex-col gap-4 px-4 py-8 lg:container">
+        <div className="text-4xl font-bold">SHOE NEW ARRIVALS</div>
         <ProductList
           query={getProducts.bind(null, {
             take: 8,

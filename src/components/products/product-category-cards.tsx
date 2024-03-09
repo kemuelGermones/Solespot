@@ -22,7 +22,7 @@ const CATEGORIES = [
 
 export default function ProductCategoryCards() {
   return (
-    <div className="h-[calc(100vh-4rem)] grid md:grid-cols-3">
+    <div className="grid h-[calc(100vh-4rem)] md:grid-cols-3">
       {CATEGORIES.map((category) => (
         <div className="relative" key={category.id}>
           <Image
@@ -37,7 +37,7 @@ export default function ProductCategoryCards() {
             href={`/products?page=1&sort=createdAt%3Adesc&category=in%3A${category.name.toLowerCase()}`}
           >
             <Button
-              className="bg-foreground text-white font-bold absolute top-4 left-4"
+              className="absolute left-4 top-4 bg-foreground font-bold text-white"
               radius="full"
               type="button"
             >

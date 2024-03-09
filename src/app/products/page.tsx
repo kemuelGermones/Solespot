@@ -68,8 +68,8 @@ export default async function Products({ searchParams }: ProductsProps) {
   }
 
   return (
-    <div className="lg:container mx-auto py-8 px-4 flex flex-col gap-4">
-      <div className="max-w-4xl grid grid-cols-2 gap-2 md:grid-cols-4">
+    <div className="mx-auto flex flex-col gap-4 px-4 py-8 lg:container">
+      <div className="grid max-w-4xl grid-cols-2 gap-2 md:grid-cols-4">
         <ProductSortSelect sort={sort} />
         <ProductBrandSelect
           brands={brand?.replace("in:", "").split(",") || []}

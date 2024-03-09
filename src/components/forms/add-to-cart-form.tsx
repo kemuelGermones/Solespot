@@ -14,14 +14,14 @@ export default function AddToCartForm({ products }: AddToCartFormProps) {
           {products.map((product) => (
             <div key={product.id}>
               <input
-                className="hidden peer"
+                className="peer hidden"
                 type="radio"
                 name="product"
                 id={product.id.toString()}
                 value={JSON.stringify(product)}
               />
               <label
-                className="min-w-min min-h-10 flex items-center justify-center text-sm font-bold px-4 border border-foreground cursor-pointer peer-checked:text-white peer-checked:bg-foreground"
+                className="flex min-h-10 min-w-min cursor-pointer items-center justify-center border border-foreground px-4 text-sm font-bold peer-checked:bg-foreground peer-checked:text-white"
                 htmlFor={product.id.toString()}
               >
                 {product.size.toUpperCase()}
@@ -31,7 +31,7 @@ export default function AddToCartForm({ products }: AddToCartFormProps) {
         </div>
       </div>
       <Button
-        className="bg-foreground text-white font-bold"
+        className="bg-foreground font-bold text-white"
         radius="none"
         type="button"
       >
