@@ -34,7 +34,7 @@ export default function Header() {
         <NavbarItem className="hidden md:block">
           <Link
             className="hover:underline"
-            href="products?page=1&sort=createdAt%3Adesc&gender=in%3Amen"
+            href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Amen"
           >
             MEN
           </Link>
