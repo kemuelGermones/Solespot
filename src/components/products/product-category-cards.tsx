@@ -27,6 +27,7 @@ export default function ProductCategoryCards() {
         <div className="relative" key={category.id}>
           <Image
             className="object-cover"
+            quality={100}
             fill={true}
             draggable={false}
             src={category.filename}

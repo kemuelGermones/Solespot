@@ -31,6 +31,7 @@ export default function ProductImageCarousel({
               className="min-w-0 flex-[0_0_100%]"
               width={500}
               height={500}
+              quality={100}
               draggable={false}
               src={image.url}
               alt={image.name}
@@ -49,6 +50,7 @@ export default function ProductImageCarousel({
             }`}
             width={500}
             height={500}
+            quality={100}
             draggable={false}
             src={image.url}
             alt={image.name}

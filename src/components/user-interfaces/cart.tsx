@@ -37,6 +37,7 @@ export default function Cart() {
                       <Image
                         width={500}
                         height={500}
+                        quality={100}
                         draggable={false}
                         src="/shoe.webp"
                         alt="shoe"

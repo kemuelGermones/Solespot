@@ -65,6 +65,7 @@ export default function ProductBrandCarousel() {
           <div className="grow-0 shrink-0 basis-full relative" key={brand.id}>
             <Image
               className="object-cover"
+              quality={100}
               fill={true}
               draggable={false}
               src={brand.filename}

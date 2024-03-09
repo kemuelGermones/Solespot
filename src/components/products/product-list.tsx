@@ -22,6 +22,7 @@ export default async function ProductList({ query }: ProductListProps) {
           <Image
             width={500}
             height={500}
+            quality={100}
             draggable={false}
             src={product.images[0].image.url}
             alt={product.name}
