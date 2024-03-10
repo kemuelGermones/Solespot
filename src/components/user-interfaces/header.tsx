@@ -68,7 +68,7 @@ export default function Header() {
       <NavbarMenu>
         <NavbarMenuItem>
           <Link
-            className="inline-block w-full hover:underline"
+            className="inline-block w-full px-2 py-1.5 hover:bg-default"
             href="/products"
           >
             SHOP ALL
@@ -76,7 +76,7 @@ export default function Header() {
         </NavbarMenuItem>
         <NavbarMenuItem>
           <Link
-            className="inline-block w-full hover:underline"
+            className="inline-block w-full px-2 py-1.5 hover:bg-default"
             href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Amen"
           >
             MEN
@@ -84,7 +84,7 @@ export default function Header() {
         </NavbarMenuItem>
         <NavbarMenuItem>
           <Link
-            className="inline-block w-full hover:underline"
+            className="inline-block w-full px-2 py-1.5 hover:bg-default"
             href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Awomen"
           >
             WOMEN
