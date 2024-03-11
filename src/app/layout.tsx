@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
-import { Arimo } from "next/font/google";
+import { Barlow } from "next/font/google";
 import "./globals.css";
 import Providers from "@/app/providers";
 import Header from "@/components/user-interfaces/header";
 import Footer from "@/components/user-interfaces/footer";
 
-const arimo = Arimo({ subsets: ["latin"] });
+const barlow = Barlow({
+  weight: ["500"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={arimo.className}>
+      <body className={barlow.className}>
         <Providers>
           <Header />
           <div className="min-h-[calc(100vh-20.5rem-4rem)]">{children}</div>
