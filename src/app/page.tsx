@@ -1,6 +1,6 @@
-import ProductBrandCarousel from "@/components/products/product-brand-carousel";
-import ProductList from "@/components//products/product-list";
-import ProductCategoryCards from "@/components/products/product-category-cards";
+import ProductBrandCarousel from "@/components/product/product-brand-carousel";
+import ProductList from "@/components/product/product-list";
+import ProductCategoryCards from "@/components/product/product-category-cards";
 import getProducts from "@/queries/get-products";
 
 export default function Home() {
@@ -24,8 +24,8 @@ export default function Home() {
           query={getProducts.bind(null, {
             take: 4,
             createdAt: "desc",
+            categories: ["apparel"],
             distinct: ["name", "gender"],
-            category: ["apparel"],
           })}
         />
       </div>
@@ -36,7 +36,7 @@ export default function Home() {
             take: 8,
             createdAt: "desc",
             distinct: ["name", "gender"],
-            category: ["basketball", "lifestyle"],
+            categories: ["basketball", "lifestyle"],
           })}
         />
       </div>

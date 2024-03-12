@@ -11,11 +11,15 @@ import {
 } from "@nextui-org/react";
 import { BsPerson } from "react-icons/bs";
 import Link from "next/link";
-import SearchBar from "@/components/search/search-bar";
-import Cart from "@/components/user-interfaces/cart";
+import SearchModal from "@/components/search/search-modal";
+import Cart from "@/components/ui/cart";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
@@ -48,7 +52,7 @@ export default function Header() {
           </Link>
         </NavbarItem>
         <NavbarItem className="grow">
-          <SearchBar />
+          <SearchModal />
         </NavbarItem>
         <NavbarItem>
           <Cart />
@@ -64,6 +68,7 @@ export default function Header() {
           <Link
             className="inline-block w-full px-2 py-1.5 hover:bg-default"
             href="/products"
+            onClick={handleCloseMenu}
           >
             SHOP ALL
           </Link>
@@ -72,6 +77,7 @@ export default function Header() {
           <Link
             className="inline-block w-full px-2 py-1.5 hover:bg-default"
             href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Amen"
+            onClick={handleCloseMenu}
           >
             MEN
           </Link>
@@ -80,6 +86,7 @@ export default function Header() {
           <Link
             className="inline-block w-full px-2 py-1.5 hover:bg-default"
             href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Awomen"
+            onClick={handleCloseMenu}
           >
             WOMEN
           </Link>

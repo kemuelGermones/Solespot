@@ -9,8 +9,8 @@ interface PagerProps {
 }
 
 export default function Pagination({ page, total }: PagerProps) {
-  const pathname = usePathname();
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const handleNextPage = (value: number) => {

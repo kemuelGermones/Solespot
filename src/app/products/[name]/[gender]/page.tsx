@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import ProductImageCarousel from "@/components/products/product-image-carousel";
-import AddToCartForm from "@/components/forms/add-to-cart-form";
-import ProductDescriptionAccordion from "@/components/products/product-description-accordion";
-import ProductList from "@/components/products/product-list";
+import ProductImageCarousel from "@/components/product/product-image-carousel";
+import ProductAddToCartForm from "@/components/product/product-add-to-cart-form";
+import ProductDescriptionAccordion from "@/components/product/product-description-accordion";
+import ProductList from "@/components/product/product-list";
 import getProducts from "@/queries/get-products";
 
 interface ProductProps {
@@ -16,8 +16,8 @@ export default async function Product({ params }: ProductProps) {
   const { name, gender } = params;
 
   const products = await getProducts({
+    genders: [gender],
     name: name.replaceAll("_", " "),
-    gender: [gender],
   });
 
   if (products.length === 0) {
@@ -38,7 +38,7 @@ export default async function Product({ params }: ProductProps) {
           </div>
           <div>{`₱${products[0].price}`}</div>
           <div>{products[0].about}</div>
-          <AddToCartForm products={products} />
+          <ProductAddToCartForm products={products} />
           <ProductDescriptionAccordion description={products[0].description} />
         </div>
       </div>
@@ -49,8 +49,8 @@ export default async function Product({ params }: ProductProps) {
             take: 4,
             createdAt: "desc",
             distinct: ["name", "gender"],
-            gender: [products[0].gender],
-            category: [products[0].category],
+            genders: [products[0].gender],
+            categories: [products[0].category],
           })}
         />
       </div>

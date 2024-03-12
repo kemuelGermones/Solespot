@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Barlow } from "next/font/google";
 import "./globals.css";
 import Providers from "@/app/providers";
-import Header from "@/components/user-interfaces/header";
-import Footer from "@/components/user-interfaces/footer";
+import Header from "@/components/ui/header";
+import Footer from "@/components/ui/footer";
 
 const barlow = Barlow({
   weight: ["500"],

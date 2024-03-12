@@ -15,10 +15,10 @@ import {
 import { BsSearch } from "react-icons/bs";
 import SearchList from "@/components/search/search-list";
 
-export default function SearchBar() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+export default function SearchModal() {
   const [search, setSearch] = useState("");
   const [value] = useDebounce(search.trim(), 500);
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const handleChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -57,7 +57,7 @@ export default function SearchBar() {
                   onChange={handleChangeSearch}
                 />
               </ModalHeader>
-              <ModalBody>
+              <ModalBody className="gap-4">
                 <SearchList search={value} onClose={onClose} />
               </ModalBody>
               <ModalFooter>

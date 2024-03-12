@@ -4,45 +4,42 @@ import { Select, SelectItem } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { Selection } from "@nextui-org/react";
 
-interface ProductSortSelectProps {
-  sort: string;
+interface ProductCategorySelectProps {
+  categories: string[];
 }
 
-const ORDERS = [
+const CATEGORIES = [
   {
     id: 1,
-    name: "Newest to Oldest",
-    value: "createdAt:desc",
+    name: "Basketball",
+    value: "basketball",
   },
   {
     id: 2,
-    name: "Oldest to Newest",
-    value: "createdAt:asc",
+    name: "Lifestyle",
+    value: "lifestyle",
   },
   {
     id: 3,
-    name: "Price (High to Low)",
-    value: "price:desc",
-  },
-  {
-    id: 4,
-    name: "Price (Low to High)",
-    value: "price:asc",
+    name: "Apparel",
+    value: "apparel",
   },
 ];
 
-export default function ProductSortSelect({ sort }: ProductSortSelectProps) {
-  const pathname = usePathname();
+export default function ProductCategorySelect({
+  categories,
+}: ProductCategorySelectProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const handleNextPage = (values: Selection) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
     if ((values as Set<string>).size > 0) {
-      params.set("sort", Array.from(values).join(","));
+      params.set("category", `in:${Array.from(values).join(",")}`);
     } else {
-      params.delete("sort");
+      params.delete("category");
     }
     router.push(`${pathname}?${params.toString()}`);
   };
@@ -51,8 +48,9 @@ export default function ProductSortSelect({ sort }: ProductSortSelectProps) {
     <Select
       size="sm"
       radius="none"
-      label="SORT"
-      placeholder="SELECT AN ORDER"
+      selectionMode="multiple"
+      label="CATEGORY"
+      placeholder="SELECT A CATEGORY"
       popoverProps={{
         radius: "none",
       }}
@@ -61,12 +59,12 @@ export default function ProductSortSelect({ sort }: ProductSortSelectProps) {
           base: ["rounded-none"],
         },
       }}
-      selectedKeys={new Set([sort])}
+      selectedKeys={new Set(categories)}
       onSelectionChange={handleNextPage}
     >
-      {ORDERS.map((order) => (
-        <SelectItem value={order.value} key={order.value}>
-          {order.name.toUpperCase()}
+      {CATEGORIES.map((category) => (
+        <SelectItem value={category.value} key={category.value}>
+          {category.name.toUpperCase()}
         </SelectItem>
       ))}
     </Select>

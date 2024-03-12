@@ -5,7 +5,7 @@ interface AddToCartFormProps {
   products: Product[];
 }
 
-export default function AddToCartForm({ products }: AddToCartFormProps) {
+export default function ProductAddToCartForm({ products }: AddToCartFormProps) {
   return (
     <form className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
@@ -18,10 +18,9 @@ export default function AddToCartForm({ products }: AddToCartFormProps) {
                 type="radio"
                 name="product"
                 id={product.id.toString()}
-                value={JSON.stringify(product)}
               />
               <label
-                className="flex min-h-10 min-w-min cursor-pointer items-center justify-center border border-foreground px-4 text-sm font-bold peer-checked:bg-foreground peer-checked:text-white"
+                className="flex min-h-10 min-w-min cursor-pointer items-center justify-center border-2 border-foreground px-4 text-sm font-bold peer-checked:bg-foreground peer-checked:text-white"
                 htmlFor={product.id.toString()}
               >
                 {product.size.toUpperCase()}

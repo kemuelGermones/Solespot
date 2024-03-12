@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import getProducts from "@/queries/get-products";
 
 export async function GET(request: NextRequest) {
-  const contains = request.nextUrl.searchParams.get("contains") || undefined;
+  const contains = request.nextUrl.searchParams.get("search") || undefined;
 
   const products = await getProducts({
     contains,

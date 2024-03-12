@@ -4,42 +4,37 @@ import { Select, SelectItem } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { Selection } from "@nextui-org/react";
 
-interface ProductCategorySelectProps {
-  categories: string[];
+interface ProductGenderSelectProps {
+  genders: string[];
 }
 
-const CATEGORIES = [
+const GENDERS = [
   {
     id: 1,
-    name: "Basketball",
-    value: "basketball",
+    name: "Men",
+    value: "men",
   },
   {
     id: 2,
-    name: "Lifestyle",
-    value: "lifestyle",
-  },
-  {
-    id: 3,
-    name: "Apparel",
-    value: "apparel",
+    name: "Women",
+    value: "women",
   },
 ];
 
-export default function ProductCategorySelect({
-  categories,
-}: ProductCategorySelectProps) {
-  const pathname = usePathname();
+export default function ProductGenderSelect({
+  genders,
+}: ProductGenderSelectProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const handleNextPage = (values: Selection) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
     if ((values as Set<string>).size > 0) {
-      params.set("category", `in:${Array.from(values).join(",")}`);
+      params.set("gender", `in:${Array.from(values).join(",")}`);
     } else {
-      params.delete("category");
+      params.delete("gender");
     }
     router.push(`${pathname}?${params.toString()}`);
   };
@@ -49,8 +44,8 @@ export default function ProductCategorySelect({
       size="sm"
       radius="none"
       selectionMode="multiple"
-      label="CATEGORY"
-      placeholder="SELECT A CATEGORY"
+      label="GENDER"
+      placeholder="SELECT A GENDER"
       popoverProps={{
         radius: "none",
       }}
@@ -59,12 +54,12 @@ export default function ProductCategorySelect({
           base: ["rounded-none"],
         },
       }}
-      selectedKeys={new Set(categories)}
+      selectedKeys={new Set(genders)}
       onSelectionChange={handleNextPage}
     >
-      {CATEGORIES.map((category) => (
-        <SelectItem value={category.value} key={category.value}>
-          {category.name.toUpperCase()}
+      {GENDERS.map((gender) => (
+        <SelectItem value={gender.value} key={gender.value}>
+          {gender.name.toUpperCase()}
         </SelectItem>
       ))}
     </Select>

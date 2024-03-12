@@ -39,8 +39,8 @@ const BRANDS = [
 export default function ProductBrandSelect({
   brands,
 }: ProductBrandSelectProps) {
-  const pathname = usePathname();
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const handleNextPage = (values: Selection) => {

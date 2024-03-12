@@ -6,35 +6,35 @@ interface GetProductsParameters {
   distinct?: (
     | "id"
     | "name"
-    | "price"
-    | "brand"
-    | "category"
-    | "gender"
     | "size"
     | "about"
-    | "description"
+    | "price"
+    | "brand"
+    | "gender"
+    | "category"
     | "createdAt"
+    | "description"
   )[];
-  createdAt?: "desc" | "asc";
-  price?: "desc" | "asc";
   name?: string;
-  brand?: string[];
-  category?: string[];
-  gender?: string[];
+  brands?: string[];
   contains?: string;
+  genders?: string[];
+  categories?: string[];
+  price?: "desc" | "asc";
+  createdAt?: "desc" | "asc";
 }
 
 export default async function getProducts({
-  take,
   skip,
-  distinct,
-  createdAt,
-  price,
   name,
-  brand,
-  category,
-  gender,
+  take,
+  price,
+  brands,
+  genders,
+  distinct,
   contains,
+  createdAt,
+  categories,
 }: GetProductsParameters) {
   const products = await db.product.findMany({
     take,
@@ -49,17 +49,17 @@ export default async function getProducts({
         { name },
         {
           brand: {
-            in: brand,
+            in: brands,
           },
         },
         {
           category: {
-            in: category,
+            in: categories,
           },
         },
         {
           gender: {
-            in: gender,
+            in: genders,
           },
         },
         {

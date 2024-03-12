@@ -6,6 +6,29 @@ import {
   BsLinkedin,
 } from "react-icons/bs";
 
+const LINKS = [
+  {
+    id: 1,
+    url: "https://www.facebook.com/",
+    icon: <BsFacebook size="1.5em" />,
+  },
+  {
+    id: 2,
+    url: "https://www.instagram.com/",
+    icon: <BsInstagram size="1.5em" />,
+  },
+  {
+    id: 3,
+    url: "https://twitter.com/",
+    icon: <BsTwitterX size="1.5em" />,
+  },
+  {
+    id: 4,
+    url: "https://www.linkedin.com/",
+    icon: <BsLinkedin size="1.5em" />,
+  },
+];
+
 export default function Footer() {
   return (
     <div className="flex flex-col items-center gap-16 bg-foreground px-4 py-8 text-white">
@@ -18,18 +41,11 @@ export default function Footer() {
           purchase the most sought-after sneakers in the market.
         </div>
         <div className="flex gap-4">
-          <Link href="https://www.facebook.com/" target="_blank">
-            <BsFacebook size="1.5em" />
-          </Link>
-          <Link href="https://www.instagram.com/" target="_blank">
-            <BsInstagram size="1.5em" />
-          </Link>
-          <Link href="https://twitter.com/" target="_blank">
-            <BsTwitterX size="1.5em" />
-          </Link>
-          <Link href="https://www.linkedin.com/" target="_blank">
-            <BsLinkedin size="1.5em" />
-          </Link>
+          {LINKS.map((link) => (
+            <Link target="_blank" href={link.url} key={link.id}>
+              {link.icon}
+            </Link>
+          ))}
         </div>
       </div>
       <div className="text-center text-sm">

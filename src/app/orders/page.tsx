@@ -1,4 +1,4 @@
-import OrderList from "@/components/orders/order-list";
+import OrderList from "@/components/order/order-list";
 
 export default function Orders() {
   return <OrderList />;
