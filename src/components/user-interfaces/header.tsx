@@ -8,10 +8,10 @@ import {
   NavbarMenu,
   NavbarContent,
   NavbarItem,
-  Input,
 } from "@nextui-org/react";
-import { BsPerson, BsSearch } from "react-icons/bs";
+import { BsPerson } from "react-icons/bs";
 import Link from "next/link";
+import SearchBar from "@/components/search/search-bar";
 import Cart from "@/components/user-interfaces/cart";
 
 export default function Header() {
@@ -48,13 +48,7 @@ export default function Header() {
           </Link>
         </NavbarItem>
         <NavbarItem className="grow">
-          <Input
-            radius="none"
-            size="sm"
-            type="search"
-            placeholder="Search"
-            startContent={<BsSearch />}
-          />
+          <SearchBar />
         </NavbarItem>
         <NavbarItem>
           <Cart />

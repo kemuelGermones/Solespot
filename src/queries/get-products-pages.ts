@@ -17,6 +17,7 @@ interface GetProductsPagesParameters {
   brand?: string[];
   category?: string[];
   gender?: string[];
+  contains?: string;
 }
 
 export default async function getProductsPages({
@@ -25,15 +26,34 @@ export default async function getProductsPages({
   brand,
   category,
   gender,
+  contains,
 }: GetProductsPagesParameters) {
   const products = await db.product.findMany({
     distinct,
     where: {
       AND: [
         { name },
-        { brand: { in: brand } },
-        { category: { in: category } },
-        { gender: { in: gender } },
+        {
+          brand: {
+            in: brand,
+          },
+        },
+        {
+          category: {
+            in: category,
+          },
+        },
+        {
+          gender: {
+            in: gender,
+          },
+        },
+        {
+          name: {
+            contains,
+            mode: "insensitive",
+          },
+        },
       ],
     },
   });
