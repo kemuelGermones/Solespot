@@ -1,38 +1,56 @@
-import { Button } from "@nextui-org/react";
-import type { Product } from "@prisma/client";
+"use client";
+
+import { useState } from "react";
+import useCart from "@/hook/use-cart";
+import { Select, SelectItem, Button } from "@nextui-org/react";
+import type Product from "@/types/product";
+import type { Selection } from "@nextui-org/react";
 
 interface AddToCartFormProps {
   products: Product[];
 }
 
 export default function ProductAddToCartForm({ products }: AddToCartFormProps) {
+  const [currentIndex, setCurrentIndex] = useState("0");
+  const { addProduct } = useCart();
+
+  const handleChangeIndex = (values: Selection) => {
+    setCurrentIndex((values as Set<string>).values().next().value);
+  };
+
+  const handleAddProduct = (event: React.FormEvent) => {
+    event.preventDefault();
+    addProduct(products[+currentIndex]);
+  };
+
   return (
-    <form className="flex flex-col gap-4">
-      <div className="flex flex-col gap-2">
-        <div className="font-bold">CHOOSE A SIZE</div>
-        <div className="grid grid-cols-4 gap-2">
-          {products.map((product) => (
-            <div key={product.id}>
-              <input
-                className="peer hidden"
-                type="radio"
-                name="product"
-                id={product.id.toString()}
-              />
-              <label
-                className="flex min-h-10 min-w-min cursor-pointer items-center justify-center border-2 border-foreground px-4 text-sm font-bold peer-checked:bg-foreground peer-checked:text-white"
-                htmlFor={product.id.toString()}
-              >
-                {product.size.toUpperCase()}
-              </label>
-            </div>
-          ))}
-        </div>
-      </div>
+    <form className="flex flex-col gap-4" onSubmit={handleAddProduct}>
+      <Select
+        size="sm"
+        radius="none"
+        label="SIZE"
+        placeholder="SELECT A SIZE"
+        popoverProps={{
+          radius: "none",
+        }}
+        listboxProps={{
+          itemClasses: {
+            base: ["rounded-none"],
+          },
+        }}
+        selectedKeys={new Set([currentIndex])}
+        onSelectionChange={handleChangeIndex}
+      >
+        {products.map((product, index) => (
+          <SelectItem value={index.toString()} key={index.toString()}>
+            {product.size.toUpperCase()}
+          </SelectItem>
+        ))}
+      </Select>
       <Button
         className="bg-foreground font-bold text-white"
         radius="none"
-        type="button"
+        type="submit"
       >
         ADD TO CART
       </Button>

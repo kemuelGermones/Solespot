@@ -12,7 +12,7 @@ import {
 import { BsPerson } from "react-icons/bs";
 import Link from "next/link";
 import SearchModal from "@/components/search/search-modal";
-import Cart from "@/components/ui/cart";
+import CartModal from "@/components/cart/cart-modal";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -55,7 +55,7 @@ export default function Header() {
           <SearchModal />
         </NavbarItem>
         <NavbarItem>
-          <Cart />
+          <CartModal />
         </NavbarItem>
         <NavbarItem>
           <Link href="/sign_in">
