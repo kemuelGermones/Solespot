@@ -1,6 +1,6 @@
 import db from "@/db";
 
-interface GetProductsParameters {
+interface GetProducts {
   take?: number;
   skip?: number;
   distinct?: (
@@ -35,7 +35,7 @@ export default async function getProducts({
   contains,
   createdAt,
   categories,
-}: GetProductsParameters) {
+}: GetProducts) {
   const products = await db.product.findMany({
     take,
     skip,

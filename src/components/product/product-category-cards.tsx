@@ -33,17 +33,15 @@ export default function ProductCategoryCards() {
             src={category.filename}
             alt={category.name}
           />
-          <Link
+          <Button
+            className="absolute left-4 top-4 bg-foreground font-bold text-white"
+            radius="full"
+            type="button"
+            as={Link}
             href={`/products?page=1&sort=createdAt%3Adesc&category=in%3A${category.name.toLowerCase()}`}
           >
-            <Button
-              className="absolute left-4 top-4 bg-foreground font-bold text-white"
-              radius="full"
-              type="button"
-            >
-              SHOP {category.name.toUpperCase()}
-            </Button>
-          </Link>
+            SHOP {category.name.toUpperCase()}
+          </Button>
         </div>
       ))}
     </div>

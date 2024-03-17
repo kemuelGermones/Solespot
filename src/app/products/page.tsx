@@ -18,8 +18,6 @@ interface ProductsProps {
   };
 }
 
-const PATTERN = /^in:\w+(\s\w+)*(,\w+(\s\w+)*)*$/;
-
 export default async function Products({ searchParams }: ProductsProps) {
   const {
     brand,
@@ -48,10 +46,11 @@ export default async function Products({ searchParams }: ProductsProps) {
       notFound();
   }
 
+  const pattern = new RegExp(/^in:\w+(\s\w+)*(,\w+(\s\w+)*)*$/);
   if (
-    (brand && !PATTERN.test(brand)) ||
-    (gender && !PATTERN.test(gender)) ||
-    (category && !PATTERN.test(category))
+    (brand && !pattern.test(brand)) ||
+    (gender && !pattern.test(gender)) ||
+    (category && !pattern.test(category))
   ) {
     notFound();
   }

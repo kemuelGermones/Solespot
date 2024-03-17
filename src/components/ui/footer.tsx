@@ -1,3 +1,4 @@
+import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import {
   BsFacebook,
@@ -31,10 +32,10 @@ const LINKS = [
 
 export default function Footer() {
   return (
-    <div className="flex flex-col items-center gap-16 bg-foreground px-4 py-8 text-white">
+    <div className="flex flex-col items-center gap-16 bg-foreground px-4 py-8">
       <div className="flex max-w-lg flex-col items-center gap-4">
-        <div className="text-lg font-bold">SOLESPOT</div>
-        <div className="text-center">
+        <div className="text-lg font-bold text-white">SOLESPOT</div>
+        <div className="text-center text-white">
           A web application store specializing in offering a diverse selection
           of the latest sneakers from renowned brands. The platform provides a
           seamless shopping experience, allowing users to browse, explore, and
@@ -42,13 +43,23 @@ export default function Footer() {
         </div>
         <div className="flex gap-4">
           {LINKS.map((link) => (
-            <Link target="_blank" href={link.url} key={link.id}>
+            <Button
+              className="text-white"
+              radius="full"
+              variant="light"
+              type="button"
+              target="_blank"
+              isIconOnly={true}
+              as={Link}
+              href={link.url}
+              key={link.id}
+            >
               {link.icon}
-            </Link>
+            </Button>
           ))}
         </div>
       </div>
-      <div className="text-center text-sm">
+      <div className="text-center text-sm text-white">
         Solespot Inc © 2024. All rights reserved.
       </div>
     </div>

@@ -1,6 +1,6 @@
 import db from "@/db";
 
-interface GetProductsPagesParameters {
+interface GetProductsPages {
   distinct?: (
     | "id"
     | "name"
@@ -27,7 +27,7 @@ export default async function getProductsPages({
   distinct,
   contains,
   categories,
-}: GetProductsPagesParameters) {
+}: GetProductsPages) {
   const products = await db.product.findMany({
     distinct,
     where: {

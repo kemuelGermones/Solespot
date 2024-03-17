@@ -8,6 +8,8 @@ import {
   NavbarMenu,
   NavbarContent,
   NavbarItem,
+  Button,
+  Link as Anchor,
 } from "@nextui-org/react";
 import { BsPerson } from "react-icons/bs";
 import Link from "next/link";
@@ -26,30 +28,38 @@ export default function Header() {
       <NavbarContent>
         <NavbarMenuToggle className="md:hidden" />
         <NavbarItem>
-          <Link className="text-lg font-bold" href="/">
+          <Anchor
+            className="font-bold"
+            color="foreground"
+            size="lg"
+            href="/"
+            as={Link}
+          >
             SOLESPOT
-          </Link>
+          </Anchor>
         </NavbarItem>
         <NavbarItem className="hidden md:block">
-          <Link className="hover:underline" href="/products">
+          <Anchor color="foreground" href="/products" as={Link}>
             SHOP ALL
-          </Link>
+          </Anchor>
         </NavbarItem>
         <NavbarItem className="hidden md:block">
-          <Link
-            className="hover:underline"
+          <Anchor
+            color="foreground"
             href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Amen"
+            as={Link}
           >
             MEN
-          </Link>
+          </Anchor>
         </NavbarItem>
         <NavbarItem className="hidden md:block">
-          <Link
-            className="hover:underline"
+          <Anchor
+            color="foreground"
             href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Awomen"
+            as={Link}
           >
             WOMEN
-          </Link>
+          </Anchor>
         </NavbarItem>
         <NavbarItem className="grow">
           <SearchModal />
@@ -58,38 +68,51 @@ export default function Header() {
           <CartModal />
         </NavbarItem>
         <NavbarItem>
-          <Link href="/sign_in">
+          <Button
+            radius="full"
+            variant="light"
+            type="button"
+            href="/sign_in"
+            isIconOnly={true}
+            as={Link}
+          >
             <BsPerson size="1.5em" />
-          </Link>
+          </Button>
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
         <NavbarMenuItem>
-          <Link
-            className="inline-block w-full px-2 py-1.5 hover:bg-default"
+          <Anchor
+            className="w-full"
+            color="foreground"
             href="/products"
-            onClick={handleCloseMenu}
+            as={Link}
+            onPress={handleCloseMenu}
           >
             SHOP ALL
-          </Link>
+          </Anchor>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link
-            className="inline-block w-full px-2 py-1.5 hover:bg-default"
+          <Anchor
+            className="w-full"
+            color="foreground"
             href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Amen"
-            onClick={handleCloseMenu}
+            as={Link}
+            onPress={handleCloseMenu}
           >
             MEN
-          </Link>
+          </Anchor>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link
-            className="inline-block w-full px-2 py-1.5 hover:bg-default"
+          <Anchor
+            className="w-full"
+            color="foreground"
             href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Awomen"
-            onClick={handleCloseMenu}
+            as={Link}
+            onPress={handleCloseMenu}
           >
             WOMEN
-          </Link>
+          </Anchor>
         </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>

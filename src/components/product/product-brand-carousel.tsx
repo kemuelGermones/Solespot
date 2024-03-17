@@ -71,17 +71,15 @@ export default function ProductBrandCarousel() {
               src={brand.filename}
               alt={brand.name}
             />
-            <Link
+            <Button
+              className="absolute left-4 top-4 bg-foreground font-bold text-white"
+              radius="full"
+              type="button"
+              as={Link}
               href={`/products?page=1&sort=createdAt%3Adesc&brand=in%3A${brand.name.toLowerCase()}`}
             >
-              <Button
-                className="absolute left-4 top-4 bg-foreground font-bold text-white"
-                radius="full"
-                type="button"
-              >
-                SHOP {brand.name.toUpperCase()}
-              </Button>
-            </Link>
+              SHOP {brand.name.toUpperCase()}
+            </Button>
           </div>
         ))}
       </div>

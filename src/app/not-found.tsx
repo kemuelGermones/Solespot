@@ -9,15 +9,15 @@ export default function NotFound() {
         The page you are looking for doesn't exist or an other error occured. Go
         back, or head over to the homepage.
       </div>
-      <Link href="/">
-        <Button
-          className="bg-foreground font-bold text-white"
-          radius="none"
-          type="button"
-        >
-          HOMEPAGE
-        </Button>
-      </Link>
+      <Button
+        className="bg-foreground font-bold text-white"
+        radius="none"
+        type="button"
+        href="/"
+        as={Link}
+      >
+        HOMEPAGE
+      </Button>
     </div>
   );
 }
