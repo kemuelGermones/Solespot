@@ -14,6 +14,15 @@ import {
 } from "@nextui-org/react";
 import { BsCart4 } from "react-icons/bs";
 import CartList from "@/components/cart/cart-list";
+import formatPrice from "@/util/format-price";
+import type Product from "@/types/product";
+
+const sumUpProductsPrice = (products: Product[]) => {
+  return products.reduce<Prisma.Decimal>(
+    (subtotal, product) => new Prisma.Decimal(product.price).add(subtotal),
+    new Prisma.Decimal(0),
+  );
+};
 
 export default function CartModal() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -54,7 +63,7 @@ export default function CartModal() {
                 <div className="flex grow items-center justify-between">
                   <div className="text-lg font-bold">SUBTOTAL</div>
                   <div className="text-lg font-bold">
-                    {`₱${products.reduce((subtotal, product) => new Prisma.Decimal(product.price).add(subtotal), new Prisma.Decimal(0))}`}
+                    {formatPrice(sumUpProductsPrice(products))}
                   </div>
                 </div>
                 <Button

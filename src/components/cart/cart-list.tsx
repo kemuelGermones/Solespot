@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
 import { BsTrash } from "react-icons/bs";
+import formatPrice from "@/util/format-price";
 
 export default function CartList() {
   const { products, removeProduct } = useCart();
@@ -49,7 +50,7 @@ export default function CartList() {
           {`${product.size.toUpperCase()} / ${product.gender.toUpperCase()}`}
         </div>
         <div className="flex justify-between">
-          <div>{`₱${product.price}`}</div>
+          <div>{formatPrice(product.price)}</div>
           <Button
             radius="full"
             variant="light"

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import formatPrice from "@/util/format-price";
 import type Product from "@/types/product";
 
 interface ProductListProps {
@@ -34,7 +35,7 @@ export default async function ProductList({ query }: ProductListProps) {
           <div className="text-sm text-foreground-500">
             {product.gender.toUpperCase()}
           </div>
-          <div>{`₱${product.price}`}</div>
+          <div>{formatPrice(product.price)}</div>
         </Link>
       ))}
     </div>

@@ -4,6 +4,7 @@ import ProductAddToCartForm from "@/components/product/product-add-to-cart-form"
 import ProductDescriptionAccordion from "@/components/product/product-description-accordion";
 import ProductList from "@/components/product/product-list";
 import getProducts from "@/queries/get-products";
+import formatPrice from "@/util/format-price";
 
 interface ProductProps {
   params: {
@@ -36,7 +37,7 @@ export default async function Product({ params }: ProductProps) {
           <div className="text-sm text-foreground-500">
             {products[0].gender.toUpperCase()}
           </div>
-          <div>{`₱${products[0].price}`}</div>
+          <div>{formatPrice(products[0].price)}</div>
           <div>{products[0].about}</div>
           <ProductAddToCartForm products={products} />
           <ProductDescriptionAccordion description={products[0].description} />
