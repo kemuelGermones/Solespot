@@ -15,8 +15,8 @@ async function main() {
     await prisma.product.create({
       data: {
         ...product,
-        stocks: {
-          create: { quantity: product.stocks },
+        stock: {
+          create: { quantity: product.stock },
         },
         images: {
           create: product.images.map((url, index) => {
@@ -33,9 +33,6 @@ async function main() {
               },
             };
           }),
-        },
-        orders: {
-          create: product.orders,
         },
       },
     });
