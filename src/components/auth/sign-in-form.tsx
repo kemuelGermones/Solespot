@@ -1,36 +1,57 @@
-import { Input, Button } from "@nextui-org/react";
+"use client";
+
+import { useFormState } from "react-dom";
+import { Input, Button, Link as Anchor } from "@nextui-org/react";
 import Link from "next/link";
+import signIn from "@/actions/sign-in";
 
 export default function SignInForm() {
+  const [formState, action] = useFormState(signIn, { errors: {} });
+
   return (
-    <form className="mx-auto flex max-w-lg flex-col gap-4 px-4 py-8">
-      <div className="text-4xl font-bold">SIGN IN</div>
+    <form className="flex flex-col gap-4" action={action}>
+      {formState.errors._form ? (
+        <div className="bg-danger-50 px-4 py-2.5">
+          <div className="text-sm text-danger">
+            {formState.errors._form.join(". ")}
+          </div>
+        </div>
+      ) : null}
       <Input
         radius="none"
         label="Email"
         labelPlacement="outside"
         type="email"
+        name="email"
         placeholder="Enter your email"
+        isInvalid={!!formState.errors.email}
+        errorMessage={formState.errors.email?.join(". ")}
       />
       <Input
         radius="none"
         label="Password"
         labelPlacement="outside"
         type="password"
+        name="password"
         placeholder="Enter your password"
+        isInvalid={!!formState.errors.password}
+        errorMessage={formState.errors.password?.join(". ")}
       />
       <Button
         className="bg-foreground font-bold text-white"
         radius="none"
-        type="button"
+        type="submit"
       >
         SIGN IN
       </Button>
-      <div>
-        <Link className="text-sm hover:underline" href="/sign_up">
-          Register
-        </Link>
-      </div>
+      <Anchor
+        className="max-w-max text-sm"
+        color="foreground"
+        href="/sign_up"
+        as={Link}
+      >
+        Sign Up
+      </Anchor>
     </form>
   );
 }
