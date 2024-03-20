@@ -54,6 +54,13 @@ export default async function getProductsPages({
             mode: "insensitive",
           },
         },
+        {
+          stock: {
+            quantity: {
+              gt: 0,
+            },
+          },
+        },
       ],
     },
   });

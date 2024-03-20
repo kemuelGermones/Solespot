@@ -68,6 +68,13 @@ export default async function getProducts({
             mode: "insensitive",
           },
         },
+        {
+          stock: {
+            quantity: {
+              gt: 0,
+            },
+          },
+        },
       ],
     },
     include: {
