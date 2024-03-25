@@ -3,6 +3,7 @@
 import { NextUIProvider } from "@nextui-org/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { CartContextProvider } from "@/store/cart-context";
+import { SessionProvider } from "next-auth/react";
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -12,10 +13,12 @@ const queryClient = new QueryClient();
 
 export default function Providers({ children }: ProvidersProps) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <NextUIProvider>
-        <CartContextProvider>{children}</CartContextProvider>
-      </NextUIProvider>
-    </QueryClientProvider>
+    <SessionProvider>
+      <QueryClientProvider client={queryClient}>
+        <NextUIProvider>
+          <CartContextProvider>{children}</CartContextProvider>
+        </NextUIProvider>
+      </QueryClientProvider>
+    </SessionProvider>
   );
 }

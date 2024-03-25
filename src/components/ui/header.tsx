@@ -8,13 +8,12 @@ import {
   NavbarMenu,
   NavbarContent,
   NavbarItem,
-  Button,
   Link as Anchor,
 } from "@nextui-org/react";
-import { BsPerson } from "react-icons/bs";
 import Link from "next/link";
 import SearchModal from "@/components/search/search-modal";
 import CartModal from "@/components/cart/cart-modal";
+import AccountDropdown from "@/components/auth/account-dropdown";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -68,16 +67,7 @@ export default function Header() {
           <CartModal />
         </NavbarItem>
         <NavbarItem>
-          <Button
-            radius="full"
-            variant="light"
-            type="button"
-            href="/sign_in"
-            isIconOnly={true}
-            as={Link}
-          >
-            <BsPerson size="1.5em" />
-          </Button>
+          <AccountDropdown />
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
