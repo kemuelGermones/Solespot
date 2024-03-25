@@ -33,7 +33,7 @@ export default async function SignIn({ searchParams }: SignInProps) {
       </div>
       <SignInWithGithubForm />
       {error === "CallbackRouteError" ? (
-        <div className="text-center text-danger">
+        <div className="text-center text-xs text-danger">
           Sorry, but it seems like an unexpected error has occurred. Please try
           another provider or try again later.
         </div>
