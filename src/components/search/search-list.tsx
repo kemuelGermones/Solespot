@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
-import formatPrice from "@/util/format-price";
+import formatPrice from "@/utils/format-price";
 import type Product from "@/types/product";
 
 interface SearchListProps {

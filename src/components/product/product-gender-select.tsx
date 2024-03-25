@@ -24,7 +24,7 @@ const GENDERS = [
 export default function ProductGenderSelect({
   genders,
 }: ProductGenderSelectProps) {
-  const router = useRouter();
+  const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -36,7 +36,7 @@ export default function ProductGenderSelect({
     } else {
       params.delete("gender");
     }
-    router.push(`${pathname}?${params.toString()}`);
+    push(`${pathname}?${params.toString()}`);
   };
 
   return (

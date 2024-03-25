@@ -32,7 +32,7 @@ const ORDERS = [
 ];
 
 export default function ProductSortSelect({ sort }: ProductSortSelectProps) {
-  const router = useRouter();
+  const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -44,7 +44,7 @@ export default function ProductSortSelect({ sort }: ProductSortSelectProps) {
     } else {
       params.delete("sort");
     }
-    router.push(`${pathname}?${params.toString()}`);
+    push(`${pathname}?${params.toString()}`);
   };
 
   return (

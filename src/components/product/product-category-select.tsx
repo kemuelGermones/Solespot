@@ -29,7 +29,7 @@ const CATEGORIES = [
 export default function ProductCategorySelect({
   categories,
 }: ProductCategorySelectProps) {
-  const router = useRouter();
+  const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -41,7 +41,7 @@ export default function ProductCategorySelect({
     } else {
       params.delete("category");
     }
-    router.push(`${pathname}?${params.toString()}`);
+    push(`${pathname}?${params.toString()}`);
   };
 
   return (

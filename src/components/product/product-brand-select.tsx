@@ -39,7 +39,7 @@ const BRANDS = [
 export default function ProductBrandSelect({
   brands,
 }: ProductBrandSelectProps) {
-  const router = useRouter();
+  const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -51,7 +51,7 @@ export default function ProductBrandSelect({
     } else {
       params.delete("brand");
     }
-    router.push(`${pathname}?${params.toString()}`);
+    push(`${pathname}?${params.toString()}`);
   };
 
   return (

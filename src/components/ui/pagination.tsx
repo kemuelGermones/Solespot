@@ -9,14 +9,14 @@ interface PagerProps {
 }
 
 export default function Pagination({ page, total }: PagerProps) {
-  const router = useRouter();
+  const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const handleNextPage = (value: number) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", value.toString());
-    router.push(`${pathname}?${params.toString()}`);
+    push(`${pathname}?${params.toString()}`);
   };
 
   return (

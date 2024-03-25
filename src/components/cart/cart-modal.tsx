@@ -1,6 +1,6 @@
 "use client";
 
-import useCart from "@/hook/use-cart";
+import useCart from "@/hooks/use-cart";
 import { Prisma } from "@prisma/client";
 import {
   Modal,
@@ -14,7 +14,7 @@ import {
 } from "@nextui-org/react";
 import { BsCart4 } from "react-icons/bs";
 import CartList from "@/components/cart/cart-list";
-import formatPrice from "@/util/format-price";
+import formatPrice from "@/utils/format-price";
 import type Product from "@/types/product";
 
 const sumUpProductsPrice = (products: Product[]) => {

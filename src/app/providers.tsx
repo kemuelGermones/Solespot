@@ -2,7 +2,7 @@
 
 import { NextUIProvider } from "@nextui-org/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { CartContextProvider } from "@/store/cart-context";
+import { CartContextProvider } from "@/stores/cart-context";
 import { SessionProvider } from "next-auth/react";
 
 interface ProvidersProps {

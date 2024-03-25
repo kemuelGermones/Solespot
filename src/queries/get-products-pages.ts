@@ -1,18 +1,7 @@
 import db from "@/db";
 
 interface GetProductsPages {
-  distinct?: (
-    | "id"
-    | "name"
-    | "size"
-    | "about"
-    | "price"
-    | "brand"
-    | "gender"
-    | "category"
-    | "createdAt"
-    | "description"
-  )[];
+  distinct?: ("name" | "gender")[];
   name?: string;
   brands?: string[];
   contains?: string;

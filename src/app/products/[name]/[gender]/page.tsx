@@ -4,7 +4,7 @@ import ProductAddToCartForm from "@/components/product/product-add-to-cart-form"
 import ProductDescriptionAccordion from "@/components/product/product-description-accordion";
 import ProductList from "@/components/product/product-list";
 import getProducts from "@/queries/get-products";
-import formatPrice from "@/util/format-price";
+import formatPrice from "@/utils/format-price";
 
 interface ProductProps {
   params: {

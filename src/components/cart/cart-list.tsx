@@ -1,11 +1,11 @@
 "use client";
 
-import useCart from "@/hook/use-cart";
+import useCart from "@/hooks/use-cart";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
 import { BsTrash } from "react-icons/bs";
-import formatPrice from "@/util/format-price";
+import formatPrice from "@/utils/format-price";
 
 export default function CartList() {
   const { products, removeProduct } = useCart();

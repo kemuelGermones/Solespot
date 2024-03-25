@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import useCart from "@/hook/use-cart";
+import useCart from "@/hooks/use-cart";
 import { Select, SelectItem, Button } from "@nextui-org/react";
 import type Product from "@/types/product";
 import type { Selection } from "@nextui-org/react";
