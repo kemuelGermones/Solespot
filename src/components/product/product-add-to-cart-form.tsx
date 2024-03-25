@@ -11,16 +11,16 @@ interface AddToCartFormProps {
 }
 
 export default function ProductAddToCartForm({ products }: AddToCartFormProps) {
-  const [currentIndex, setCurrentIndex] = useState("0");
+  const [currentIndex, setCurrentIndex] = useState(new Set(["0"]));
   const { addProduct } = useCart();
 
   const handleChangeIndex = (values: Selection) => {
-    setCurrentIndex((values as Set<string>).values().next().value);
+    setCurrentIndex(values as Set<string>);
   };
 
   const handleAddProduct = (event: React.FormEvent) => {
     event.preventDefault();
-    addProduct(products[+currentIndex]);
+    addProduct(products[+currentIndex.values().next().value]);
   };
 
   return (
@@ -38,7 +38,9 @@ export default function ProductAddToCartForm({ products }: AddToCartFormProps) {
             base: ["rounded-none"],
           },
         }}
-        selectedKeys={new Set([currentIndex])}
+        isInvalid={currentIndex.size === 0}
+        errorMessage={currentIndex.size === 0 ? "Please select a size" : ""}
+        selectedKeys={currentIndex}
         onSelectionChange={handleChangeIndex}
       >
         {products.map((product, index) => (
@@ -51,6 +53,7 @@ export default function ProductAddToCartForm({ products }: AddToCartFormProps) {
         className="bg-foreground font-bold text-white"
         radius="none"
         type="submit"
+        disabled={currentIndex.size === 0}
       >
         ADD TO CART
       </Button>
