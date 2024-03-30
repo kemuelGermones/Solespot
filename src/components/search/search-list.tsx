@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import axios from "@/configs/axios";
 import Link from "next/link";
 import Image from "next/image";
 import formatPrice from "@/utils/format-price";
@@ -13,11 +13,7 @@ interface SearchListProps {
 }
 
 export default function SearchList({ search, onClose }: SearchListProps) {
-  const {
-    data: { data: products } = {},
-    isLoading,
-    isError,
-  } = useQuery({
+  const { data, error, isError, isLoading } = useQuery({
     queryKey: ["api", "products", { search }],
     queryFn: () => axios.get<Product[]>(`/api/products?search=${search}`),
   });
@@ -40,15 +36,12 @@ export default function SearchList({ search, onClose }: SearchListProps) {
         <div className="text-center text-4xl font-bold">
           OOPS! SOMETHING WENT WRONG
         </div>
-        <div className="text-center">
-          Sorry, but it seems like an unexpected error has occurred. Please try
-          again later.
-        </div>
+        <div className="text-center">{error.message}</div>
       </>
     );
   }
 
-  if (products!.length === 0) {
+  if (data!.data.length === 0) {
     return (
       <>
         <div className="text-center text-4xl font-bold">NO RESULTS FOUND</div>
@@ -59,7 +52,7 @@ export default function SearchList({ search, onClose }: SearchListProps) {
     );
   }
 
-  return products!.map((product) => (
+  return data!.data.map((product) => (
     <Link
       className="grid grid-cols-[1fr_2fr] gap-2"
       href={`/products/${product.name.replaceAll(" ", "_")}/${product.gender}`}

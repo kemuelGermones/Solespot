@@ -1,12 +1,11 @@
 import db from "@/db";
 
 interface GetProductsPages {
-  distinct?: ("name" | "gender")[];
   name?: string;
   brands?: string[];
-  contains?: string;
   genders?: string[];
   categories?: string[];
+  distinct?: ("name" | "gender")[];
 }
 
 export default async function getProductsPages({
@@ -14,7 +13,6 @@ export default async function getProductsPages({
   brands,
   genders,
   distinct,
-  contains,
   categories,
 }: GetProductsPages) {
   const products = await db.product.findMany({
@@ -35,12 +33,6 @@ export default async function getProductsPages({
         {
           gender: {
             in: genders,
-          },
-        },
-        {
-          name: {
-            contains,
-            mode: "insensitive",
           },
         },
         {

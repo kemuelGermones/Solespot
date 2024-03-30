@@ -3,14 +3,13 @@ import db from "@/db";
 interface GetProducts {
   take?: number;
   skip?: number;
-  distinct?: ("name" | "gender")[];
   name?: string;
   brands?: string[];
-  contains?: string;
   genders?: string[];
   categories?: string[];
   price?: "desc" | "asc";
   createdAt?: "desc" | "asc";
+  distinct?: ("name" | "gender")[];
 }
 
 export default async function getProducts({
@@ -21,7 +20,6 @@ export default async function getProducts({
   brands,
   genders,
   distinct,
-  contains,
   createdAt,
   categories,
 }: GetProducts) {
@@ -49,12 +47,6 @@ export default async function getProducts({
         {
           gender: {
             in: genders,
-          },
-        },
-        {
-          name: {
-            contains,
-            mode: "insensitive",
           },
         },
         {

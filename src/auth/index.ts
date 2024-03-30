@@ -10,6 +10,17 @@ const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 
+if (
+  !GOOGLE_CLIENT_ID ||
+  !GOOGLE_CLIENT_SECRET ||
+  !GITHUB_CLIENT_ID ||
+  !GITHUB_CLIENT_SECRET
+) {
+  throw new Error(
+    "Sorry, an error occured due to missing Google or Github credentials. Please provide it.",
+  );
+}
+
 export const {
   handlers: { GET, POST },
   auth,
