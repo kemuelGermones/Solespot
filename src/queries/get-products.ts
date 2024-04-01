@@ -23,7 +23,7 @@ export default async function getProducts({
   createdAt,
   categories,
 }: GetProducts) {
-  const products = await db.product.findMany({
+  const results = await db.product.findMany({
     take,
     skip,
     distinct,
@@ -69,6 +69,11 @@ export default async function getProducts({
       },
     },
   });
+
+  const products = results.map((result) => ({
+    ...result,
+    price: result.price.toNumber(),
+  }));
 
   return products;
 }

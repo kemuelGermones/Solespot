@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import type { Image as Picture } from "@prisma/client";
+import { type Image as Picture } from "@prisma/client";
 
 interface ProductImageCarouselProps {
   images: {

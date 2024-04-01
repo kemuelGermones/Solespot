@@ -6,10 +6,13 @@ axios.interceptors.response.use(
   },
   (error) => {
     const { code, config, request, response } = error;
+
     const message = response
       ? response.data.message
       : "Sorry, an error occured while trying to connect to server. Please try again later.";
+
     const axiosError = new AxiosError(message, code, config, request, response);
+
     return Promise.reject(axiosError);
   },
 );

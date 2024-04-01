@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
 
     const contains = searchParams.get("search") || undefined;
 
-    const products = await db.product.findMany({
+    const results = await db.product.findMany({
       take: 8,
       distinct: ["name", "gender"],
       orderBy: {
@@ -33,6 +33,11 @@ export async function GET(request: NextRequest) {
         },
       },
     });
+
+    const products = results.map((result) => ({
+      ...result,
+      price: result.price.toNumber(),
+    }));
 
     return NextResponse.json(products, { status: 200 });
   } catch (error) {

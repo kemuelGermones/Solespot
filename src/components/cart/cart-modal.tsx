@@ -1,7 +1,6 @@
 "use client";
 
 import useCart from "@/hooks/use-cart";
-import { Prisma } from "@prisma/client";
 import {
   Modal,
   ModalContent,
@@ -18,10 +17,7 @@ import formatPrice from "@/utils/format-price";
 import type Product from "@/types/product";
 
 const sumUpProductsPrice = (products: Product[]) => {
-  return products.reduce<Prisma.Decimal>(
-    (subtotal, product) => new Prisma.Decimal(product.price).add(subtotal),
-    new Prisma.Decimal(0),
-  );
+  return products.reduce((subtotal, product) => product.price + subtotal, 0);
 };
 
 export default function CartModal() {

@@ -1,5 +1,19 @@
-import type { Product as Commodity, Image } from "@prisma/client";
+import { type Image } from "@prisma/client";
 
-type Product = Commodity & { images: { image: Image }[] };
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  brand: string;
+  category: string;
+  gender: string;
+  size: string;
+  description: string;
+  about: string;
+  createdAt: Date;
+  images: {
+    image: Image;
+  }[];
+}
 
 export default Product;

@@ -13,11 +13,6 @@ interface CartContextProviderProps {
   children: React.ReactNode;
 }
 
-const getInitialProducts = () => {
-  const products = localStorage.getItem("_cart");
-  return products ? JSON.parse(products) : [];
-};
-
 export const CartContext = createContext<Cart>({
   products: [],
   addProduct: () => {},
@@ -25,7 +20,14 @@ export const CartContext = createContext<Cart>({
 });
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [products, setProducts] = useState<Product[]>(getInitialProducts());
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const items = localStorage.getItem("_cart");
+    if (items) {
+      setProducts(JSON.parse(items));
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("_cart", JSON.stringify(products));

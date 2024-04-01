@@ -2,7 +2,7 @@
 
 import { Select, SelectItem } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import type { Selection } from "@nextui-org/react";
+import { type Selection } from "@nextui-org/react";
 
 interface ProductBrandSelectProps {
   brands: string[];
