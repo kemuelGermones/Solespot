@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import useCart from "@/hooks/use-cart";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Select, SelectItem, Button } from "@nextui-org/react";
+import axios from "@/configs/axios";
 import type Product from "@/types/product";
 import { type Selection } from "@nextui-org/react";
 
@@ -11,20 +12,27 @@ interface AddToCartFormProps {
 }
 
 export default function ProductAddToCartForm({ products }: AddToCartFormProps) {
-  const [currentIndex, setCurrentIndex] = useState(new Set(["0"]));
-  const { addProduct } = useCart();
+  const [currentId, setCurrentId] = useState(new Set([products[0].id]));
+  const queryClient = useQueryClient();
 
-  const handleChangeIndex = (values: Selection) => {
-    setCurrentIndex(values as Set<string>);
+  const { mutate, error, isPending, isError } = useMutation({
+    mutationFn: (id: string) => axios.post("/api/orders", { id }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["api", "orders"] });
+    },
+  });
+
+  const handleChangeId = (values: Selection) => {
+    setCurrentId(values as Set<string>);
   };
 
-  const handleAddProduct = (event: React.FormEvent) => {
+  const handleAddToCart = (event: React.FormEvent) => {
     event.preventDefault();
-    addProduct(products[+currentIndex.values().next().value]);
+    mutate(currentId.values().next().value);
   };
 
   return (
-    <form className="flex flex-col gap-4" onSubmit={handleAddProduct}>
+    <form className="flex flex-col gap-4" onSubmit={handleAddToCart}>
       <Select
         size="sm"
         radius="none"
@@ -38,13 +46,12 @@ export default function ProductAddToCartForm({ products }: AddToCartFormProps) {
             base: ["rounded-none"],
           },
         }}
-        isInvalid={currentIndex.size === 0}
-        errorMessage={currentIndex.size === 0 ? "Please select a size" : ""}
-        selectedKeys={currentIndex}
-        onSelectionChange={handleChangeIndex}
+        isInvalid={!currentId.size}
+        selectedKeys={currentId}
+        onSelectionChange={handleChangeId}
       >
-        {products.map((product, index) => (
-          <SelectItem value={index.toString()} key={index.toString()}>
+        {products.map((product) => (
+          <SelectItem value={product.id} key={product.id}>
             {product.size.toUpperCase()}
           </SelectItem>
         ))}
@@ -53,10 +60,13 @@ export default function ProductAddToCartForm({ products }: AddToCartFormProps) {
         className="bg-foreground font-bold text-white"
         radius="none"
         type="submit"
-        disabled={currentIndex.size === 0}
+        disabled={!currentId.size || isPending}
       >
-        ADD TO CART
+        {isPending ? "LOADING..." : "ADD TO CART"}
       </Button>
+      {isError ? (
+        <div className="text-xs text-danger">{error.message}</div>
+      ) : null}
     </form>
   );
 }

@@ -2,8 +2,8 @@
 
 import { NextUIProvider } from "@nextui-org/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { CartContextProvider } from "@/stores/cart-context";
 import { SessionProvider } from "next-auth/react";
+import ToastProvider from "@/providers/toast-provider";
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ export default function Providers({ children }: ProvidersProps) {
     <SessionProvider>
       <QueryClientProvider client={queryClient}>
         <NextUIProvider>
-          <CartContextProvider>{children}</CartContextProvider>
+          <ToastProvider>{children}</ToastProvider>
         </NextUIProvider>
       </QueryClientProvider>
     </SessionProvider>

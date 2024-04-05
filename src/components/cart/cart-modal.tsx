@@ -1,6 +1,7 @@
 "use client";
 
-import useCart from "@/hooks/use-cart";
+import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import {
   Modal,
   ModalContent,
@@ -12,24 +13,35 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { BsCart4 } from "react-icons/bs";
-import CartList from "@/components/cart/cart-list";
-import formatPrice from "@/utils/format-price";
-import type Product from "@/types/product";
-
-const sumUpProductsPrice = (products: Product[]) => {
-  return products.reduce((subtotal, product) => product.price + subtotal, 0);
-};
+import axios from "@/configs/axios";
+import toast from "react-hot-toast";
+import CartItems from "@/components/cart/cart-items";
+import type Order from "@/types/order";
 
 export default function CartModal() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const { products } = useCart();
+
+  const {
+    data: response,
+    error,
+    isError,
+  } = useQuery({
+    queryKey: ["api", "orders"],
+    queryFn: () => axios.get<Order[]>("/api/orders"),
+  });
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(error.message);
+    }
+  }, [isError]);
 
   return (
     <>
       <Badge
         color="danger"
-        isInvisible={products.length === 0}
-        content={products.length}
+        isInvisible={!response || !response.data.length}
+        content={response ? response.data.length : undefined}
       >
         <Button
           radius="full"
@@ -53,15 +65,9 @@ export default function CartModal() {
             <>
               <ModalHeader>CART</ModalHeader>
               <ModalBody className="gap-4">
-                <CartList />
+                <CartItems onClose={onClose} />
               </ModalBody>
               <ModalFooter className="gap-4">
-                <div className="flex grow items-center justify-between">
-                  <div className="text-lg font-bold">SUBTOTAL</div>
-                  <div className="text-lg font-bold">
-                    {formatPrice(sumUpProductsPrice(products))}
-                  </div>
-                </div>
                 <Button
                   className="bg-foreground font-bold text-white"
                   radius="none"
