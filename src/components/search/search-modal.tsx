@@ -13,7 +13,7 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { BsSearch } from "react-icons/bs";
-import SearchList from "@/components/search/search-list";
+import SearchItems from "@/components/search/search-items";
 
 export default function SearchModal() {
   const [search, setSearch] = useState("");
@@ -58,7 +58,7 @@ export default function SearchModal() {
                 />
               </ModalHeader>
               <ModalBody className="gap-4">
-                <SearchList search={value} onClose={onClose} />
+                <SearchItems search={value} onClose={onClose} />
               </ModalBody>
               <ModalFooter>
                 <Button

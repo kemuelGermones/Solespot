@@ -1,5 +1,4 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { Prisma } from "@prisma/client";
 import db from "@/db";
 
 export async function GET(request: NextRequest) {
@@ -17,10 +16,21 @@ export async function GET(request: NextRequest) {
         createdAt: "desc",
       },
       where: {
-        name: {
-          contains,
-          mode: "insensitive",
-        },
+        AND: [
+          {
+            name: {
+              contains,
+              mode: "insensitive",
+            },
+          },
+          {
+            stock: {
+              quantity: {
+                gt: 0,
+              },
+            },
+          },
+        ],
       },
       include: {
         images: {
@@ -41,16 +51,6 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(products, { status: 200 });
   } catch (error) {
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      return NextResponse.json(
-        {
-          message:
-            "Sorry, a database connection error has occured. Please verify credentials and try again.",
-        },
-        { status: 500 },
-      );
-    }
-
     return NextResponse.json(
       {
         message:

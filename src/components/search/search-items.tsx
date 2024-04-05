@@ -12,8 +12,13 @@ interface SearchListProps {
   onClose: () => void;
 }
 
-export default function SearchList({ search, onClose }: SearchListProps) {
-  const { data, error, isError, isLoading } = useQuery({
+export default function SearchItems({ search, onClose }: SearchListProps) {
+  const {
+    data: response,
+    error,
+    isError,
+    isLoading,
+  } = useQuery({
     queryKey: ["api", "products", { search }],
     queryFn: () => axios.get<Product[]>(`/api/products?search=${search}`),
   });
@@ -41,7 +46,7 @@ export default function SearchList({ search, onClose }: SearchListProps) {
     );
   }
 
-  if (data!.data.length === 0) {
+  if (!response!.data.length) {
     return (
       <>
         <div className="text-center text-4xl font-bold">NO RESULTS FOUND</div>
@@ -52,7 +57,7 @@ export default function SearchList({ search, onClose }: SearchListProps) {
     );
   }
 
-  return data!.data.map((product) => (
+  return response!.data.map((product) => (
     <Link
       className="grid grid-cols-[1fr_2fr] gap-2"
       href={`/products/${product.name.replaceAll(" ", "_")}/${product.gender}`}

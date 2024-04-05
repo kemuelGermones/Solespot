@@ -21,7 +21,7 @@ export default async function Product({ params }: ProductProps) {
     name: name.replaceAll("_", " "),
   });
 
-  if (products.length === 0) {
+  if (!products.length) {
     notFound();
   }
 

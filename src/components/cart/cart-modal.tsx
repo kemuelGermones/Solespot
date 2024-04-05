@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   Modal,
@@ -14,27 +13,16 @@ import {
 } from "@nextui-org/react";
 import { BsCart4 } from "react-icons/bs";
 import axios from "@/configs/axios";
-import toast from "react-hot-toast";
 import CartItems from "@/components/cart/cart-items";
 import type Order from "@/types/order";
 
 export default function CartModal() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const {
-    data: response,
-    error,
-    isError,
-  } = useQuery({
+  const { data: response } = useQuery({
     queryKey: ["api", "orders"],
     queryFn: () => axios.get<Order[]>("/api/orders"),
   });
-
-  useEffect(() => {
-    if (isError) {
-      toast.error(error.message);
-    }
-  }, [isError]);
 
   return (
     <>
