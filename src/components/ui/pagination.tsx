@@ -3,12 +3,12 @@
 import { Pagination as Pager } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-interface PagerProps {
+interface PaginationProps {
   page: number;
   total: number;
 }
 
-export default function Pagination({ page, total }: PagerProps) {
+export default function Pagination({ page, total }: PaginationProps) {
   const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();

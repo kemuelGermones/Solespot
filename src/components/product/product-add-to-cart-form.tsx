@@ -4,21 +4,27 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Select, SelectItem, Button } from "@nextui-org/react";
 import axios from "@/configs/axios";
+import toast from "react-hot-toast";
 import type Product from "@/types/product";
 import { type Selection } from "@nextui-org/react";
 
-interface AddToCartFormProps {
+interface ProductAddToCartFormProps {
   products: Product[];
 }
 
-export default function ProductAddToCartForm({ products }: AddToCartFormProps) {
+export default function ProductAddToCartForm({
+  products,
+}: ProductAddToCartFormProps) {
   const [currentId, setCurrentId] = useState(new Set([products[0].id]));
   const queryClient = useQueryClient();
 
-  const { mutate, error, isPending, isError } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: (id: string) => axios.post("/api/orders", { id }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["api", "orders"] });
+    },
+    onError: (error) => {
+      toast.error(error.message);
     },
   });
 
@@ -64,9 +70,6 @@ export default function ProductAddToCartForm({ products }: AddToCartFormProps) {
       >
         {isPending ? "LOADING..." : "ADD TO CART"}
       </Button>
-      {isError ? (
-        <div className="text-xs text-danger">{error.message}</div>
-      ) : null}
     </form>
   );
 }

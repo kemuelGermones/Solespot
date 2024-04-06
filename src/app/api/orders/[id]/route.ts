@@ -3,10 +3,13 @@ import db from "@/db";
 import { auth } from "@/auth";
 import ApiError from "@/utils/api-error";
 
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } },
-) {
+interface DeleteParams {
+  params: {
+    id: string;
+  };
+}
+
+export async function DELETE(request: NextRequest, { params }: DeleteParams) {
   try {
     const session = await auth();
 

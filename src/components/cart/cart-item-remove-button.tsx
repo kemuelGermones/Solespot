@@ -7,11 +7,13 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import toast from "react-hot-toast";
 import axios from "@/configs/axios";
 
-interface CartDeleteButtonProps {
+interface CartItemRemoveButtonProps {
   id: string;
 }
 
-export default function CartItemRemoveButton({ id }: CartDeleteButtonProps) {
+export default function CartItemRemoveButton({
+  id,
+}: CartItemRemoveButtonProps) {
   const queryClient = useQueryClient();
 
   const { mutate, isPending } = useMutation({

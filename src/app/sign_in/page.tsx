@@ -1,7 +1,9 @@
-import SignInWithGoogleForm from "@/components/auth/sign-in-with-google-form";
-import SignInWithGithubForm from "@/components/auth/sign-in-with-github-form";
+import SignInWithGoogleButton from "@/components/auth/sign-in-with-google-button";
+import SignInWithGithubButton from "@/components/auth/sign-in-with-github-button";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
+import signInWithGoogle from "@/actions/sign-in-with-google";
+import signInWithGithub from "@/actions/sign-in-with-github";
 
 interface SignInProps {
   searchParams?: {
@@ -25,13 +27,17 @@ export default async function SignIn({ searchParams }: SignInProps) {
         Seize exclusive deals and seamless checkout. Sign in now for your
         shopping adventure!
       </div>
-      <SignInWithGoogleForm />
+      <form action={signInWithGoogle}>
+        <SignInWithGoogleButton />
+      </form>
       <div className="flex items-center gap-2">
         <div className="flex-grow border-t bg-foreground-500"></div>
         <span className="text-sm text-foreground-500">OR</span>
         <div className="flex-grow border-t bg-foreground-500"></div>
       </div>
-      <SignInWithGithubForm />
+      <form action={signInWithGithub}>
+        <SignInWithGithubButton />
+      </form>
       {error === "CallbackRouteError" ? (
         <div className="text-center text-xs text-danger">
           Sorry, but it seems like an unexpected error has occurred. Please try

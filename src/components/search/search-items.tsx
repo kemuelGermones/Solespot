@@ -7,12 +7,12 @@ import Image from "next/image";
 import formatPrice from "@/utils/format-price";
 import type Product from "@/types/product";
 
-interface SearchListProps {
+interface SearchItemsProps {
   search: string;
   onClose: () => void;
 }
 
-export default function SearchItems({ search, onClose }: SearchListProps) {
+export default function SearchItems({ search, onClose }: SearchItemsProps) {
   const {
     data: response,
     error,

@@ -1,6 +1,5 @@
 "use client";
 
-import { useFormStatus } from "react-dom";
 import { useSession } from "next-auth/react";
 import {
   Button,
@@ -12,11 +11,11 @@ import {
 import { BsPerson } from "react-icons/bs";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Link from "next/link";
+import SignOutButton from "@/components/auth/sign-out-button";
 import signOut from "@/actions/sign-out";
 
 export default function AccountDropdown() {
   const { status, data } = useSession();
-  const { pending } = useFormStatus();
 
   if (status === "loading") {
     return (
@@ -71,15 +70,7 @@ export default function AccountDropdown() {
           ORDERS
         </Button>
         <form className="w-full" action={signOut}>
-          <Button
-            className="w-full justify-start px-2 py-1.5"
-            radius="none"
-            variant="light"
-            type="submit"
-            disabled={pending}
-          >
-            SIGN OUT
-          </Button>
+          <SignOutButton />
         </form>
       </PopoverContent>
     </Popover>
