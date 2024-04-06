@@ -2,13 +2,13 @@
 
 import { Accordion, AccordionItem } from "@nextui-org/react";
 
-interface ProductDescriptionAccordionProps {
+interface ProductAccordionProps {
   description: string;
 }
 
-export default function ProductDescriptionAccordion({
+export default function ProductAccordion({
   description,
-}: ProductDescriptionAccordionProps) {
+}: ProductAccordionProps) {
   return (
     <Accordion
       className="px-0"
@@ -16,7 +16,7 @@ export default function ProductDescriptionAccordion({
         title: "text-base font-bold",
       }}
     >
-      <AccordionItem title="PRODUCT DESCRIPTION">{description}</AccordionItem>
+      <AccordionItem title="BRAND DESCRIPTION">{description}</AccordionItem>
       <AccordionItem title="SHIPPING & RETURNS">
         Solespot shipping policy entails standard rates based on destination,
         weight, and dimensions. Orders ship within 1-2 business days, with free
