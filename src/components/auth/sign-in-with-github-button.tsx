@@ -13,7 +13,7 @@ export default function SignInWithGithubButton() {
       radius="none"
       type="submit"
       startContent={<BsGithub />}
-      disabled={pending}
+      isDisabled={pending}
     >
       SIGN IN WITH GITHUB
     </Button>

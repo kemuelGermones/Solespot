@@ -13,7 +13,7 @@ export default function SignInWithGoogleButton() {
       radius="none"
       type="submit"
       startContent={<BsGoogle />}
-      disabled={pending}
+      isDisabled={pending}
     >
       SIGN IN WITH GOOGLE
     </Button>

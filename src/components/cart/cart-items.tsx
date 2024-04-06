@@ -19,7 +19,7 @@ export default function CartItems({ onClose }: CartItemsProps) {
     isError,
     isLoading,
   } = useQuery({
-    queryKey: ["api", "orders"],
+    queryKey: ["api", "orders", { preview: false }],
     queryFn: () => axios.get<Order[]>("/api/orders"),
   });
 

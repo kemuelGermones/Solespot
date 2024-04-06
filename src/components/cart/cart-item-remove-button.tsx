@@ -3,7 +3,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@nextui-org/react";
 import { BsTrash } from "react-icons/bs";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import toast from "react-hot-toast";
 import axios from "@/configs/axios";
 
@@ -19,7 +18,12 @@ export default function CartItemRemoveButton({
   const { mutate, isPending } = useMutation({
     mutationFn: () => axios.delete(`/api/orders/${id}`),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["api", "orders"] });
+      queryClient.invalidateQueries({
+        queryKey: ["api", "orders", { preview: true }],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["api", "orders", { preview: false }],
+      });
     },
     onError: (error) => {
       toast.error(error.message);
@@ -38,14 +42,10 @@ export default function CartItemRemoveButton({
       variant="light"
       type="button"
       isIconOnly={true}
-      disabled={isPending}
+      isDisabled={isPending}
       onClick={handleRemoveToCart}
     >
-      {isPending ? (
-        <AiOutlineLoading3Quarters className="animate-spin" />
-      ) : (
-        <BsTrash />
-      )}
+      <BsTrash />
     </Button>
   );
 }

@@ -12,7 +12,7 @@ export default function SignOutButton() {
       radius="none"
       variant="light"
       type="submit"
-      disabled={pending}
+      isDisabled={pending}
     >
       SIGN OUT
     </Button>

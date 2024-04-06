@@ -19,23 +19,29 @@ import type Order from "@/types/order";
 export default function CartModal() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const { data: response } = useQuery({
-    queryKey: ["api", "orders"],
+  const {
+    data: response,
+    isError,
+    isLoading,
+  } = useQuery({
+    queryKey: ["api", "orders", { preview: true }],
     queryFn: () => axios.get<Order[]>("/api/orders"),
+    retry: false,
   });
 
   return (
     <>
       <Badge
         color="danger"
-        isInvisible={!response || !response.data.length}
-        content={response ? response.data.length : undefined}
+        isInvisible={isError || isLoading || !response!.data.length}
+        content={!isError && !isLoading ? response!.data.length : null}
       >
         <Button
           radius="full"
           variant="light"
           type="button"
           isIconOnly={true}
+          isDisabled={isLoading}
           onClick={onOpen}
         >
           <BsCart4 size="1.5em" />

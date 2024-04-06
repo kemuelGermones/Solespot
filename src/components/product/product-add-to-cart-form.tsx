@@ -21,7 +21,12 @@ export default function ProductAddToCartForm({
   const { mutate, isPending } = useMutation({
     mutationFn: (id: string) => axios.post("/api/orders", { id }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["api", "orders"] });
+      queryClient.invalidateQueries({
+        queryKey: ["api", "orders", { preview: true }],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["api", "orders", { preview: false }],
+      });
     },
     onError: (error) => {
       toast.error(error.message);
@@ -66,9 +71,9 @@ export default function ProductAddToCartForm({
         className="bg-foreground font-bold text-white"
         radius="none"
         type="submit"
-        disabled={!currentId.size || isPending}
+        isDisabled={!currentId.size || isPending}
       >
-        {isPending ? "LOADING..." : "ADD TO CART"}
+        ADD TO CART
       </Button>
     </form>
   );

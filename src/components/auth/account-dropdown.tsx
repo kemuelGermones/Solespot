@@ -9,7 +9,6 @@ import {
   User,
 } from "@nextui-org/react";
 import { BsPerson } from "react-icons/bs";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Link from "next/link";
 import SignOutButton from "@/components/auth/sign-out-button";
 import signOut from "@/actions/sign-out";
@@ -19,8 +18,14 @@ export default function AccountDropdown() {
 
   if (status === "loading") {
     return (
-      <Button radius="full" variant="light" type="button" isIconOnly={true}>
-        <AiOutlineLoading3Quarters className="animate-spin" size="1.5em" />
+      <Button
+        radius="full"
+        variant="light"
+        type="button"
+        isIconOnly={true}
+        isDisabled={true}
+      >
+        <BsPerson size="1.5em" />
       </Button>
     );
   }
