@@ -27,12 +27,15 @@ export async function DELETE(request: NextRequest, { params }: DeleteParams) {
     });
 
     if (!order) {
-      throw new ApiError("Sorry, no order were found. Please try again.", 400);
+      throw new ApiError(
+        "Sorry, no cart order were found. Please try again.",
+        400,
+      );
     }
 
     if (session.user.id !== order.userId) {
       throw new ApiError(
-        "Sorry, you're not allowed to delete this order. Please try again.",
+        "Sorry, you're not allowed to delete this cart order. Please try again.",
         400,
       );
     }

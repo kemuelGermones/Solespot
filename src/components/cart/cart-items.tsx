@@ -14,10 +14,10 @@ interface CartItemsProps {
 
 export default function CartItems({ onClose }: CartItemsProps) {
   const {
-    data: response,
     error,
     isError,
     isLoading,
+    data: response,
   } = useQuery({
     queryKey: ["api", "orders", { preview: false }],
     queryFn: () => axios.get<Order[]>("/api/orders"),

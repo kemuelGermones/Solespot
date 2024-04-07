@@ -10,11 +10,6 @@ export async function GET(request: NextRequest) {
     const contains = searchParams.get("search") || undefined;
 
     const results = await db.product.findMany({
-      take: 8,
-      distinct: ["name", "gender"],
-      orderBy: {
-        createdAt: "desc",
-      },
       where: {
         AND: [
           {
@@ -31,6 +26,11 @@ export async function GET(request: NextRequest) {
             },
           },
         ],
+      },
+      take: 8,
+      distinct: ["name", "gender"],
+      orderBy: {
+        createdAt: "desc",
       },
       include: {
         images: {

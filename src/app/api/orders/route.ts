@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
 
     if (!validation.success) {
       throw new ApiError(
-        "Sorry, you didn't select a size or a validation error has occured. Please verify it and try again.",
+        "Sorry, a validation error has occured. Please verify it and try again.",
         400,
       );
     }

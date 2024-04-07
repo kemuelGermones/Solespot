@@ -14,10 +14,10 @@ interface SearchItemsProps {
 
 export default function SearchItems({ search, onClose }: SearchItemsProps) {
   const {
-    data: response,
     error,
     isError,
     isLoading,
+    data: response,
   } = useQuery({
     queryKey: ["api", "products", { search }],
     queryFn: () => axios.get<Product[]>(`/api/products?search=${search}`),

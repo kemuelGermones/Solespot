@@ -31,7 +31,7 @@ export default function SearchModal() {
         radius="none"
         type="button"
         startContent={<BsSearch />}
-        onClick={onOpen}
+        onPress={onOpen}
       >
         Search
       </Button>

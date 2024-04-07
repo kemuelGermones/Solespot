@@ -22,17 +22,11 @@ if (
 }
 
 export const {
-  handlers: { GET, POST },
   auth,
-  signOut,
   signIn,
+  signOut,
+  handlers: { GET, POST },
 } = NextAuth({
-  pages: {
-    signOut: "/",
-    verifyRequest: "/",
-    signIn: "/sign_in",
-    error: "/sign_in",
-  },
   adapter: PrismaAdapter(db),
   providers: [
     Google({
@@ -49,8 +43,13 @@ export const {
       if (session && user) {
         session.user.id = user.id;
       }
-
       return session;
     },
+  },
+  pages: {
+    signOut: "/",
+    error: "/sign_in",
+    signIn: "/sign_in",
+    verifyRequest: "/",
   },
 });

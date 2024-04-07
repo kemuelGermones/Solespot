@@ -30,7 +30,7 @@ export default function Error({ error, reset }: ErrorProps) {
         className="bg-foreground font-bold text-white"
         radius="none"
         type="button"
-        onClick={handleReset}
+        onPress={handleReset}
       >
         TRY AGAIN
       </Button>
