@@ -45,7 +45,7 @@ export default async function ProductList({ query }: ProductListProps) {
             NO RESULTS FOUND
           </div>
           <div className="col-span-2 text-center md:col-span-4">
-            We couldn't find what you're looking for.
+            We couldn&apos;t find what you&apos;re looking for.
           </div>
         </>
       )}

@@ -60,7 +60,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="text-center text-sm text-white">
-        Solespot Inc © 2024. All rights reserved.
+        Solespot Inc &copy; 2024. All rights reserved.
       </div>
     </div>
   );

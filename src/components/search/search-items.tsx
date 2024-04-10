@@ -28,8 +28,8 @@ export default function SearchItems({ search, onClose }: SearchItemsProps) {
       <>
         <div className="text-center text-4xl font-bold">LOADING...</div>
         <div className="text-center">
-          "I learned that if you want to make it bad enough, no matter how bad
-          it is, you can make it." -Gale Sayers
+          &quot;I learned that if you want to make it bad enough, no matter how
+          bad it is, you can make it.&quot; -Gale Sayers
         </div>
       </>
     );
@@ -51,7 +51,7 @@ export default function SearchItems({ search, onClose }: SearchItemsProps) {
       <>
         <div className="text-center text-4xl font-bold">NO RESULTS FOUND</div>
         <div className="text-center">
-          We couldn't find what you're looking for.
+          We couldn&apos;t find what you&apos;re looking for.
         </div>
       </>
     );

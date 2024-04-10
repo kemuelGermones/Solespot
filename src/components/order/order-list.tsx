@@ -47,10 +47,10 @@ export default async function OrderList({ query }: OrderListProps) {
       ) : (
         <>
           <div className="col-span-2 text-center text-4xl font-bold md:col-span-4">
-            YOU DON'T HAVE ANY ORDERS YET
+            YOU DON&apos;T HAVE ANY ORDERS YET
           </div>
           <div className="col-span-2 text-center md:col-span-4">
-            Looks like you haven't made your choice yet...
+            Looks like you haven&apos;t made your choice yet...
           </div>
         </>
       )}

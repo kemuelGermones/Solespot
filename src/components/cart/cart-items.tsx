@@ -28,8 +28,8 @@ export default function CartItems({ onClose }: CartItemsProps) {
       <>
         <div className="text-center text-4xl font-bold">LOADING...</div>
         <div className="text-center">
-          "I learned that if you want to make it bad enough, no matter how bad
-          it is, you can make it." -Gale Sayers
+          &quot;I learned that if you want to make it bad enough, no matter how
+          bad it is, you can make it.&quot; -Gale Sayers
         </div>
       </>
     );
@@ -51,7 +51,7 @@ export default function CartItems({ onClose }: CartItemsProps) {
       <>
         <div className="text-center text-4xl font-bold">YOUR CART IS EMPTY</div>
         <div className="text-center">
-          Looks like you haven't made your choice yet...
+          Looks like you haven&apos;t made your choice yet...
         </div>
       </>
     );
