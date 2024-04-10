@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <ProductBrandCarousel />
-      <div className="mx-auto flex flex-col gap-4 px-4 py-8 lg:container">
+      <div className="mx-auto flex flex-col gap-8 px-4 py-8 lg:container">
         <div className="text-4xl font-bold">NEW ARRIVALS</div>
         <ProductList
           query={getProducts.bind(null, {
@@ -18,7 +18,7 @@ export default function Home() {
         />
       </div>
       <ProductCategoryCards />
-      <div className="mx-auto flex flex-col gap-4 px-4 py-8 lg:container">
+      <div className="mx-auto flex flex-col gap-8 px-4 py-8 lg:container">
         <div className="text-4xl font-bold">APPAREL NEW ARRIVALS</div>
         <ProductList
           query={getProducts.bind(null, {
@@ -29,7 +29,7 @@ export default function Home() {
           })}
         />
       </div>
-      <div className="mx-auto flex flex-col gap-4 px-4 py-8 lg:container">
+      <div className="mx-auto flex flex-col gap-8 px-4 py-8 lg:container">
         <div className="text-4xl font-bold">SHOE NEW ARRIVALS</div>
         <ProductList
           query={getProducts.bind(null, {

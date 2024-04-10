@@ -54,8 +54,8 @@ export default function ProductImageCarousel({
             draggable={false}
             src={image.url}
             alt={image.name}
-            key={image.id}
             onClick={handleChangeSlide.bind(null, index)}
+            key={image.id}
           />
         ))}
       </div>

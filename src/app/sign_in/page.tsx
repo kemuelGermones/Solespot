@@ -1,6 +1,6 @@
 import SignInWithGoogleButton from "@/components/auth/sign-in-with-google-button";
 import SignInWithGithubButton from "@/components/auth/sign-in-with-github-button";
-import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { auth } from "@/auth";
 import signInWithGoogle from "@/actions/sign-in-with-google";
 import signInWithGithub from "@/actions/sign-in-with-github";
@@ -17,7 +17,7 @@ export default async function SignIn({ searchParams }: SignInProps) {
   const session = await auth();
 
   if (session?.user) {
-    redirect("/");
+    notFound();
   }
 
   return (

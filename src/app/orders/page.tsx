@@ -1,4 +1,4 @@
-import { redirect, notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 import { auth } from "@/auth";
 import OrderList from "@/components/order/order-list";
 import Pagination from "@/components/ui/pagination";
@@ -17,7 +17,7 @@ export default async function Orders({ searchParams }: OrdersProps) {
   const session = await auth();
 
   if (!session?.user) {
-    redirect("/sign_in");
+    notFound();
   }
 
   const total = await getOrdersPages(session.user.id);
@@ -31,7 +31,7 @@ export default async function Orders({ searchParams }: OrdersProps) {
   }
 
   return (
-    <div className="mx-auto flex flex-col gap-4 px-4 py-8 lg:container">
+    <div className="mx-auto flex flex-col gap-8 px-4 py-8 lg:container">
       <OrderList
         query={getOrders.bind(null, {
           take: 12,

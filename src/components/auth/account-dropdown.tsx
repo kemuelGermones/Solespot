@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import {
   Button,
@@ -10,11 +11,15 @@ import {
 } from "@nextui-org/react";
 import { BsPerson } from "react-icons/bs";
 import Link from "next/link";
-import SignOutButton from "@/components/auth/sign-out-button";
 import signOut from "@/actions/sign-out";
 
 export default function AccountDropdown() {
+  const [isContentOpen, setIsContentOpen] = useState(false);
   const { status, data } = useSession();
+
+  const handleCloseContent = () => {
+    setIsContentOpen(false);
+  };
 
   if (status === "loading") {
     return (
@@ -46,7 +51,11 @@ export default function AccountDropdown() {
   }
 
   return (
-    <Popover radius="none">
+    <Popover
+      radius="none"
+      isOpen={isContentOpen}
+      onOpenChange={setIsContentOpen}
+    >
       <PopoverTrigger>
         <Button radius="full" variant="light" type="button" isIconOnly={true}>
           <BsPerson size="1.5em" />
@@ -71,11 +80,20 @@ export default function AccountDropdown() {
           type="button"
           href="/orders"
           as={Link}
+          onPress={handleCloseContent}
         >
           ORDERS
         </Button>
         <form className="w-full" action={signOut}>
-          <SignOutButton />
+          <Button
+            className="w-full justify-start px-2 py-1.5"
+            radius="none"
+            variant="light"
+            type="submit"
+            onPress={handleCloseContent}
+          >
+            SIGN OUT
+          </Button>
         </form>
       </PopoverContent>
     </Popover>

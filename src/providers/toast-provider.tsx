@@ -14,13 +14,13 @@ export default function ToastProvider({ children }: ToastProviderProps) {
         toastOptions={{
           position: "top-right",
           error: {
+            icon: null,
             style: {
               color: "#FFFFFF",
               background: "#F31260",
               borderRadius: "0px",
               padding: "12px 14px",
             },
-            icon: null,
           },
         }}
       />

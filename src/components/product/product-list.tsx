@@ -12,32 +12,43 @@ export default async function ProductList({ query }: ProductListProps) {
 
   return (
     <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-      {products.map((product) => (
-        <Link
-          className="flex flex-col gap-2"
-          href={`/products/${product.name.replaceAll(" ", "_")}/${
-            product.gender
-          }`}
-          key={product.id}
-        >
-          <Image
-            width={500}
-            height={500}
-            quality={100}
-            draggable={false}
-            src={product.images[0].image.url}
-            alt={product.name}
-          />
-          <div className="text-sm text-foreground-500">
-            {product.brand.toUpperCase()}
+      {products.length ? (
+        products.map((product) => (
+          <Link
+            className="flex flex-col gap-2"
+            href={`/products/${product.name.replaceAll(" ", "_")}/${
+              product.gender
+            }`}
+            key={product.id}
+          >
+            <Image
+              width={500}
+              height={500}
+              quality={100}
+              draggable={false}
+              src={product.images[0].image.url}
+              alt={product.name}
+            />
+            <div className="text-sm text-foreground-500">
+              {product.brand.toUpperCase()}
+            </div>
+            <div className="font-bold">{product.name}</div>
+            <div className="text-sm text-foreground-500">
+              {product.gender.toUpperCase()}
+            </div>
+            <div>{formatPrice(product.price)}</div>
+          </Link>
+        ))
+      ) : (
+        <>
+          <div className="col-span-2 text-center text-4xl font-bold md:col-span-4">
+            NO RESULTS FOUND
           </div>
-          <div className="font-bold">{product.name}</div>
-          <div className="text-sm text-foreground-500">
-            {product.gender.toUpperCase()}
+          <div className="col-span-2 text-center md:col-span-4">
+            We couldn't find what you're looking for.
           </div>
-          <div>{formatPrice(product.price)}</div>
-        </Link>
-      ))}
+        </>
+      )}
     </div>
   );
 }

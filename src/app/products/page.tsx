@@ -66,12 +66,16 @@ export default async function Products({ searchParams }: ProductsProps) {
     distinct: ["name", "gender"],
   });
 
-  if (+page > total || +page < 1) {
+  if (
+    +page < 1 ||
+    (total > 0 && +page > total) ||
+    (total === 0 && +page !== 1)
+  ) {
     notFound();
   }
 
   return (
-    <div className="mx-auto flex flex-col gap-4 px-4 py-8 lg:container">
+    <div className="mx-auto flex flex-col gap-8 px-4 py-8 lg:container">
       <div className="grid max-w-4xl grid-cols-2 gap-2 md:grid-cols-4">
         <ProductSortSelect sort={sort} />
         <ProductBrandSelect brands={brands || []} />

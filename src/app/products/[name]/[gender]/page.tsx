@@ -43,7 +43,7 @@ export default async function Product({ params }: ProductProps) {
           <ProductAccordion description={products[0].description} />
         </div>
       </div>
-      <div className="mx-auto flex flex-col gap-4 px-4 py-8 lg:container">
+      <div className="mx-auto flex flex-col gap-8 px-4 py-8 lg:container">
         <div className="text-4xl font-bold">RECOMMENDED</div>
         <ProductList
           query={getProducts.bind(null, {

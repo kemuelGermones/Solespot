@@ -1,10 +1,14 @@
 import axios, { AxiosError } from "axios";
 
+interface Response {
+  message: string;
+}
+
 axios.interceptors.response.use(
   (response) => {
     return response;
   },
-  (error) => {
+  (error: AxiosError<Response>) => {
     const { code, config, request, response } = error;
 
     const message = response
