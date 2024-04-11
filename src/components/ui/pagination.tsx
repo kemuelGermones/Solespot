@@ -1,20 +1,21 @@
 "use client";
 
-import { Pagination as Pager } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Pagination as Pager } from "@nextui-org/react";
 
 interface PaginationProps {
-  page: number;
   total: number;
 }
 
-export default function Pagination({ page, total }: PaginationProps) {
+export default function Pagination({ total }: PaginationProps) {
   const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  const page = searchParams.get("page") || "1";
+
   const handleNextPage = (value: number) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(window.location.search);
     params.set("page", value.toString());
     push(`${pathname}?${params.toString()}`);
   };
@@ -28,7 +29,7 @@ export default function Pagination({ page, total }: PaginationProps) {
         cursor: "bg-foreground text-white font-bold",
       }}
       total={total}
-      page={page}
+      page={Number(page)}
       onChange={handleNextPage}
     />
   );

@@ -4,10 +4,6 @@ import { Select, SelectItem } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { type Selection } from "@nextui-org/react";
 
-interface ProductBrandSelectProps {
-  brands: string[];
-}
-
 const BRANDS = [
   {
     id: 1,
@@ -36,12 +32,15 @@ const BRANDS = [
   },
 ];
 
-export default function ProductBrandSelect({
-  brands,
-}: ProductBrandSelectProps) {
+export default function ProductBrandSelect() {
   const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const brand = searchParams.get("brand");
+  const selectedKeys = brand
+    ? new Set<string>(brand.replace("in:", "").split(","))
+    : new Set<string>();
 
   const handleNextPage = (values: Selection) => {
     const params = new URLSearchParams(searchParams);
@@ -69,7 +68,7 @@ export default function ProductBrandSelect({
           base: ["rounded-none"],
         },
       }}
-      selectedKeys={new Set(brands)}
+      selectedKeys={selectedKeys}
       onSelectionChange={handleNextPage}
     >
       {BRANDS.map((brand) => (

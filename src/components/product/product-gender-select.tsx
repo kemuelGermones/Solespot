@@ -4,10 +4,6 @@ import { Select, SelectItem } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { type Selection } from "@nextui-org/react";
 
-interface ProductGenderSelectProps {
-  genders: string[];
-}
-
 const GENDERS = [
   {
     id: 1,
@@ -21,12 +17,15 @@ const GENDERS = [
   },
 ];
 
-export default function ProductGenderSelect({
-  genders,
-}: ProductGenderSelectProps) {
+export default function ProductGenderSelect() {
   const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const gender = searchParams.get("gender");
+  const selectedKeys = gender
+    ? new Set<string>(gender.replace("in:", "").split(","))
+    : new Set<string>();
 
   const handleNextPage = (values: Selection) => {
     const params = new URLSearchParams(searchParams);
@@ -54,7 +53,7 @@ export default function ProductGenderSelect({
           base: ["rounded-none"],
         },
       }}
-      selectedKeys={new Set(genders)}
+      selectedKeys={selectedKeys}
       onSelectionChange={handleNextPage}
     >
       {GENDERS.map((gender) => (

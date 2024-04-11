@@ -4,10 +4,6 @@ import { Select, SelectItem } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { type Selection } from "@nextui-org/react";
 
-interface ProductSortSelectProps {
-  sort: string;
-}
-
 const ORDERS = [
   {
     id: 1,
@@ -31,10 +27,15 @@ const ORDERS = [
   },
 ];
 
-export default function ProductSortSelect({ sort }: ProductSortSelectProps) {
+export default function ProductSortSelect() {
   const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const sort = searchParams.get("sort");
+  const selectedKeys = sort
+    ? new Set<string>(new Array(sort))
+    : new Set<string>();
 
   const handleNextPage = (values: Selection) => {
     const params = new URLSearchParams(searchParams);
@@ -61,7 +62,7 @@ export default function ProductSortSelect({ sort }: ProductSortSelectProps) {
           base: ["rounded-none"],
         },
       }}
-      selectedKeys={new Set([sort])}
+      selectedKeys={selectedKeys}
       onSelectionChange={handleNextPage}
     >
       {ORDERS.map((order) => (

@@ -40,7 +40,7 @@ export default async function Orders({ searchParams }: OrdersProps) {
           userId: session.user.id,
         })}
       />
-      {total > 1 ? <Pagination page={+page} total={total} /> : null}
+      {total > 1 ? <Pagination total={total} /> : null}
     </div>
   );
 }

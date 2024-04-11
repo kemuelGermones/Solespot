@@ -4,10 +4,6 @@ import { Select, SelectItem } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { type Selection } from "@nextui-org/react";
 
-interface ProductCategorySelectProps {
-  categories: string[];
-}
-
 const CATEGORIES = [
   {
     id: 1,
@@ -26,12 +22,15 @@ const CATEGORIES = [
   },
 ];
 
-export default function ProductCategorySelect({
-  categories,
-}: ProductCategorySelectProps) {
+export default function ProductCategorySelect() {
   const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const category = searchParams.get("category");
+  const selectedKeys = category
+    ? new Set<string>(category.replace("in:", "").split(","))
+    : new Set<string>();
 
   const handleNextPage = (values: Selection) => {
     const params = new URLSearchParams(searchParams);
@@ -59,7 +58,7 @@ export default function ProductCategorySelect({
           base: ["rounded-none"],
         },
       }}
-      selectedKeys={new Set(categories)}
+      selectedKeys={selectedKeys}
       onSelectionChange={handleNextPage}
     >
       {CATEGORIES.map((category) => (

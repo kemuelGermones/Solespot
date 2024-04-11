@@ -19,31 +19,27 @@ interface ProductsProps {
 }
 
 export default async function Products({ searchParams }: ProductsProps) {
-  const {
-    brand,
-    category,
-    gender,
-    page = "1",
-    sort = "createdAt:desc",
-  } = { ...searchParams };
+  const { sort, brand, gender, category, page = "1" } = { ...searchParams };
 
   let price: "desc" | "asc" | undefined;
   let createdAt: "desc" | "asc" | undefined;
-  switch (sort) {
-    case "price:asc":
-      price = "asc";
-      break;
-    case "price:desc":
-      price = "desc";
-      break;
-    case "createdAt:asc":
-      createdAt = "asc";
-      break;
-    case "createdAt:desc":
-      createdAt = "desc";
-      break;
-    default:
-      notFound();
+  if (sort) {
+    switch (sort) {
+      case "price:asc":
+        price = "asc";
+        break;
+      case "price:desc":
+        price = "desc";
+        break;
+      case "createdAt:asc":
+        createdAt = "asc";
+        break;
+      case "createdAt:desc":
+        createdAt = "desc";
+        break;
+      default:
+        notFound();
+    }
   }
 
   const pattern = new RegExp(/^in:\w+(\s\w+)*(,\w+(\s\w+)*)*$/);
@@ -77,10 +73,10 @@ export default async function Products({ searchParams }: ProductsProps) {
   return (
     <div className="mx-auto flex flex-col gap-8 px-4 py-8 lg:container">
       <div className="grid max-w-4xl grid-cols-2 gap-2 md:grid-cols-4">
-        <ProductSortSelect sort={sort} />
-        <ProductBrandSelect brands={brands || []} />
-        <ProductCategorySelect categories={categories || []} />
-        <ProductGenderSelect genders={genders || []} />
+        <ProductSortSelect />
+        <ProductBrandSelect />
+        <ProductCategorySelect />
+        <ProductGenderSelect />
       </div>
       <ProductList
         query={getProducts.bind(null, {
@@ -94,7 +90,7 @@ export default async function Products({ searchParams }: ProductsProps) {
           skip: (+page - 1) * 12,
         })}
       />
-      {total > 1 ? <Pagination page={+page} total={total} /> : null}
+      {total > 1 ? <Pagination total={total} /> : null}
     </div>
   );
 }
