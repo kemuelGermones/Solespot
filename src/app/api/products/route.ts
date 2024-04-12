@@ -29,9 +29,6 @@ export async function GET(request: NextRequest) {
       },
       take: 8,
       distinct: ["name", "gender"],
-      orderBy: {
-        createdAt: "desc",
-      },
       include: {
         images: {
           orderBy: {
