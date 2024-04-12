@@ -12,7 +12,7 @@ export default function Pagination({ total }: PaginationProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const page = searchParams.get("page") || "1";
+  const page = searchParams.get("page") ?? "1";
 
   const handleNextPage = (value: number) => {
     const params = new URLSearchParams(window.location.search);

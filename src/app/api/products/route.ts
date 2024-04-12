@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
       nextUrl: { searchParams },
     } = request;
 
-    const contains = searchParams.get("search") || undefined;
+    const contains = searchParams.get("search") ?? undefined;
 
     const results = await db.product.findMany({
       where: {
