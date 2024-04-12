@@ -33,8 +33,8 @@ export default function ProductSortSelect() {
   const searchParams = useSearchParams();
 
   const sort = searchParams.get("sort");
-  const selectedKeys = sort
-    ? new Set<string>(new Array(sort))
+  const arrangement = sort
+    ? new Set<string>([sort])
     : new Set<string>();
 
   const handleNextPage = (values: Selection) => {
@@ -51,9 +51,11 @@ export default function ProductSortSelect() {
   return (
     <Select
       size="sm"
-      radius="none"
       label="SORT"
+      radius="none"
       placeholder="SELECT AN ORDER"
+      selectedKeys={arrangement}
+      onSelectionChange={handleNextPage}
       popoverProps={{
         radius: "none",
       }}
@@ -62,11 +64,9 @@ export default function ProductSortSelect() {
           base: ["rounded-none"],
         },
       }}
-      selectedKeys={selectedKeys}
-      onSelectionChange={handleNextPage}
     >
       {ORDERS.map((order) => (
-        <SelectItem value={order.value} key={order.value}>
+        <SelectItem key={order.value} value={order.value}>
           {order.name.toUpperCase()}
         </SelectItem>
       ))}

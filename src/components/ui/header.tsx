@@ -15,6 +15,24 @@ import SearchModal from "@/components/search/search-modal";
 import CartModal from "@/components/cart/cart-modal";
 import AccountDropdown from "@/components/auth/account-dropdown";
 
+const LINKS = [
+  {
+    id: 1,
+    name: "Shop All",
+    path: "/products",
+  },
+  {
+    id: 2,
+    name: "Men",
+    path: "/products?page=1&gender=in%3Amen",
+  },
+  {
+    id: 3,
+    name: "Women",
+    path: "/products?page=1&gender=in%3Awomen",
+  },
+];
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -29,37 +47,21 @@ export default function Header() {
         <NavbarItem>
           <Anchor
             className="font-bold"
-            color="foreground"
-            size="lg"
             href="/"
+            size="lg"
+            color="foreground"
             as={Link}
           >
             SOLESPOT
           </Anchor>
         </NavbarItem>
-        <NavbarItem className="hidden md:block">
-          <Anchor color="foreground" href="/products" as={Link}>
-            SHOP ALL
-          </Anchor>
-        </NavbarItem>
-        <NavbarItem className="hidden md:block">
-          <Anchor
-            color="foreground"
-            href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Amen"
-            as={Link}
-          >
-            MEN
-          </Anchor>
-        </NavbarItem>
-        <NavbarItem className="hidden md:block">
-          <Anchor
-            color="foreground"
-            href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Awomen"
-            as={Link}
-          >
-            WOMEN
-          </Anchor>
-        </NavbarItem>
+        {LINKS.map((link) => (
+          <NavbarItem className="hidden md:block" key={link.id}>
+            <Anchor color="foreground" as={Link} href={link.path}>
+              {link.name.toUpperCase()}
+            </Anchor>
+          </NavbarItem>
+        ))}
         <NavbarItem className="grow">
           <SearchModal />
         </NavbarItem>
@@ -71,39 +73,19 @@ export default function Header() {
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
-        <NavbarMenuItem>
-          <Anchor
-            className="w-full"
-            color="foreground"
-            href="/products"
-            as={Link}
-            onPress={handleCloseMenu}
-          >
-            SHOP ALL
-          </Anchor>
-        </NavbarMenuItem>
-        <NavbarMenuItem>
-          <Anchor
-            className="w-full"
-            color="foreground"
-            href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Amen"
-            as={Link}
-            onPress={handleCloseMenu}
-          >
-            MEN
-          </Anchor>
-        </NavbarMenuItem>
-        <NavbarMenuItem>
-          <Anchor
-            className="w-full"
-            color="foreground"
-            href="/products?page=1&sort=createdAt%3Adesc&gender=in%3Awomen"
-            as={Link}
-            onPress={handleCloseMenu}
-          >
-            WOMEN
-          </Anchor>
-        </NavbarMenuItem>
+        {LINKS.map((link) => (
+          <NavbarMenuItem key={link.id}>
+            <Anchor
+              className="w-full"
+              color="foreground"
+              as={Link}
+              href={link.path}
+              onPress={handleCloseMenu}
+            >
+              {link.name.toUpperCase()}
+            </Anchor>
+          </NavbarMenuItem>
+        ))}
       </NavbarMenu>
     </Navbar>
   );

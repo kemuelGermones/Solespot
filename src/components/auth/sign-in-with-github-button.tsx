@@ -10,10 +10,10 @@ export default function SignInWithGithubButton() {
   return (
     <Button
       className="w-full bg-foreground font-bold text-white"
-      radius="none"
       type="submit"
-      startContent={<BsGithub />}
+      radius="none"
       isDisabled={pending}
+      startContent={<BsGithub />}
     >
       SIGN IN WITH GITHUB
     </Button>

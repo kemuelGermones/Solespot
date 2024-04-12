@@ -7,16 +7,19 @@ const CATEGORIES = [
     id: 1,
     name: "Basketball",
     filename: "/basketball.webp",
+    path: "/products?page=1&category=in%3A$basketball",
   },
   {
     id: 2,
     name: "Lifestyle",
     filename: "/lifestyle.webp",
+    path: "/products?page=1&category=in%3A$lifestyle",
   },
   {
     id: 3,
     name: "Apparel",
     filename: "/apparel.webp",
+    path: "/products?page=1&category=in%3A$apparel",
   },
 ];
 
@@ -27,20 +30,20 @@ export default function ProductCategoryCards() {
         <div className="relative" key={category.id}>
           <Image
             className="object-cover"
-            quality={100}
             fill={true}
+            quality={100}
             draggable={false}
-            src={category.filename}
             alt={category.name}
+            src={category.filename}
           />
           <Button
             className="absolute left-4 top-4 bg-foreground font-bold text-white"
-            radius="full"
             type="button"
+            radius="full"
             as={Link}
-            href={`/products?page=1&sort=createdAt%3Adesc&category=in%3A${category.name.toLowerCase()}`}
+            href={category.path}
           >
-            SHOP {category.name.toUpperCase()}
+            {`SHOP ${category.name.toUpperCase()}`}
           </Button>
         </div>
       ))}

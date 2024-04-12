@@ -56,12 +56,12 @@ export default function CartModal() {
         content={!isLoading && !isError ? response!.data.length : null}
       >
         <Button
+          type="button"
           radius="full"
           variant="light"
-          type="button"
+          onPress={onOpen}
           isIconOnly={true}
           isDisabled={isLoading}
-          onPress={onOpen}
         >
           <BsCart4 size="1.5em" />
         </Button>
@@ -78,17 +78,17 @@ export default function CartModal() {
             <>
               <ModalHeader>CART</ModalHeader>
               <ModalBody className="gap-4">
-                <CartItems onClose={onClose} />
+                <CartItems onClick={onClose} />
               </ModalBody>
               <ModalFooter className="gap-4">
                 <Button
                   className="bg-foreground font-bold text-white"
-                  radius="none"
                   type="button"
+                  radius="none"
+                  onPress={handleCheckout}
                   isDisabled={
                     isLoading || isPending || isError || !response!.data.length
                   }
-                  onPress={handleCheckout}
                 >
                   CHECKOUT
                 </Button>

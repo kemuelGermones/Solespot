@@ -38,7 +38,7 @@ export default function ProductBrandSelect() {
   const searchParams = useSearchParams();
 
   const brand = searchParams.get("brand");
-  const selectedKeys = brand
+  const brands = brand
     ? new Set<string>(brand.replace("in:", "").split(","))
     : new Set<string>();
 
@@ -56,10 +56,12 @@ export default function ProductBrandSelect() {
   return (
     <Select
       size="sm"
+      label="BRAND"
       radius="none"
       selectionMode="multiple"
-      label="BRAND"
       placeholder="SELECT A BRAND"
+      selectedKeys={brands}
+      onSelectionChange={handleNextPage}
       popoverProps={{
         radius: "none",
       }}
@@ -68,12 +70,10 @@ export default function ProductBrandSelect() {
           base: ["rounded-none"],
         },
       }}
-      selectedKeys={selectedKeys}
-      onSelectionChange={handleNextPage}
     >
-      {BRANDS.map((brand) => (
-        <SelectItem value={brand.value} key={brand.value}>
-          {brand.name.toUpperCase()}
+      {BRANDS.map((make) => (
+        <SelectItem key={make.value} value={make.value}>
+          {make.name.toUpperCase()}
         </SelectItem>
       ))}
     </Select>

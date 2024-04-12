@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { type Metadata } from "next";
 import { Barlow } from "next/font/google";
 import "./globals.css";
 import Providers from "@/app/providers";

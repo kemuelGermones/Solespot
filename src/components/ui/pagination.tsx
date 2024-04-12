@@ -20,17 +20,21 @@ export default function Pagination({ total }: PaginationProps) {
     push(`${pathname}?${params.toString()}`);
   };
 
+  if (total < 1) {
+    return null;
+  }
+
   return (
     <Pager
       radius="none"
-      classNames={{
-        wrapper: "mx-auto",
-        item: "font-bold",
-        cursor: "bg-foreground text-white font-bold",
-      }}
       total={total}
       page={Number(page)}
       onChange={handleNextPage}
+      classNames={{
+        item: "font-bold",
+        wrapper: "mx-auto",
+        cursor: "bg-foreground text-white font-bold",
+      }}
     />
   );
 }

@@ -24,9 +24,9 @@ export default function AccountDropdown() {
   if (status === "loading") {
     return (
       <Button
+        type="button"
         radius="full"
         variant="light"
-        type="button"
         isIconOnly={true}
         isDisabled={true}
       >
@@ -38,12 +38,12 @@ export default function AccountDropdown() {
   if (status === "unauthenticated") {
     return (
       <Button
-        radius="full"
-        variant="light"
         type="button"
+        radius="full"
         href="/sign_in"
-        isIconOnly={true}
+        variant="light"
         as={Link}
+        isIconOnly={true}
       >
         <BsPerson size="1.5em" />
       </Button>
@@ -57,28 +57,28 @@ export default function AccountDropdown() {
       onOpenChange={setIsContentOpen}
     >
       <PopoverTrigger>
-        <Button radius="full" variant="light" type="button" isIconOnly={true}>
+        <Button type="button" radius="full" variant="light" isIconOnly={true}>
           <BsPerson size="1.5em" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="min-w-[200px] gap-0.5 p-2">
         <User
-          classNames={{
-            base: "w-full px-2 py-1.5 justify-start",
-            description: "text-foreground-500",
-          }}
+          description={data!.user!.email!}
           name={data!.user!.name!.toUpperCase()}
-          description={data!.user!.email}
           avatarProps={{
             src: data!.user!.image!,
+          }}
+          classNames={{
+            description: "text-foreground-500",
+            base: "w-full px-2 py-1.5 justify-start",
           }}
         />
         <Button
           className="w-full justify-start px-2 py-1.5"
-          radius="none"
-          variant="light"
           type="button"
+          radius="none"
           href="/orders"
+          variant="light"
           as={Link}
           onPress={handleCloseContent}
         >
@@ -87,9 +87,9 @@ export default function AccountDropdown() {
         <form className="w-full" action={signOut}>
           <Button
             className="w-full justify-start px-2 py-1.5"
+            type="submit"
             radius="none"
             variant="light"
-            type="submit"
             onPress={handleCloseContent}
           >
             SIGN OUT

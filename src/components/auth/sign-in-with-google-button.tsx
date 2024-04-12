@@ -10,10 +10,10 @@ export default function SignInWithGoogleButton() {
   return (
     <Button
       className="w-full bg-foreground font-bold text-white"
-      radius="none"
       type="submit"
-      startContent={<BsGoogle />}
+      radius="none"
       isDisabled={pending}
+      startContent={<BsGoogle />}
     >
       SIGN IN WITH GOOGLE
     </Button>

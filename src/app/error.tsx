@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import { Button } from "@nextui-org/react";
 
 interface ErrorProps {
-  error: Error & { digest?: string };
   reset: () => void;
+  error: Error & { digest?: string };
 }
 
-export default function Error({ error, reset }: ErrorProps) {
+export default function Error({ reset, error }: ErrorProps) {
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -28,8 +28,8 @@ export default function Error({ error, reset }: ErrorProps) {
       </div>
       <Button
         className="bg-foreground font-bold text-white"
-        radius="none"
         type="button"
+        radius="none"
         onPress={handleReset}
       >
         TRY AGAIN

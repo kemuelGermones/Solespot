@@ -16,22 +16,22 @@ import { BsSearch } from "react-icons/bs";
 import SearchItems from "@/components/search/search-items";
 
 export default function SearchModal() {
-  const [search, setSearch] = useState("");
-  const [value] = useDebounce(search.trim(), 500);
+  const [currentValue, setCurrentValue] = useState("");
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [debouncedValue] = useDebounce(currentValue.trim(), 500);
 
-  const handleChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(event.target.value);
+  const handleChangeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrentValue(event.target.value);
   };
 
   return (
     <>
       <Button
         className="w-full justify-start bg-default-100 text-foreground-500"
-        radius="none"
         type="button"
-        startContent={<BsSearch />}
+        radius="none"
         onPress={onOpen}
+        startContent={<BsSearch />}
       >
         Search
       </Button>
@@ -48,23 +48,23 @@ export default function SearchModal() {
             <>
               <ModalHeader>
                 <Input
-                  radius="none"
                   size="sm"
                   type="search"
+                  radius="none"
                   placeholder="Search"
+                  value={currentValue}
                   startContent={<BsSearch />}
-                  value={search}
-                  onChange={handleChangeSearch}
+                  onChange={handleChangeValue}
                 />
               </ModalHeader>
               <ModalBody className="gap-4">
-                <SearchItems search={value} onClose={onClose} />
+                <SearchItems onClick={onClose} search={debouncedValue}  />
               </ModalBody>
               <ModalFooter>
                 <Button
                   className="bg-foreground font-bold text-white"
-                  radius="none"
                   type="button"
+                  radius="none"
                   onPress={onClose}
                 >
                   CLOSE

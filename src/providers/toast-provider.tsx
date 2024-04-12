@@ -17,9 +17,9 @@ export default function ToastProvider({ children }: ToastProviderProps) {
             icon: null,
             style: {
               color: "#FFFFFF",
-              background: "#F31260",
               borderRadius: "0px",
               padding: "12px 14px",
+              background: "#F31260",
             },
           },
         }}

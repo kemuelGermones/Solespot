@@ -55,17 +55,19 @@ export default async function Products({ searchParams }: ProductsProps) {
   const genders = gender?.replace("in:", "").split(",");
   const categories = category?.replace("in:", "").split(",");
 
-  const total = await getProductsPages({
+  const totalPages = await getProductsPages({
     brands,
     genders,
     categories,
     distinct: ["name", "gender"],
   });
 
+  const leaf = Number(page);
   if (
-    +page < 1 ||
-    (total > 0 && +page > total) ||
-    (total === 0 && +page !== 1)
+    leaf < 1 ||
+    isNaN(leaf) ||
+    (totalPages === 0 && leaf !== 1) ||
+    (totalPages > 0 && leaf > totalPages)
   ) {
     notFound();
   }
@@ -85,12 +87,12 @@ export default async function Products({ searchParams }: ProductsProps) {
           genders,
           createdAt,
           categories,
+          skip: (leaf - 1) * 12,
           take: 12,
           distinct: ["name", "gender"],
-          skip: (+page - 1) * 12,
         })}
       />
-      {total > 1 ? <Pagination total={total} /> : null}
+      <Pagination total={totalPages} />
     </div>
   );
 }

@@ -16,18 +16,18 @@ export default async function ProductList({ query }: ProductListProps) {
         products.map((product) => (
           <Link
             className="flex flex-col gap-2"
+            key={product.id}
             href={`/products/${product.name.replaceAll(" ", "_")}/${
               product.gender
             }`}
-            key={product.id}
           >
             <Image
               width={500}
               height={500}
               quality={100}
               draggable={false}
-              src={product.images[0].image.url}
               alt={product.name}
+              src={product.images[0].image.url}
             />
             <div className="text-sm text-foreground-500">
               {product.brand.toUpperCase()}

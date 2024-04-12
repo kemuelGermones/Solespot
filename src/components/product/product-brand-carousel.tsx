@@ -65,20 +65,20 @@ export default function ProductBrandCarousel() {
           <div className="relative shrink-0 grow-0 basis-full" key={brand.id}>
             <Image
               className="object-cover"
-              quality={100}
               fill={true}
+              quality={100}
+              alt={brand.name}
               draggable={false}
               src={brand.filename}
-              alt={brand.name}
             />
             <Button
               className="absolute left-4 top-4 bg-foreground font-bold text-white"
-              radius="full"
               type="button"
+              radius="full"
               as={Link}
               href={`/products?page=1&sort=createdAt%3Adesc&brand=in%3A${brand.name.toLowerCase()}`}
             >
-              SHOP {brand.name.toUpperCase()}
+              {`SHOP ${brand.name.toUpperCase()}`}
             </Button>
           </div>
         ))}

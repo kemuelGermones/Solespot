@@ -38,9 +38,9 @@ export default function CartItemRemoveButton({
 
   return (
     <Button
+      type="button"
       radius="full"
       variant="light"
-      type="button"
       isIconOnly={true}
       isDisabled={isPending}
       onClick={handleRemoveToCart}

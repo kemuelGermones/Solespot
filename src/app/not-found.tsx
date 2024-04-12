@@ -11,9 +11,9 @@ export default function NotFound() {
       </div>
       <Button
         className="bg-foreground font-bold text-white"
-        radius="none"
-        type="button"
         href="/"
+        type="button"
+        radius="none"
         as={Link}
       >
         HOMEPAGE

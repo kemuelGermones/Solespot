@@ -16,18 +16,18 @@ export default async function OrderList({ query }: OrderListProps) {
         orders.map((order) => (
           <Link
             className="flex flex-col gap-2"
+            key={order.id}
             href={`/products/${order.product.name.replaceAll(" ", "_")}/${
               order.product.gender
             }`}
-            key={order.id}
           >
             <Image
               width={500}
               height={500}
               quality={100}
               draggable={false}
-              src={order.product.images[0].image.url}
               alt={order.product.name}
+              src={order.product.images[0].image.url}
             />
             <div className="text-sm text-foreground-500">
               {order.product.brand.toUpperCase()}

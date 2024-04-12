@@ -45,14 +45,14 @@ export default function Footer() {
           {LINKS.map((link) => (
             <Button
               className="text-white"
-              radius="full"
-              variant="light"
               type="button"
+              radius="full"
               target="_blank"
-              isIconOnly={true}
+              variant="light"
               as={Link}
-              href={link.url}
               key={link.id}
+              href={link.url}
+              isIconOnly={true}
             >
               {link.icon}
             </Button>

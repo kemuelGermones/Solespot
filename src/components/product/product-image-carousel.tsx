@@ -32,10 +32,10 @@ export default function ProductImageCarousel({
               width={500}
               height={500}
               quality={100}
-              draggable={false}
+              key={image.id}
               src={image.url}
               alt={image.name}
-              key={image.id}
+              draggable={false}
             />
           ))}
         </div>
@@ -51,11 +51,11 @@ export default function ProductImageCarousel({
             width={500}
             height={500}
             quality={100}
-            draggable={false}
+            key={image.id}
             src={image.url}
             alt={image.name}
+            draggable={false}
             onClick={handleChangeSlide.bind(null, index)}
-            key={image.id}
           />
         ))}
       </div>

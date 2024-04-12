@@ -9,10 +9,10 @@ import formatPrice from "@/utils/format-price";
 import type Order from "@/types/order";
 
 interface CartItemsProps {
-  onClose: () => void;
+  onClick: () => void;
 }
 
-export default function CartItems({ onClose }: CartItemsProps) {
+export default function CartItems({ onClick }: CartItemsProps) {
   const {
     error,
     isError,
@@ -60,17 +60,17 @@ export default function CartItems({ onClose }: CartItemsProps) {
   return response!.data.map((order) => (
     <Link
       className="grid grid-cols-[1fr_2fr] gap-2"
-      href={`/products/${order.product.name.replaceAll(" ", "_")}/${order.product.gender}`}
-      onClick={onClose}
       key={order.id}
+      onClick={onClick}
+      href={`/products/${order.product.name.replaceAll(" ", "_")}/${order.product.gender}`}
     >
       <Image
         width={500}
         height={500}
         quality={100}
         draggable={false}
-        src={order.product.images[0].image.url}
         alt={order.product.name}
+        src={order.product.images[0].image.url}
       />
       <div className="flex flex-col gap-2">
         <div className="text-sm text-foreground-500">

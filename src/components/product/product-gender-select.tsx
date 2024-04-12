@@ -23,7 +23,7 @@ export default function ProductGenderSelect() {
   const searchParams = useSearchParams();
 
   const gender = searchParams.get("gender");
-  const selectedKeys = gender
+  const genders = gender
     ? new Set<string>(gender.replace("in:", "").split(","))
     : new Set<string>();
 
@@ -42,9 +42,11 @@ export default function ProductGenderSelect() {
     <Select
       size="sm"
       radius="none"
-      selectionMode="multiple"
       label="GENDER"
+      selectionMode="multiple"
       placeholder="SELECT A GENDER"
+      selectedKeys={genders}
+      onSelectionChange={handleNextPage}
       popoverProps={{
         radius: "none",
       }}
@@ -53,12 +55,10 @@ export default function ProductGenderSelect() {
           base: ["rounded-none"],
         },
       }}
-      selectedKeys={selectedKeys}
-      onSelectionChange={handleNextPage}
     >
-      {GENDERS.map((gender) => (
-        <SelectItem value={gender.value} key={gender.value}>
-          {gender.name.toUpperCase()}
+      {GENDERS.map((sex) => (
+        <SelectItem key={sex.value} value={sex.value}>
+          {sex.name.toUpperCase()}
         </SelectItem>
       ))}
     </Select>

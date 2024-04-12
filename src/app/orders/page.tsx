@@ -20,12 +20,14 @@ export default async function Orders({ searchParams }: OrdersProps) {
     notFound();
   }
 
-  const total = await getOrdersPages(session.user.id);
+  const totalPages = await getOrdersPages(session.user.id);
 
+  const leaf = Number(page);
   if (
-    +page < 1 ||
-    (total > 0 && +page > total) ||
-    (total === 0 && +page !== 1)
+    leaf < 1 ||
+    isNaN(leaf) ||
+    (totalPages === 0 && leaf !== 1) ||
+    (totalPages > 0 && leaf > totalPages)
   ) {
     notFound();
   }
@@ -34,13 +36,13 @@ export default async function Orders({ searchParams }: OrdersProps) {
     <div className="mx-auto flex flex-col gap-8 px-4 py-8 lg:container">
       <OrderList
         query={getOrders.bind(null, {
+          skip: (leaf - 1) * 12,
+          userId: session.user.id,
           take: 12,
           orderedAt: "desc",
-          skip: (+page - 1) * 12,
-          userId: session.user.id,
         })}
       />
-      {total > 1 ? <Pagination total={total} /> : null}
+      <Pagination total={totalPages} />
     </div>
   );
 }

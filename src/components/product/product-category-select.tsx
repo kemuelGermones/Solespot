@@ -28,7 +28,7 @@ export default function ProductCategorySelect() {
   const searchParams = useSearchParams();
 
   const category = searchParams.get("category");
-  const selectedKeys = category
+  const categories = category
     ? new Set<string>(category.replace("in:", "").split(","))
     : new Set<string>();
 
@@ -47,9 +47,11 @@ export default function ProductCategorySelect() {
     <Select
       size="sm"
       radius="none"
-      selectionMode="multiple"
       label="CATEGORY"
+      selectionMode="multiple"
       placeholder="SELECT A CATEGORY"
+      selectedKeys={categories}
+      onSelectionChange={handleNextPage}
       popoverProps={{
         radius: "none",
       }}
@@ -58,12 +60,10 @@ export default function ProductCategorySelect() {
           base: ["rounded-none"],
         },
       }}
-      selectedKeys={selectedKeys}
-      onSelectionChange={handleNextPage}
     >
-      {CATEGORIES.map((category) => (
-        <SelectItem value={category.value} key={category.value}>
-          {category.name.toUpperCase()}
+      {CATEGORIES.map((classification) => (
+        <SelectItem key={classification.value} value={classification.value}>
+          {classification.name.toUpperCase()}
         </SelectItem>
       ))}
     </Select>

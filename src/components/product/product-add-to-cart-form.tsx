@@ -15,7 +15,9 @@ interface ProductAddToCartFormProps {
 export default function ProductAddToCartForm({
   products,
 }: ProductAddToCartFormProps) {
-  const [currentId, setCurrentId] = useState(new Set([products[0].id]));
+  const [currentProduct, setCurrentProduct] = useState(
+    new Set([products[0].id]),
+  );
   const queryClient = useQueryClient();
 
   const { mutate, isPending } = useMutation({
@@ -33,22 +35,25 @@ export default function ProductAddToCartForm({
     },
   });
 
-  const handleChangeId = (values: Selection) => {
-    setCurrentId(values as Set<string>);
+  const handleChangeProduct = (values: Selection) => {
+    setCurrentProduct(values as Set<string>);
   };
 
   const handleAddToCart = (event: React.FormEvent) => {
     event.preventDefault();
-    mutate(currentId.values().next().value);
+    mutate(currentProduct.values().next().value);
   };
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleAddToCart}>
       <Select
         size="sm"
-        radius="none"
         label="SIZE"
+        radius="none"
         placeholder="SELECT A SIZE"
+        selectedKeys={currentProduct}
+        isInvalid={!currentProduct.size}
+        onSelectionChange={handleChangeProduct}
         popoverProps={{
           radius: "none",
         }}
@@ -57,21 +62,18 @@ export default function ProductAddToCartForm({
             base: ["rounded-none"],
           },
         }}
-        isInvalid={!currentId.size}
-        selectedKeys={currentId}
-        onSelectionChange={handleChangeId}
       >
         {products.map((product) => (
-          <SelectItem value={product.id} key={product.id}>
+          <SelectItem key={product.id} value={product.id}>
             {product.size.toUpperCase()}
           </SelectItem>
         ))}
       </Select>
       <Button
         className="bg-foreground font-bold text-white"
-        radius="none"
         type="submit"
-        isDisabled={!currentId.size || isPending}
+        radius="none"
+        isDisabled={isPending || !currentProduct.size}
       >
         ADD TO CART
       </Button>

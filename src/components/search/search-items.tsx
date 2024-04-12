@@ -9,10 +9,10 @@ import type Product from "@/types/product";
 
 interface SearchItemsProps {
   search: string;
-  onClose: () => void;
+  onClick: () => void;
 }
 
-export default function SearchItems({ search, onClose }: SearchItemsProps) {
+export default function SearchItems({ search, onClick }: SearchItemsProps) {
   const {
     error,
     isError,
@@ -60,17 +60,17 @@ export default function SearchItems({ search, onClose }: SearchItemsProps) {
   return response!.data.map((product) => (
     <Link
       className="grid grid-cols-[1fr_2fr] gap-2"
-      href={`/products/${product.name.replaceAll(" ", "_")}/${product.gender}`}
-      onClick={onClose}
       key={product.id}
+      onClick={onClick}
+      href={`/products/${product.name.replaceAll(" ", "_")}/${product.gender}`}
     >
       <Image
         width={500}
         height={500}
         quality={100}
         draggable={false}
-        src={product.images[0].image.url}
         alt={product.name}
+        src={product.images[0].image.url}
       />
       <div className="flex flex-col gap-2">
         <div className="text-sm text-foreground-500">
