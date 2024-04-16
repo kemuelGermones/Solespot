@@ -28,14 +28,14 @@ export async function DELETE(request: NextRequest, { params }: DeleteParams) {
 
     if (!order) {
       throw new ApiError(
-        "Sorry, no cart order were found. Please try again.",
+        "Sorry, cart item was not found. Please try again.",
         400,
       );
     }
 
-    if (session.user.id !== order.userId) {
+    if (order.userId !== session.user.id) {
       throw new ApiError(
-        "Sorry, you're not allowed to delete this cart order. Please try again.",
+        "Sorry, you're not allowed to delete this cart item. Please try again.",
         400,
       );
     }
@@ -44,19 +44,15 @@ export async function DELETE(request: NextRequest, { params }: DeleteParams) {
 
     return NextResponse.json(null, { status: 200 });
   } catch (error) {
+    let status = 500;
+    let message =
+      "Sorry, but it seems like an unexpected error has occurred. Please try again later.";
+
     if (error instanceof ApiError) {
-      return NextResponse.json(
-        { message: error.message },
-        { status: error.status },
-      );
+      status = error.status;
+      message = error.message;
     }
 
-    return NextResponse.json(
-      {
-        message:
-          "Sorry, but it seems like an unexpected error has occurred. Please try again later.",
-      },
-      { status: 500 },
-    );
+    return NextResponse.json({ message }, { status });
   }
 }

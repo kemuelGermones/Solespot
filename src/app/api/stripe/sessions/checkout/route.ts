@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import db from "@/db";
 import { auth } from "@/auth";
@@ -15,7 +15,7 @@ if (!CLIENT_URL || !STRIPE_SECRET_KEY) {
 
 const stripe = new Stripe(STRIPE_SECRET_KEY);
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     const session = await auth();
 
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const results = await db.order.findMany({
+    const orders = await db.order.findMany({
       orderBy: {
         orderedAt: "asc",
       },
@@ -36,6 +36,11 @@ export async function POST(request: NextRequest) {
       include: {
         product: {
           include: {
+            stock: {
+              select: {
+                quantity: true,
+              },
+            },
             images: {
               select: {
                 image: true,
@@ -49,20 +54,28 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    if (!results.length) {
+    if (!orders.length) {
       throw new ApiError(
         "Sorry, you're cart is empty. Please add products and try again.",
         400,
       );
     }
 
-    const orders = results.map((result) => ({
-      ...result,
-      product: {
-        ...result.product,
-        price: result.product.price.toNumber(),
-      },
-    }));
+    if (orders.length > 100) {
+      throw new ApiError(
+        "Sorry, you already exceeded the cart limit which is 100 items. Please delete some cart items and try again.",
+        400,
+      );
+    }
+
+    for (let order of orders) {
+      if (order.product.stock!.quantity < 1) {
+        throw new ApiError(
+          `Sorry, ${order.product.name} for ${order.product.gender} with size the of ${order.product.size.toUpperCase()} is out of stock. Please try again.`,
+          400,
+        );
+      }
+    }
 
     const checkout = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -78,7 +91,7 @@ export async function POST(request: NextRequest) {
         quantity: 1,
         price_data: {
           currency: "php",
-          unit_amount: order.product.price * 100,
+          unit_amount: order.product.price.toNumber() * 100,
           product_data: {
             name: order.product.name,
             images: order.product.images.map(({ image }) => image.url),

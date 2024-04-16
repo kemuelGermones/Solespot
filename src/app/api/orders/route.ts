@@ -20,11 +20,12 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
+
     const validation = schema.safeParse(body);
 
     if (!validation.success) {
       throw new ApiError(
-        "Sorry, a validation error has occured. Please verify it and try again.",
+        "Sorry, product was not found. Please try again.",
         400,
       );
     }
@@ -42,32 +43,28 @@ export async function POST(request: NextRequest) {
 
     await db.order.create({
       data: {
-        userId: session.user.id,
-        productId: product.id,
         isPaid: false,
+        productId: product.id,
+        userId: session.user.id,
       },
     });
 
     return NextResponse.json(null, { status: 200 });
   } catch (error) {
+    let status = 500;
+    let message =
+      "Sorry, but it seems like an unexpected error has occurred. Please try again later.";
+
     if (error instanceof ApiError) {
-      return NextResponse.json(
-        { message: error.message },
-        { status: error.status },
-      );
+      status = error.status;
+      message = error.message;
     }
 
-    return NextResponse.json(
-      {
-        message:
-          "Sorry, but it seems like an unexpected error has occurred. Please try again later.",
-      },
-      { status: 500 },
-    );
+    return NextResponse.json({ message }, { status });
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await auth();
 
@@ -79,21 +76,21 @@ export async function GET(request: NextRequest) {
     }
 
     const results = await db.order.findMany({
-      where: {
-        AND: [{ userId: session.user.id }, { isPaid: false }],
-      },
       orderBy: {
         orderedAt: "asc",
+      },
+      where: {
+        AND: [{ isPaid: false }, { userId: session.user.id }],
       },
       include: {
         product: {
           include: {
             images: {
-              orderBy: {
-                sequence: "asc",
-              },
               select: {
                 image: true,
+              },
+              orderBy: {
+                sequence: "asc",
               },
             },
           },
@@ -111,19 +108,15 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(orders, { status: 200 });
   } catch (error) {
+    let status = 500;
+    let message =
+      "Sorry, but it seems like an unexpected error has occurred. Please try again later.";
+
     if (error instanceof ApiError) {
-      return NextResponse.json(
-        { message: error.message },
-        { status: error.status },
-      );
+      status = error.status;
+      message = error.message;
     }
 
-    return NextResponse.json(
-      {
-        message:
-          "Sorry, but it seems like an unexpected error has occurred. Please try again later.",
-      },
-      { status: 500 },
-    );
+    return NextResponse.json({ message }, { status });
   }
 }

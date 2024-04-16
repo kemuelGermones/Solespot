@@ -10,14 +10,20 @@ export async function GET(request: NextRequest) {
     const contains = searchParams.get("search") ?? undefined;
 
     const results = await db.product.findMany({
+      take: 8,
+      distinct: ["name", "gender"],
+      include: {
+        images: {
+          select: {
+            image: true,
+          },
+          orderBy: {
+            sequence: "asc",
+          },
+        },
+      },
       where: {
         AND: [
-          {
-            name: {
-              contains,
-              mode: "insensitive",
-            },
-          },
           {
             stock: {
               quantity: {
@@ -25,19 +31,13 @@ export async function GET(request: NextRequest) {
               },
             },
           },
+          {
+            name: {
+              contains,
+              mode: "insensitive",
+            },
+          },
         ],
-      },
-      take: 8,
-      distinct: ["name", "gender"],
-      include: {
-        images: {
-          orderBy: {
-            sequence: "asc",
-          },
-          select: {
-            image: true,
-          },
-        },
       },
     });
 
