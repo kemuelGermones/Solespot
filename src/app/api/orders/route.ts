@@ -82,7 +82,11 @@ export async function GET() {
       where: {
         AND: [{ isPaid: false }, { userId: session.user.id }],
       },
-      include: {
+      select: {
+        id: true,
+        isPaid: true,
+        orderedAt: true,
+        receivedAt: true,
         product: {
           include: {
             images: {

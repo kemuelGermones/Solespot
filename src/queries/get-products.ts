@@ -31,6 +31,16 @@ export default async function getProducts({
       createdAt,
       price,
     },
+    include: {
+      images: {
+        select: {
+          image: true,
+        },
+        orderBy: {
+          sequence: "asc",
+        },
+      },
+    },
     where: {
       AND: [
         { name },
@@ -40,13 +50,13 @@ export default async function getProducts({
           },
         },
         {
-          category: {
-            in: categories,
+          gender: {
+            in: genders,
           },
         },
         {
-          gender: {
-            in: genders,
+          category: {
+            in: categories,
           },
         },
         {
@@ -57,16 +67,6 @@ export default async function getProducts({
           },
         },
       ],
-    },
-    include: {
-      images: {
-        orderBy: {
-          sequence: "asc",
-        },
-        select: {
-          image: true,
-        },
-      },
     },
   });
 

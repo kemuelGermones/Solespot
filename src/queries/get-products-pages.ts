@@ -26,13 +26,13 @@ export default async function getProductsPages({
           },
         },
         {
-          category: {
-            in: categories,
+          gender: {
+            in: genders,
           },
         },
         {
-          gender: {
-            in: genders,
+          category: {
+            in: categories,
           },
         },
         {

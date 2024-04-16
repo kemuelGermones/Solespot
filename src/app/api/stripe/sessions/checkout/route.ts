@@ -33,13 +33,17 @@ export async function POST() {
       where: {
         AND: [{ isPaid: false }, { userId: session.user.id }],
       },
-      include: {
+      select: {
+        id: true,
+        isPaid: true,
+        orderedAt: true,
+        receivedAt: true,
         product: {
           include: {
             stock: {
               select: {
-                quantity: true,
-              },
+                quantity: true
+              }
             },
             images: {
               select: {

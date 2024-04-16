@@ -22,15 +22,19 @@ export default async function getOrders({
     where: {
       AND: [{ userId }, { isPaid: true }],
     },
-    include: {
+    select: {
+      id: true,
+      isPaid: true,
+      orderedAt: true,
+      receivedAt: true,
       product: {
         include: {
           images: {
-            orderBy: {
-              sequence: "asc",
-            },
             select: {
               image: true,
+            },
+            orderBy: {
+              sequence: "asc",
             },
           },
         },
