@@ -34,7 +34,7 @@ export default async function OrderList({ query }: OrderListProps) {
             </div>
             <div className="font-bold">{order.product.name}</div>
             <div className="text-sm text-foreground-500">
-              {order.product.gender.toUpperCase()}
+              {`${order.product.size.toUpperCase()} / ${order.product.gender.toUpperCase()}`}
             </div>
             <div>{formatPrice(order.product.price)}</div>
             {order.receivedAt ? (

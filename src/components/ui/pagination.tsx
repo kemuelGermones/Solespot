@@ -20,7 +20,7 @@ export default function Pagination({ total }: PaginationProps) {
     push(`${pathname}?${params.toString()}`);
   };
 
-  if (total < 1) {
+  if (total < 2) {
     return null;
   }
 
