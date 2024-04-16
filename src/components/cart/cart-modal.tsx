@@ -34,7 +34,7 @@ export default function CartModal() {
   const { mutate, isPending } = useMutation({
     mutationFn: () =>
       axios.post<Stripe.Response<Stripe.Checkout.Session>>(
-        `/api/stripe/checkout`,
+        `/api/stripe/sessions/checkout`,
       ),
     onSuccess: (feedback) => {
       window.location.assign(feedback.data.url!);
