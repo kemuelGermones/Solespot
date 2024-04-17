@@ -1,6 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { headers } from "next/headers";
-import { revalidatePath } from "next/cache";
 import Stripe from "stripe";
 import db from "@/db";
 import ApiError from "@/utils/api-error";
@@ -97,8 +96,6 @@ export async function POST(request: NextRequest) {
         },
       },
     });
-
-    revalidatePath("/orders");
 
     return NextResponse.json(null, { status: 200 });
   } catch (error) {
