@@ -13,6 +13,8 @@ interface ProductProps {
   };
 }
 
+export const revalidate = 180;
+
 export default async function Product({ params }: ProductProps) {
   const { name, gender } = params;
 
@@ -57,4 +59,17 @@ export default async function Product({ params }: ProductProps) {
       </div>
     </>
   );
+}
+
+export async function generateStaticParams() {
+  const products = await getProducts({
+    distinct: ["name", "gender"],
+  });
+
+  const params = products.map((product) => ({
+    gender: product.gender,
+    name: product.name.replaceAll(" ", "_"),
+  }));
+
+  return params;
 }
