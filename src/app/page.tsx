@@ -3,6 +3,8 @@ import ProductList from "@/components/product/product-list";
 import ProductCategoryCards from "@/components/product/product-category-cards";
 import getProducts from "@/queries/get-products";
 
+export const revalidate = 180;
+
 export default function Home() {
   return (
     <>
