@@ -11,26 +11,31 @@ const BRANDS = [
     id: 1,
     name: "Jordan",
     filename: "/jordan.webp",
+    path: "/products?page=1&brand=in%3Ajordan",
   },
   {
     id: 2,
     name: "Nike",
     filename: "/nike.webp",
+    path: "/products?page=1&brand=in%3Anike",
   },
   {
     id: 3,
     name: "Adidas",
     filename: "/adidas.webp",
+    path: "/products?page=1&brand=in%3Aadidas",
   },
   {
     id: 4,
     name: "Under Armour",
     filename: "/under-armour.webp",
+    path: "/products?page=1&brand=in%3Aunder%20armour",
   },
   {
     id: 5,
     name: "Puma",
     filename: "/puma.webp",
+    path: "/products?page=1&brand=in%3Apuma",
   },
 ];
 
@@ -76,7 +81,7 @@ export default function ProductBrandCarousel() {
               type="button"
               radius="full"
               as={Link}
-              href={`/products?page=1&sort=createdAt%3Adesc&brand=in%3A${brand.name.toLowerCase()}`}
+              href={brand.path}
             >
               {`SHOP ${brand.name.toUpperCase()}`}
             </Button>

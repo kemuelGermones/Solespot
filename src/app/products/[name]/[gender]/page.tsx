@@ -47,11 +47,11 @@ export default async function Product({ params }: ProductProps) {
         <div className="text-4xl font-bold">RECOMMENDED</div>
         <ProductList
           query={getProducts.bind(null, {
-            genders: [products[0].gender],
-            categories: [products[0].category],
             take: 4,
             createdAt: "desc",
             distinct: ["name", "gender"],
+            genders: [products[0].gender],
+            categories: [products[0].category],
           })}
         />
       </div>

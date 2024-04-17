@@ -15,7 +15,6 @@ export default async function SignIn({ searchParams }: SignInProps) {
   const { error } = { ...searchParams };
 
   const session = await auth();
-
   if (session?.user) {
     notFound();
   }

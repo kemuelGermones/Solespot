@@ -28,6 +28,21 @@ export const {
   handlers: { GET, POST },
 } = NextAuth({
   adapter: PrismaAdapter(db),
+  pages: {
+    signOut: "/",
+    error: "/sign_in",
+    signIn: "/sign_in",
+    verifyRequest: "/",
+  },
+  callbacks: {
+    async session({ session, user }: any) {
+      if (session && user) {
+        session.user.id = user.id;
+      }
+
+      return session;
+    },
+  },
   providers: [
     Google({
       clientId: GOOGLE_CLIENT_ID,
@@ -38,18 +53,4 @@ export const {
       clientSecret: GITHUB_CLIENT_SECRET,
     }),
   ],
-  callbacks: {
-    async session({ session, user }: any) {
-      if (session && user) {
-        session.user.id = user.id;
-      }
-      return session;
-    },
-  },
-  pages: {
-    signOut: "/",
-    error: "/sign_in",
-    signIn: "/sign_in",
-    verifyRequest: "/",
-  },
 });

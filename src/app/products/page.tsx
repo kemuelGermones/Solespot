@@ -19,7 +19,13 @@ interface ProductsProps {
 }
 
 export default async function Products({ searchParams }: ProductsProps) {
-  const { sort, brand, gender, category, page = "1" } = { ...searchParams };
+  const {
+    sort,
+    brand,
+    gender,
+    category,
+    page: part = "1",
+  } = { ...searchParams };
 
   let price: "desc" | "asc" | undefined;
   let createdAt: "desc" | "asc" | undefined;
@@ -55,19 +61,19 @@ export default async function Products({ searchParams }: ProductsProps) {
   const genders = gender?.replace("in:", "").split(",");
   const categories = category?.replace("in:", "").split(",");
 
-  const totalPages = await getProductsPages({
+  const total = await getProductsPages({
     brands,
     genders,
     categories,
     distinct: ["name", "gender"],
   });
 
-  const leaf = Number(page);
+  const page = Number(part);
   if (
-    leaf < 1 ||
-    isNaN(leaf) ||
-    (totalPages === 0 && leaf !== 1) ||
-    (totalPages > 0 && leaf > totalPages)
+    page < 1 ||
+    isNaN(page) ||
+    (total === 0 && page !== 1) ||
+    (total > 0 && page > total)
   ) {
     notFound();
   }
@@ -87,12 +93,12 @@ export default async function Products({ searchParams }: ProductsProps) {
           genders,
           createdAt,
           categories,
-          skip: (leaf - 1) * 12,
           take: 12,
+          skip: (page - 1) * 12,
           distinct: ["name", "gender"],
         })}
       />
-      <Pagination total={totalPages} />
+      <Pagination total={total} />
     </div>
   );
 }
