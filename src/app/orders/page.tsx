@@ -1,7 +1,9 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { auth } from "@/auth";
 import OrderList from "@/components/order/order-list";
 import Pagination from "@/components/ui/pagination";
+import ListSkeleton from "@/components/ui/list-skeleton";
 import getOrdersPages from "@/queries/get-orders-pages";
 import getOrders from "@/queries/get-orders";
 
@@ -32,14 +34,16 @@ export default async function Orders({ searchParams }: OrdersProps) {
 
   return (
     <div className="mx-auto flex flex-col gap-8 px-4 py-8 lg:container">
-      <OrderList
-        query={getOrders.bind(null, {
-          take: 12,
-          orderedAt: "desc",
-          skip: (page - 1) * 12,
-          userId: session.user.id,
-        })}
-      />
+      <Suspense fallback={<ListSkeleton length={12} />}>
+        <OrderList
+          query={getOrders.bind(null, {
+            take: 12,
+            orderedAt: "desc",
+            skip: (page - 1) * 12,
+            userId: session.user.id,
+          })}
+        />
+      </Suspense>
       <Pagination total={total} />
     </div>
   );

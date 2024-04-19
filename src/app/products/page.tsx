@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import ProductSortSelect from "@/components/product/product-sort-select";
 import ProductBrandSelect from "@/components/product/product-brand-select";
@@ -5,6 +6,7 @@ import ProductCategorySelect from "@/components/product/product-category-select"
 import ProductGenderSelect from "@/components/product/product-gender-select";
 import ProductList from "@/components/product/product-list";
 import Pagination from "@/components/ui/pagination";
+import ListSkeleton from "@/components/ui/list-skeleton";
 import getProductsPages from "@/queries/get-products-pages";
 import getProducts from "@/queries/get-products";
 
@@ -88,18 +90,20 @@ export default async function Products({ searchParams }: ProductsProps) {
         <ProductCategorySelect />
         <ProductGenderSelect />
       </div>
-      <ProductList
-        query={getProducts.bind(null, {
-          price,
-          brands,
-          genders,
-          createdAt,
-          categories,
-          take: 12,
-          skip: (page - 1) * 12,
-          distinct: ["name", "gender"],
-        })}
-      />
+      <Suspense fallback={<ListSkeleton length={12} />}>
+        <ProductList
+          query={getProducts.bind(null, {
+            price,
+            brands,
+            genders,
+            createdAt,
+            categories,
+            take: 12,
+            skip: (page - 1) * 12,
+            distinct: ["name", "gender"],
+          })}
+        />
+      </Suspense>
       <Pagination total={total} />
     </div>
   );

@@ -1,8 +1,10 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import ProductImageCarousel from "@/components/product/product-image-carousel";
 import ProductAddToCartForm from "@/components/product/product-add-to-cart-form";
 import ProductAccordion from "@/components/product/product-accordion";
 import ProductList from "@/components/product/product-list";
+import ListSkeleton from "@/components/ui/list-skeleton";
 import getProducts from "@/queries/get-products";
 import formatPrice from "@/utils/format-price";
 
@@ -47,15 +49,17 @@ export default async function Product({ params }: ProductProps) {
       </div>
       <div className="mx-auto flex flex-col gap-8 px-4 py-8 lg:container">
         <div className="text-4xl font-bold">RECOMMENDED</div>
-        <ProductList
-          query={getProducts.bind(null, {
-            take: 4,
-            createdAt: "desc",
-            distinct: ["name", "gender"],
-            genders: [products[0].gender],
-            categories: [products[0].category],
-          })}
-        />
+        <Suspense fallback={<ListSkeleton length={4} />}>
+          <ProductList
+            query={getProducts.bind(null, {
+              take: 4,
+              createdAt: "desc",
+              distinct: ["name", "gender"],
+              genders: [products[0].gender],
+              categories: [products[0].category],
+            })}
+          />
+        </Suspense>
       </div>
     </>
   );
