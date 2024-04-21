@@ -7,19 +7,19 @@ const CATEGORIES = [
     id: 1,
     name: "Basketball",
     filename: "/basketball.webp",
-    path: "/products?page=1&category=in%3A$basketball",
+    path: "/products?page=1&category=in%3Abasketball",
   },
   {
     id: 2,
     name: "Lifestyle",
     filename: "/lifestyle.webp",
-    path: "/products?page=1&category=in%3A$lifestyle",
+    path: "/products?page=1&category=in%3Alifestyle",
   },
   {
     id: 3,
     name: "Apparel",
     filename: "/apparel.webp",
-    path: "/products?page=1&category=in%3A$apparel",
+    path: "/products?page=1&category=in%3Aapparel",
   },
 ];
 
