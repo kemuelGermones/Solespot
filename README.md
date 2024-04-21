@@ -2,6 +2,8 @@
 
 A web application store specializing in offering a diverse selection of the latest sneakers from renowned brands. The platform provides a seamless shopping experience, allowing users to browse, explore, and purchase the most sought-after sneakers in the market.
 
+### [View Demo](https://youtu.be/Ek06bjktmO0)
+
 ## About The Project
 
 ![Solespot](https://res.cloudinary.com/de9dxfdav/image/upload/v1713541692/Project%20Promotion/Screenshot_from_2024-04-19_23-35-23_ckwcxb.png)
@@ -51,22 +53,22 @@ npm install
 4. Copy the code below and paste it on your `.env` file. Also, you must provide your PostgreSQL, Github, Google and Stripe credentials.
 
 ```
-DATABASE_URL = **EXAMPLE: postgresql://user:password@localhost:5432/solespot?schema=public**
+DATABASE_URL = **EXAMPLE: "postgresql://user:password@localhost:5432/solespot?schema=public"**
 
-CLIENT_URL = http://localhost:3000
+CLIENT_URL = "http://localhost:3000"
 
-NEXTAUTH_URL = http://localhost:3000
-AUTH_TRUST_HOST = http://localhost:3000
-AUTH_SECRET = **EXAMPLE: someRandomString**
+NEXTAUTH_URL = "http://localhost:3000"
+AUTH_TRUST_HOST = "http://localhost:3000"
+AUTH_SECRET = **EXAMPLE: "someRandomString"**
 
-GITHUB_CLIENT_ID = **EXAMPLE: abe711bb7ff22448199w**
-GITHUB_CLIENT_SECRET = **EXAMPLE: 6aaa8d7aaf6b805bbb313b4a708034m1187606zx**
+GITHUB_CLIENT_ID = **EXAMPLE: "abe711bb7ff22448199w"**
+GITHUB_CLIENT_SECRET = **EXAMPLE: "6aaa8d7aaf6b805bbb313b4a708034m1187606zx"**
 
-GOOGLE_CLIENT_ID = **EXAMPLE: 212307540242-e9nwe8nbjak1ham4pjlq25ipsteffk6l.apps.googleusercontent.com**
-GOOGLE_CLIENT_SECRET = **EXAMPLE: LOGSIX-Xhsims_-LijudEoOBVZG-yf6Eb7s**
+GOOGLE_CLIENT_ID = **EXAMPLE: "212307540242-e9nwe8nbjak1ham4pjlq25ipsteffk6l.apps.googleusercontent.com"**
+GOOGLE_CLIENT_SECRET = **EXAMPLE: "LOGSIX-Xhsims_-LijudEoOBVZG-yf6Eb7s"**
 
-STRIPE_SECRET_KEY = **EXAMPLE: sk_test_409yXhOWNiIj3T2KuMuIHUEIV9Hbb7WrKi5sjgG4PoBww3claL9GEQqiYyyXXVDuwB9fuf6JCPgoypjseJHJjDSPp678lUpDfp9**
-STRIPE_WEBHOOK_SECRET_KEY = **EXAMPLE: whsec_e37385car6ea7d25rac6aa0f6sas07c55dc0fb9bb13af68e110ea678da9d64be**
+STRIPE_SECRET_KEY = **EXAMPLE: "sk_test_409yXhOWNiIj3T2KuMuIHUEIV9Hbb7WrKi5sjgG4PoBww3claL9GEQqiYyyXXVDuwB9fuf6JCPgoypjseJHJjDSPp678lUpDfp9"**
+STRIPE_WEBHOOK_SECRET_KEY = **EXAMPLE: "whsec_e37385car6ea7d25rac6aa0f6sas07c55dc0fb9bb13af68e110ea678da9d64be"**
 ```
 
 5. Run the command below on your terminal.
