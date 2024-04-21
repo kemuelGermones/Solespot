@@ -34,6 +34,15 @@ export const {
     signIn: "/sign_in",
     verifyRequest: "/",
   },
+  callbacks: {
+    session({ session, user }: any) {
+      if (session && user) {
+        session.user.id = user.id; 
+      }
+      
+      return session;
+    },
+  },
   providers: [
     Google({
       clientId: GOOGLE_CLIENT_ID,
